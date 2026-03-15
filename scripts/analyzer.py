@@ -191,84 +191,61 @@ SEO 메타태그.
 # ═══════════════════════════════════════════════
 def full_business_analysis(cluster):
     prompt = f"""
-다음 사용자 불편함을 기반으로 완전한 사업 분석을 해주세요.
+다음 불편함을 분석해서 JSON으로만 응답. 다른 텍스트 없이:
 
 카테고리: {cluster.get('category')}
 불편함: {cluster.get('pain_point')}
 타겟: {cluster.get('target_users')}
-긴급도: {cluster.get('urgency_score')}/10
-
-아래 JSON으로만 응답. 모든 항목 반드시 채울 것:
 
 {{
   "build_decision": "TRAFFIC_TOOL 또는 STANDALONE_SAAS 또는 APP_PROGRAM",
-  "build_reason": "이 유형이 맞는 이유 한 문장",
-
+  "build_reason": "한 문장",
   "product": {{
-    "name": "제품명 (간결하게)",
-    "tagline": "한 줄 설명 (트위터 소개 수준)",
-    "core_value": "핵심 가치 제안",
-    "product_type": "웹앱 또는 크롬확장 또는 모바일앱 또는 데스크톱 또는 랜딩페이지+툴"
+    "name": "제품명",
+    "tagline": "한 줄 설명",
+    "product_type": "웹앱 또는 크롬확장 또는 모바일앱"
   }},
-
   "time": {{
-    "mvp_days": "MVP 완성까지 일수 (Claude Code 활용 시, 숫자만)",
-    "launch_ready_days": "실제 런칭 가능일 (숫자만)",
-    "first_revenue_days": "첫 수익 예상일 (숫자만)"
+    "mvp_days": "7",
+    "launch_ready_days": "14",
+    "first_revenue_days": "30"
   }},
-
   "cost": {{
-    "dev_cost": "개발 비용 (Claude API 제외, 거의 0원인 경우 0원)",
-    "monthly_fixed": "월 고정비 (서버+도메인)",
-    "monthly_variable": "월 변동비 (트래픽 증가 시)",
-    "total_3months": "3개월 총 예상 비용"
+    "monthly_fixed": "월 5,000원",
+    "total_3months": "3개월 15,000원"
   }},
-
   "revenue": {{
-    "model": "광고(트래픽) 또는 월정액 또는 건당결제 또는 프리미엄",
-    "price_point": "가격 (예: 무료+광고, 월 9,900원, 건당 990원)",
-    "month1": "1개월 후 예상 월 수익",
-    "month3": "3개월 후 예상 월 수익",
-    "month6": "6개월 후 예상 월 수익",
-    "breakeven": "손익분기점 도달 예상 시점"
+    "model": "광고(트래픽) 또는 월정액",
+    "price_point": "무료+광고 또는 월 9,900원",
+    "month1": "0~10만원",
+    "month3": "10~50만원",
+    "month6": "30~100만원"
   }},
-
   "market": {{
-    "size": "시장 규모 (국내 기준)",
     "competition": "낮음 또는 중간 또는 높음",
-    "competitors_kr": ["국내경쟁1","국내경쟁2"],
-    "competitors_global": ["해외경쟁1","해외경쟁2"],
     "differentiation": "차별점 한 문장",
-    "search_volume": "예상 월 검색량 (구글 기준)",
-    "seo_keywords": ["메인키워드","서브키워드1","서브키워드2"]
+    "seo_keywords": ["키워드1","키워드2"]
   }},
-
   "build": {{
-    "mvp_features": ["핵심기능1","핵심기능2","핵심기능3"],
-    "tech_stack": "기술 스택 (예: HTML/CSS/JS + Vercel, Next.js + Supabase)",
+    "mvp_features": ["기능1","기능2","기능3"],
+    "tech_stack": "HTML/CSS/JS + Vercel",
     "difficulty": "하 또는 중 또는 상",
-    "quick_traffic": "첫 방문자 100명 모으는 가장 빠른 방법",
-    "growth_hack": "1,000명→10,000명 성장 전략"
+    "quick_traffic": "첫 100명 유입 방법"
   }},
-
   "risk": {{
-    "main_risk": "가장 큰 리스크",
-    "risk_level": "낮음 또는 중간 또는 높음",
-    "mitigation": "리스크 대응 방법"
+    "main_risk": "리스크 한 문장",
+    "risk_level": "낮음 또는 중간 또는 높음"
   }},
-
   "score": {{
-    "overall": 전체점수1~10,
-    "market_potential": 시장성1~10,
-    "build_ease": 제작용이성1~10,
-    "revenue_speed": 수익속도1~10,
-    "competition_advantage": 경쟁우위1~10
-  }},
-
-  "claude_prompt": "아래 형식을 반드시 따를 것. 실제 개발자가 Claude Code에 붙여넣기해서 당일 바로 작업을 시작할 수 있을 만큼 구체적으로 작성. 한국어로 작성. 형식: [제품 배경 및 존재 이유] 어떤 사람이 어떤 순간에 이 제품이 필요한가, 지금 대안이 왜 불충분한가 (2~3문장) / [핵심 사용자 경험 설계] 사용자가 처음 들어와서 가치를 느끼기까지의 구체적인 흐름 단계별로 / [입력값 설계] 사용자에게 받아야 할 정보가 무엇인지, 왜 그 정보가 필요한지 / [출력값 설계] 단순 결과물이 아닌 사용자가 '아 이게 다르다'고 느끼는 출력 형태 / [UI/UX 상세 요구사항] 컬러, 레이아웃, 인터랙션, 반응형, 복사버튼 등 / [기술 스택 및 파일 구조] 단일 HTML 파일인지 여러 파일인지, 외부 API 사용 여부 / [Claude API 프롬프트 설계] 내부적으로 Claude API를 쓴다면 어떤 시스템 프롬프트로 어떤 결과를 뽑아야 하는지 / [수익화 설계] 무료/유료 구분, 어떤 기능이 유료인지 / [배포 방법] Vercel 등 구체적 방법"
+    "overall": 8,
+    "market_potential": 7,
+    "build_ease": 9,
+    "revenue_speed": 6,
+    "competition_advantage": 8
+  }}
 }}
 """
-    return parse_json(call_claude(prompt, 2000)) or {}
+    return parse_json(call_claude(prompt, 1200)) or {}
 
 # ═══════════════════════════════════════════════
 # 3단계: 오늘의 최종 추천
