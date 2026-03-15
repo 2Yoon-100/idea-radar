@@ -130,5 +130,17 @@
     "comments": 0,
     "date": "2026-03-15",
     "language": "en"
+  },
+  {
+    "id": "47374339",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Show HN: I got frustrated with SMILES, so I built one",
+    "content": "Hi HN, I&#x27;m an undergrad in Nepal.<p>For the last 35 years, computational chemistry and AI drug discovery have relied on SMILES to represent molecules. It was great for the 1980s, but today it is a massive bottleneck. It’s non-canonical, its stereochemistry parsing is fragile, and it completely breaks down when trying to represent organometallics, alloys, or polymers. To parse it reliably, you basically need a 300MB C++ dependency (RDKit) relying on decades of hard-coded heuristics.<p>I got ",
+    "url": "https://news.ycombinator.com/item?id=47374339",
+    "score": 1,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
   }
 ]
