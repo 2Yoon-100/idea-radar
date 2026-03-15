@@ -237,11 +237,11 @@ def full_business_analysis(cluster):
     "risk_level": "낮음 또는 중간 또는 높음"
   }},
   "score": {{
-    "overall": 8,
-    "market_potential": 7,
-    "build_ease": 9,
-    "revenue_speed": 6,
-    "competition_advantage": 8
+    "overall": 숫자(1~10),
+    "market_potential": 숫자(1~10),
+    "build_ease": 숫자(1~10),
+    "revenue_speed": 숫자(1~10),
+    "competition_advantage": 숫자(1~10)
   }}
 }}
 """
