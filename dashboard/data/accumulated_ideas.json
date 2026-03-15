@@ -1383,5 +1383,579 @@
     },
     "is_new": true,
     "date": "2026-03-15"
+  },
+  {
+    "category": "AI 코딩 어시스턴트 워크플로우 최적화",
+    "pain_point": "AI 도구 사용 시 반복적인 컨텍스트 입력, 멀티 도구 비교, 토큰 비용 문제로 인한 생산성 저하",
+    "post_count": 6,
+    "urgency_score": 9,
+    "target_users": "AI 코딩 어시스턴트 사용 개발자",
+    "example_posts": [
+      2,
+      8,
+      17,
+      18,
+      20,
+      25
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "개발자의 반복적인 AI 도구 사용 불편함을 통합 플랫폼으로 해결하고 토큰 최적화로 비용 절감 가치 제공",
+      "product": {
+        "name": "ContextFlow",
+        "tagline": "AI 코딩 어시스턴트 통합 관리 및 토큰 최적화 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 28,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 300,000원",
+        "total_3months": "3개월 900,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 19,900원",
+        "month1": "500000~1000000",
+        "month3": "3000000~8000000",
+        "month6": "10000000~30000000"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "멀티 AI 도구 통합 관리와 토큰 기반 비용 추적으로 개발자 생산성과 ROI 극대화",
+        "seo_keywords": [
+          "AI 코딩 어시스턴트",
+          "토큰 최적화",
+          "ChatGPT 통합",
+          "코딩 생산성",
+          "개발자 도구"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "멀티 AI 도구 API 통합",
+          "컨텍스트 저장소",
+          "토큰 사용량 대시보드",
+          "도구 비교 분석"
+        ],
+        "tech_stack": "React + Node.js + PostgreSQL + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "Reddit/Dev.to 개발자 커뮤니티, GitHub Trending, Product Hunt 런칭"
+      },
+      "risk": {
+        "main_risk": "API 비용 변동성과 주요 AI 도구 정책 변화에 따른 플랫폼 수익성 영향",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 6,
+        "competition_advantage": 7
+      },
+      "claude_prompt": "# ContextFlow - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페르소나와 순간:**\n개발자 김코딩은 하루에 ChatGPT, Claude, GitHub Copilot, Cursor를 번갈아 쓴다. 새로운 라이브러리를 배울 때마다 각 도구에 프로젝트 구조, 코드베이스 요약, 팀 컨벤션을 다시 설명해야 한다. 회사 계정으로 Claude API 쓰는데, 토큰 비용이 매달 얼마나 나가는지 모른다. 세 가지 도구 응답을 직접 비교해서 어느 게 더 정확한지 판단하느라 30분을 낭비한다.\n\n**현재 대안의 부족함:**\n- **API 직접 호출**: 각 도구별로 문서 읽고, 인증 관리하고, 비용 추적 복잡함\n- **단일 도구 고정**: ChatGPT만 쓰면 Claude의 더 나은 문맥 이해를 못 누림\n- **컨텍스트 손실**: 매번 새로운 대화에서 0부터 설명. 프로젝트 메타데이터 재입력\n- **토큰 비용 불명확**: \"이번 달 비용이 얼마일까?\" 추측만 함\n- **비교 불가능**: 같은 질문을 여러 도구에 물어보고 수동으로 비교\n\n**사용 후 느껴야 할 감정:**\n\"드디어 내 컨텍스트를 한 곳에 저장했다. ChatGPT와 Claude에 동시에 물어보고 응답을 바로 비교한다. 이번 달 토큰 비용이 정확히 \\$47.32라는 걸 알고 있다. 새 프로젝트 시작할 때 저장된 구조 문서를 불러와서 AI에 자동 로드시킨다. 생산성이 40% 올라갔다.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Step 1: 가입 및 온보딩 (2분)**\n- 이메일 가입 → 가입 완료 시 튜토리얼 모달\n- \"3개 AI 도구를 연결하세요\" 가이드\n- API 키 입력 (ChatGPT, Claude, 또는 다른 도구 중 선택)\n- 초기 컨텍스트 템플릿 추천 (프로젝트 유형별: 웹 앱/모바일/백엔드)\n\n**Step 2: 컨텍스트 저장 (5분)**\n- \"새 컨텍스트 생성\" 클릭\n- 4개 영역 채우기: 프로젝트명, 기술 스택, 코드베이스 개요, 팀 컨벤션\n- \"컨텍스트 저장\" → 자동으로 벡터 임베딩되어 저장\n- 확인 메시지: \"Project-ABC 컨텍스트 저장됨 (2,543 tokens)\"\n\n**Step 3: 질문 및 멀티 도구 비교 (1분)**\n- 대시보드의 \"질문하기\" 입력창 클릭\n- 질문 입력: \"이 함수를 리팩토링하려면?\"\n- 도구 선택 (체크박스): ChatGPT ☑, Claude ☑, Gemini ☐\n- \"컨텍스트 포함\" 토글 ON\n- \"질문 전송\" → 3개 응답이 3개 패널에 동시 로드\n- 패널 간 스와이프로 비교, 각각 복사 버튼\n\n**Step 4: 토큰 사용량 확인 (30초)**\n- 우측 사이드바 \"Token Dashboard\" 클릭\n- 막대 그래프: 이번 달 도구별 토큰 사용량\n- 비용 예측: \"현재 추세로 보면 월말 \\$42.50\"\n- 상위 5개 비싼 질문 목록 (최적화 기회)\n\n**Step 5: 인사이트 얻기 (2분)**\n- 대시보드 \"분석\" 탭\n- \"당신은 Claude를 60% 더 많이 사용합니다\" 인사이트\n- \"평균 응답 대기시간: ChatGPT 3초 < Claude 2초\"\n- \"추천: Gemini도 시도해보세요 (비용 20% 더 저렴)\"\n\n**Step 6: 팀과 컨텍스트 공유 (1분)**\n- 컨텍스트 우측 메뉴에서 \"공유\" 클릭\n- 팀원 이메일 입력 → 초대 링크 생성\n- 팀원이 승인하면 모든 저장된 컨텍스트, 질문 히스토리 공유\n- 공유된 토큰 비용은 팀 계정에 합산\n\n---\n\n## [3. 입력 설계]\n\n**3-1. API 키 입력**\n```\n입력 방식:\n- 각 도구별 탭: ChatGPT | Claude | Gemini | Custom\n- 텍스트 입력 필드: \"API 키 입력\" (마스킹 처리)\n- 생략된 마지막 4글자는 표시: sk-proj-••••••••••gK2J\n- \"연결 테스트\" 버튼: 실시간 검증\n\n기본값/예시:\n- 플레이스홀더: \"sk-proj-...\" (ChatGPT 형식 표시)\n- 도움말 아이콘: 각 도구의 API 문서 링크\n- 저장 선택지: \"기기에만 저장\" vs \"ContextFlow 암호화 저장\"\n  → 기본값: \"기기에만 저장\" (보안 최우선)\n```\n\n**3-2. 컨텍스트 정보 입력**\n```\n필드 1: 프로젝트 명 (텍스트)\n- 예시: \"e-commerce-platform\"\n- 유효성: 30자 이하\n\n필드 2: 기술 스택 (태그 입력)\n- 예시: React, Node.js, PostgreSQL, Redis\n- 자동완성: 인기 기술 20개 미리 로드\n- 커스텀 추가 가능\n\n필드 3: 코드베이스 개요 (대형 텍스트)\n- 예시: \n  \"\n  Frontend: /client (Next.js 13)\n  Backend: /server (Express + TypeORM)\n  DB: PostgreSQL 15\n  주요 모듈: Auth (JWT), Payment (Stripe), Search (ElasticSearch)\n  \"\n- 최대 2,000자\n- 마크다운 지원\n\n필드 4: 팀 컨벤션 (대형 텍스트)\n- 예시:\n  \"\n  Naming: camelCase for functions, PascalCase for components\n  PR: 반드시 2명 리뷰\n  Comment: 모든 public API에 JSDoc\n  \"\n- 최대 1,500자\n- 마크다운 지원\n\n필드 5: 저장 대상 도구 (다중 선택)\n- 체크박스: ChatGPT ☐ Claude ☑ Gemini ☐\n- 기본값: 연결된 모든 도구에 저장\n```\n\n**3-3. 질문 입력**\n```\n입력 방식:\n- 큰 텍스트 에어리어 (Cmd+Enter로 전송)\n- 예시 질문 3개 드롭다운: \n  1. \"이 함수를 최적화할 수 있나?\"\n  2. \"버그 원인을 찾아줄 수 있나?\"\n  3. \"코드 리뷰해줄 수 있나?\"\n\n옵션 1: 컨텍스트 자동 포함\n- 토글: ON (기본값) / OFF\n- ON일 때: 저장된 컨텍스트 자동 로드\n- 표시: \"✓ Project-ABC 컨텍스트 포함 (기술 스택, 코드 구조)\"\n\n옵션 2: 도구 선택\n- 체크박스 (복수 선택):"
+    },
+    "is_new": true,
+    "date": "2026-03-16"
+  },
+  {
+    "category": "RAG/에이전트 아키텍처 표준화",
+    "pain_point": "RAG 시스템 구축 시 매번 새로운 파이프라인을 재구축해야 하고, 다중 테넌시 및 프로바이더 변경 어려움",
+    "post_count": 4,
+    "urgency_score": 8,
+    "target_users": "엔터프라이즈 AI 개발자, 백엔드 엔지니어",
+    "example_posts": [
+      7,
+      14,
+      25,
+      26
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "엔터프라이즈 개발자를 위한 RAG 파이프라인 표준화 플랫폼으로 구독 기반 수익 창출 가능",
+      "product": {
+        "name": "RAGFlow",
+        "tagline": "플러그앤플레이 RAG 파이프라인 빌더 - 재구축 없이 멀티테넌시 및 프로바이더 전환",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 21,
+        "launch_ready_days": 35,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 150만원",
+        "total_3months": "3개월 450만원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 49,900원(스타터) / 월 149,900원(프로)",
+        "month1": "80~200만원",
+        "month3": "400~800만원",
+        "month6": "1200~2500만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "드래그앤드롭 UI로 복잡한 RAG 아키텍처를 분 단위로 구축하고 멀티 프로바이더 자동 전환 지원",
+        "seo_keywords": [
+          "RAG 파이프라인 빌더",
+          "LLM 파이프라인 표준화",
+          "멀티테넌시 RAG",
+          "엔터프라이즈 AI"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "드래그앤드롭 파이프라인 에디터",
+          "OpenAI/Anthropic/로컬 모델 멀티 프로바이더 지원",
+          "테넌트 격리 및 권한 관리",
+          "API 자동 생성 및 배포"
+        ],
+        "tech_stack": "Next.js + FastAPI + PostgreSQL + Docker + AWS",
+        "difficulty": "상",
+        "quick_traffic": "GitHub에 오픈소스 기본 버전 공개 후 SaaS 프리미엄으로 유도, AI 개발자 커뮤니티 및 포럼 공략"
+      },
+      "risk": {
+        "main_risk": "복잡한 엔터프라이즈 요구사항 충족 시간 지연 및 초기 고객 확보의 긴 세일즈 사이클",
+        "risk_level": "높음"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 9,
+        "build_ease": 6,
+        "revenue_speed": 5,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# RAGFlow - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페인 포인트:**\n엔터프라이즈 AI 개발자와 백엔드 엔지니어는 매번 새로운 비즈니스 요구사항마다 RAG 파이프라인을 처음부터 구축한다. 문서 로드 → 청킹 → 임베딩 → 검색 → 프롬프트 엔지니어링 → 배포의 전체 사이클을 반복한다. OpenAI에서 Claude로, 클라우드에서 로컬 모델로 전환하려면 모든 코드를 다시 작성해야 한다. 멀티테넌시 구현 시 보안, 격리, 권한 관리가 복잡해진다.\n\n**현재 대안의 부족함:**\n- LangChain: 너무 저수준, 프로덕션 배포까지 담당하지 않음\n- Llamaindex: 단일 테넌트 중심, 프로바이더 전환 어려움\n- 직접 구축: 시간 낭비, 반복적, 유지보수 비용 높음\n\n**사용 후 느껴야 할 감정:**\n\"아, 이게 이렇게 간단했나?\" - 드래그앤드롭으로 5분 안에 프로덕션급 RAG 파이프라인이 완성되고, 프로바이더 변경이 클릭 하나로 끝난다. \"내 팀은 비즈니스 로직에만 집중하면 된다\"는 해방감.\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Step 1: 첫 랜딩 (0초 ~ 10초)**\n- 영웅 섹션: \"복잡한 RAG를 드래그앤드롭으로\" 메인 비디오\n- 3가지 주요 이점 시각화 (빠른 구축, 멀티 프로바이더, 자동 배포)\n- \"지금 시작하기\" 버튼 → 회원가입 또는 데모\n\n**Step 2: 회원가입/로그인 (10초 ~ 1분)**\n- 이메일/비밀번호 또는 Google/GitHub 소셜로그인\n- 조직명, 역할(엔지니어/PM/데이터 팀장) 입력\n- 자동으로 개인 테넌트 생성, API 키 발급\n\n**Step 3: 온보딩 대시보드 (1분 ~ 3분)**\n- \"첫 파이프라인 만들기\" 위자드 시작\n- 프리셋 템플릿 3개 제시:\n  - \"고객 지원 챗봇\" (Document → Vector Store → Chat)\n  - \"법률 문서 분석\" (PDF → Chunking → RAG)\n  - \"내부 지식 검색\" (시스템 프롬프트 + 검색 결과 조합)\n\n**Step 4: 파이프라인 빌더 (3분 ~ 8분)**\n- 좌측: 컴포넌트 팔레트 (Document Loader, Chunker, Embedder, Vector Store, LLM, Chain)\n- 중앙: 캔버스 (드래그앤드롭 에디터)\n- 우측: 컴포넌트 설정 패널\n- \"프로바이더 선택\" 드롭다운 (OpenAI, Claude, Ollama, 커스텀)\n\n**Step 5: 테스트 및 배포 (8분 ~ 10분)**\n- \"테스트 실행\" 버튼 → 샘플 쿼리 입력 후 결과 확인\n- \"배포\" 버튼 → 자동으로 API 엔드포인트 생성 + Swagger 문서\n- 배포 완료 시 \"복사\" 버튼으로 API URL, cURL 예제 제공\n\n**Step 6: API 문서 및 SDK (10분 ~ 15분)**\n- 자동 생성된 API 문서 페이지\n- Python/JavaScript SDK 코드 스니펫\n- 팀원 초대 버튼 → 협업 시작\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 회원가입 시 입력\n```\n입력 필드:\n- 이메일 (필수, 이메일 형식 검증)\n- 비밀번호 (필수, 최소 8자, 특수문자 1개 이상)\n- 조직명 (필수)\n- 역할 (드롭다운: Engineer / Product Manager / Data Team Lead)\n- 계획 선택 (라디오: Starter / Pro)\n\n기본값:\n- 역할: Engineer\n- 계획: Starter\n\n예시:\n{\n  \"email\": \"dev@company.com\",\n  \"password\": \"SecurePass123!\",\n  \"organization\": \"TechCorp AI\",\n  \"role\": \"Engineer\",\n  \"plan\": \"Starter\"\n}\n```\n\n### 3.2 파이프라인 생성 시 입력\n```\n입력 필드:\n- 파이프라인명 (필수, 영문/숫자/언더스코어)\n- 설명 (선택, 최대 200자)\n- 템플릿 선택 (라디오: 빈 캔버스 / 템플릿 3개)\n- 환경 선택 (드롭다운: Development / Staging / Production)\n\n기본값:\n- 설명: 비어있음\n- 템플릿: 빈 캔버스\n- 환경: Development\n\n예시:\n{\n  \"name\": \"customer_support_rag\",\n  \"description\": \"고객 지원 챗봇을 위한 RAG 파이프라인\",\n  \"template\": \"customer_support_chatbot\",\n  \"environment\": \"Production\"\n}\n```\n\n### 3.3 컴포넌트 설정 입력\n```\nDocument Loader:\n- 소스 타입 (드롭다운: Local File / URL / S3 / Database)\n- 파일 타입 (체크박스: PDF / TXT / DOCX / CSV)\n- 재귀 폴더 스캔 (토글)\n\nChunker:\n- 청크 크기 (슬라이더: 256 ~ 2048, 기본값 512)\n- 오버랩 (슬라이더: 0 ~ 50%, 기본값 10%)\n- 분리자 (드롭다운: \\n / \\n\\n / . / 커스텀)\n\nEmbedder:\n- 프로바이더 (드롭다운: OpenAI / Anthropic / Ollama / HuggingFace)\n- 모델 (자동 로드됨, 기본값: text-embedding-3-small)\n- 배치 크기 (슬라이더: 8 ~ 128, 기본값 32)\n\nVector Store:\n- 저장소 유형 (드롭다운: PostgreSQL-pgvector / Pinecone / Weaviate)\n- 인덱스명 (필수)\n- 메트릭 (드롭다운: cosine / euclidean / dot, 기본값 cosine)\n\nLLM:\n- 프로바이더 (드롭다운: OpenAI / Claude / Ollama)\n- 모델 (자동 로드됨, 기본값: gpt-4)\n- 온도 (슬라이더: 0 ~ 2, 기본값 0.7, 스텝 0.1)\n- Max tokens (슬라이더: 256 ~ 4096, 기본값 1024)\n\nChain/Prompt:\n- 시스템 프롬프트 (텍스트 에디터, 기본값: 친절한 어시스턴트)\n- 검색 결과 포함 여부 (토글)\n- 검색 결과 포맷 (드롭다운: Numbered / Markdown / Table)\n\n기본값 JSON:\n{\n  \"chunker\": {\n    \"size\": 512,\n    \"overlap\": 10,\n    \"separator\": \"\\n\\n\"\n  },\n  \"embedder\": {\n    \"provider\": \"OpenAI\",\n    \"model\": \"text-embedding-3-small\",\n    \"batch_size\": 32\n  },\n  \"llm\": {\n    \"provider\": \"OpenAI\",\n    \"model\": \"gpt-4\",\n    \"temperature\": 0.7,\n    \"max_tokens\": 1024\n  }\n}\n\n예시:\n{\n  \"document_loader\": {\n    \"source\": \"S3\",\n    ",
+      "search_trends": {
+        "keywords": {
+          "RAG 파이프라인 빌더": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "LLM 파이프라인 표준화": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "RAGFlow": {
+            "current_score": 0,
+            "trend_pct": -100,
+            "trend": "하락",
+            "peak": 6,
+            "data": [
+              0,
+              4,
+              0,
+              0,
+              0,
+              5,
+              6,
+              5,
+              5,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "RAG 파이프라인 빌더",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'RAG 파이프라인 빌더' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-16"
+  },
+  {
+    "category": "AI 보안 및 접근 제어",
+    "pain_point": "API 토큰의 제한된 권한 관리와 AI 시스템의 보안 정책 수립 필요",
+    "post_count": 2,
+    "urgency_score": 8,
+    "target_users": "DevOps, 보안 담당 엔지니어",
+    "example_posts": [
+      6,
+      10
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "DevOps와 보안 담당자를 위한 전문화된 API 토큰 관리 및 권한 제어 플랫폼으로 높은 수익화 가능성",
+      "product": {
+        "name": "TokenGuard - AI API 보안 관리 플랫폼",
+        "tagline": "API 토큰의 세밀한 권한 관리와 AI 시스템 보안 정책을 한 곳에서 관리",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 21,
+        "launch_ready_days": 45,
+        "first_revenue_days": 60
+      },
+      "cost": {
+        "monthly_fixed": "월 80,000원",
+        "total_3months": "3개월 240,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 49,900원~199,900원",
+        "month1": "50~100만원",
+        "month3": "200~400만원",
+        "month6": "500~1,200만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "AI 시스템 특화 토큰 관리와 자동화된 권한 정책 템플릿으로 DevOps의 보안 업무 효율화",
+        "seo_keywords": [
+          "API토큰관리",
+          "AI보안정책",
+          "권한제어",
+          "DevOps보안",
+          "토큰보안관리"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "API 토큰 생성 및 만료 관리",
+          "역할 기반 권한 제어(RBAC)",
+          "AI 시스템 보안 정책 템플릿",
+          "토큰 사용 로그 및 모니터링",
+          "감사(Audit) 대시보드"
+        ],
+        "tech_stack": "React + Node.js/Python + PostgreSQL + Vercel + AWS",
+        "difficulty": "중",
+        "quick_traffic": "DevOps 커뮤니티(Reddit, Product Hunt), 보안 블로그 마케팅, GitHub 오픈소스 예제 배포"
+      },
+      "risk": {
+        "main_risk": "엔터프라이즈 고객 확보의 긴 영업 사이클과 높은 보안 규정 준수 요구사항",
+        "risk_level": "높음"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 6,
+        "revenue_speed": 5,
+        "competition_advantage": 7
+      },
+      "claude_prompt": "# TokenGuard - AI API 보안 관리 플랫폼 | 완전한 개발 지시서\n\n---\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n### 사용자가 느끼는 순간의 고통\n\n**누가**: DevOps 엔지니어 (팀 리드), 보안 담당자\n- 월요일 아침, CEO가 \"어제 API 토큰 유출 사건 있었어. 어떤 데이터가 접근됐는지 알아봐\"\n- 현재: 엑셀 파일 뒤지고, 로그 서버 하나하나 확인. 3시간 날림\n- 시니어 보안 엔지니어가 \"아직도 JSON 파일로 권한 관리해?\"\n\n### 현재 대안이 부족한 이유\n\n| 현재 솔루션 | 문제점 |\n|-----------|--------|\n| AWS IAM | AI/LLM 모델 특화 정책 없음. 너무 복잡 |\n| Auth0/Okta | 토큰 사용 패턴 분석 불가. 비쌈 |\n| 수동 스크립트 | 권한 정책 일관성 0. 감사 추적 없음 |\n| 토큰 로테이션 스크립트 | AI 시스템 특화 템플릿 없음. 자동화 어려움 |\n\n### 사용 후 느껴야 할 감정\n\n✅ **\"아, 드디어. 한 대시보드에서 모든 게 보인다\"**\n- 토큰 만료까지 10일 → 알림 → 자동 갱신 제안\n- \"이 토큰은 어느 AI 모델에 쓰는 거?\" 한눈에\n- 비정상 패턴 탐지 → \"좀비 토큰이 데이터를 긁어가고 있어요\"\n\n✅ **\"보안 정책을 처음부터 다시 쓰지 않아도 된다\"**\n- \"OpenAI API 권한 템플릿\" 선택 → 자동 설정\n- HIPAA/SOC2 준수 템플릿 → 1클릭 적용\n\n✅ **\"감사팀이 이제 나한테 안 물어본다\"**\n- Audit 대시보드: \"누가, 언제, 어떤 토큰으로, 뭘 접근했는가\"\n- CSV 내보내기 → 경영진 보고\n\n---\n\n## [2. 사용자 경험 흐름]\n\n### Phase 1: 초기 설정 (3분)\n\n```\n1. 가입 (Google/GitHub 로그인)\n   ↓\n2. \"회사/팀 이름\" + \"업계\" 입력\n   (자동으로 AI 시스템 특화 템플릿 추천)\n   ↓\n3. 첫 토큰 생성 마법사\n   - \"어떤 AI 모델에 사용할 건가요?\"\n     (OpenAI, Claude, Llama 등 선택)\n   - \"어떤 권한이 필요해요?\"\n     (읽기만/쓰기/관리 선택)\n   - \"누가 이 토큰을 사용하나요?\"\n     (개인/팀 선택)\n   ↓\n4. 토큰 생성 + 복사 버튼\n   (한 번만 보임. Slack 알림 옵션)\n```\n\n### Phase 2: 일상 운영 (매일)\n\n```\n1. 대시보드 진입\n   - 활성 토큰 수\n   - 곧 만료될 토큰 경고\n   - 비정상 접근 시도 (지난 24시간)\n   ↓\n2. \"토큰 관리\" 탭\n   - 토큰별 마지막 사용: 3일 전 (좀비 토큰 발견)\n   - 사용한 AI 모델: Claude API\n   - 현재 권한: messages:read, messages:create\n   - 만료: 45일 남음\n   ↓\n3. \"권한 조정\" 클릭\n   - 역할 기반 템플릿 (Viewer/Editor/Admin)\n   - 세부 권한 조정 (체크박스)\n   - \"변경사항 적용\" → 감사 로그에 자동 기록\n```\n\n### Phase 3: 보안 사건 대응 (비상 상황)\n\n```\n1. 알림: \"토큰 XYZ가 평소와 다른 시간에 접근\"\n   ↓\n2. Audit 대시보드 열기\n   - 지난 1시간 모든 접근 기록\n   - 누가: dev-team-token-001\n   - 언제: 2025-01-15 03:47:22 UTC\n   - 뭘: Claude API, prompt_tokens 50,000\n   - IP: 203.0.113.45\n   ↓\n3. \"즉시 비활성화\" 버튼\n   - 해당 토큰 만료\n   - 팀 Slack에 알림\n   - 대체 토큰 자동 생성 제안\n```\n\n### Phase 4: 정기 점검 (분기별)\n\n```\n1. \"보안 정책 검토\" 버튼\n   ↓\n2. 가이드라인 대비 현재 상태\n   - ✓ 모든 토큰이 90일 이내로 설정됨\n   - ✗ 권한이 필요 이상으로 많은 토큰 3개\n   ↓\n3. \"자동 권한 축소 제안\"\n   - token-001: messages:create → messages:read만 필요\n   - token-003: admin → editor로 다운그레이드 가능\n   ↓\n4. \"변경 적용\" → 감사 기록 자동 생성\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 토큰 생성 시 입력\n\n**Step 1: 기본 정보**\n\n| 필드 | 타입 | 입력 방식 | 기본값 | 예시 |\n|------|------|---------|--------|------|\n| 토큰명 | Text | 텍스트 입력 (자동 완성) | - | `prod-gpt4-batch-processing` |\n| 설명 | TextArea | 자유 입력 | \"\" | `Nightly batch job for customer sentiment analysis` |\n| AI 모델 | Select Dropdown | 드롭다운 (검색 가능) | - | OpenAI GPT-4 / Claude 3 / Llama 2 |\n| 환경 | Radio Button | prod / staging / dev | dev | prod |\n\n**Step 2: 권한 설정**\n\n| 필드 | 타입 | 입력 방식 | 기본값 | 예시 |\n|------|------|---------|--------|------|\n| 역할 템플릿 | Button Group | Viewer / Editor / Admin / Custom | Viewer | Editor |\n| 세부 권한 (Custom 선택 시) | Checkbox List | 다중 선택 | [] | `[messages:read, messages:create]` |\n| 리소스 범위 | Multi-select | 토큰으로 접근 가능한 범위 | 모두 | `[org-id: acme-corp, project-id: chatbot-v2]` |\n\n**Step 3: 보안 정책**\n\n| 필드 | 타입 | 입력 방식 | 기본값 | 예시 |\n|------|------|---------|--------|------|\n| 만료 기간 | Number Input + Unit | 숫자 + 단위 선택 | 90 days | 30 days |\n| IP 화이트리스트 | Textarea (IP 목록) | 개행으로 구분 | \"\" | `203.0.113.0/24` |\n| 일일 API 호출 한도 | Number Input | 숫자 (disable 옵션) | Unlimited | 100,000 |\n| 소유자/팀 | Select (Multi) | 담당자 선택 | 현재 사용자 | Team: Platform / Owner: alice@company.com |\n\n### 3.2 권한 정책 템플릿 생성\n\n**AI 시스템 특화 템플릿 선택**\n\n```\n선택지 1: 사전 정의 템플릿\n┌─────────────────────────────────────┐\n│ ✓ OpenAI API (Standard Use)         │ → messages:read/create, files:read\n│   Claude API (Customer Facing)      │ →",
+      "search_trends": {
+        "keywords": {
+          "API토큰관리": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "AI보안정책": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "TokenGuard  AI API 보안 관리 플랫폼": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "API토큰관리",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'API토큰관리' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-16"
+  },
+  {
+    "category": "커리어 및 업계 변화 적응",
+    "pain_point": "대규모 레이오프 이후 번아웃 상태에서 경력 전환 전략 부재, AI 시대 스킬 재정의 필요",
+    "post_count": 2,
+    "urgency_score": 8,
+    "target_users": "이직 준비 중인 소프트웨어 엔지니어",
+    "example_posts": [
+      3,
+      13
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "레이오프 피해자 엔지니어들의 구체적인 커리어 전환 니즈를 타겟팅한 니치 SaaS로 빠른 매출화 가능",
+      "product": {
+        "name": "CareerPivot AI",
+        "tagline": "AI 시대 소프트웨어 엔지니어를 위한 맞춤형 경력 전환 가이드 및 스킬 재정의 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": "10",
+        "launch_ready_days": "21",
+        "first_revenue_days": "35"
+      },
+      "cost": {
+        "monthly_fixed": "월 8,000원",
+        "total_3months": "3개월 24,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 14,900원",
+        "month1": "80~150만원",
+        "month3": "200~400만원",
+        "month6": "500~900만원"
+      },
+      "market": {
+        "competition": "낮음",
+        "differentiation": "엔지니어 대상 AI 시대 스킬 재정의 + 번아웃 복구 심리 상담 모듈 통합",
+        "seo_keywords": [
+          "경력전환",
+          "소프트웨어엔지니어",
+          "AI시대스킬",
+          "번아웃극복",
+          "이직준비",
+          "커리어컨설팅"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "AI 기반 스킬갭 분석 (현재 기술 vs 시장수요)",
+          "개인맞춤형 경력전환 로드맵 생성",
+          "번아웃 회복을 위한 마이크로러닝 커리큘럼",
+          "동료 엔지니어와의 커뮤니티 및 멘토링 매칭"
+        ],
+        "tech_stack": "Next.js + TypeScript + OpenAI API + Supabase + Stripe",
+        "difficulty": "중",
+        "quick_traffic": "Reddit r/cscareerquestions, r/layoffs, LinkedIn 엔지니어 그룹에서 무료베타 배포 및 Product Hunt 론칭"
+      },
+      "risk": {
+        "main_risk": "소프트웨어 엔지니어 커뮤니티의 높은 기술 역량으로 인한 높은 기대치 충족 난제 및 AI 경쟁 심화",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 8,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# CareerPivot AI - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**누가, 언제 필요한가:**\n- 2024년 대규모 테크 레이오프 이후 5-10년 경력의 소프트웨어 엔지니어\n- 현재 상황: ChatGPT, Claude가 주니어 업무를 대체하고 있는데 내 경력이 무의미해진 것처럼 느껴지는 순간\n- 새벽 3시에 \"나는 지금 뭘 배워야 할까\" 검색하는 번아웃 상태의 개발자\n\n**현재 대안의 부족함:**\n- LinkedIn Learning, Udemy: \"뭘 배워야 할지\" 안 알려줌 (선택 마비)\n- Coursera, Codecademy: 범용적 커리큘럼 (AI 시대 특화 부족)\n- 일반 커리어 코칭: 엔지니어의 기술 깊이를 모름 (피상적 조언)\n- 심리상담: 경력 방향과 연결 안 됨 (지금 필요한 기술 업데이트 몰라줌)\n- 구직 사이트: 스킬 갭을 메울 시간을 주지 않음 (빨리 지원하라고만 함)\n\n**사용 후 느껴야 할 감정:**\n- \"아, 내가 배워야 할 게 정확히 이거구나\" (명확성)\n- \"3개월이면 가능할 것 같은데?\" (희망 + 실행 가능성)\n- \"혼자가 아니네, 같은 상황의 개발자들이 있다\" (소속감)\n- \"AI 시대에 내가 더 강해질 수 있겠다\" (번아웃 회복)\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Day 1 - 온보딩 (5분)**\n1. 랜딩 → \"당신의 AI 시대 경력을 재설계하세요\" \n2. 회원가입 (Google OAuth, Email)\n3. 초기 퀴즈: 현재 기술스택 선택 (버튼 다중선택)\n4. \"분석 중입니다\" 애니메이션 (2초)\n5. 첫 번째 리포트 미리보기: \"당신의 스킬 갭\"\n\n**Day 1 - 스킬갭 분석 (7분)**\n1. 📊 대시보드: 시각적 스킬 레이더 차트\n   - 현재 기술: 파란색 영역\n   - 시장 수요: 빨간색 영역\n   - 갭 영역: 주황색 (클릭 가능)\n2. 각 갭에 대해: \"왜 이게 필요한가\" + \"3달 학습 경로\"\n3. CTA: \"나의 로드맵 생성하기\" → 유료로 유도\n\n**Day 2 - 맞춤형 로드맵 (결제 후)**\n1. 💡 결제 완료 → 10초 대기 후 로드맵 표시\n2. \"90일 경력전환 로드맵\" (시각적 타임라인)\n   - Week 1-2: 기초 개념\n   - Week 3-8: 심화 프로젝트\n   - Week 9-12: 포트폴리오 완성\n3. 각 주차별: 클릭하면 \"오늘의 마이크로러닝\" (15분 영상/텍스트)\n\n**Day 3 - 커뮤니티 활성화**\n1. \"당신과 비슷한 엔지니어 5명과 매칭되었습니다\"\n2. 멘토링 신청 or 스터디 그룹 가입 유도\n3. 첫 메시지 작성 → \"오늘의 체크인 완료!\" (감정 추적)\n\n**Day 7 - 회복 모듈**\n1. \"일주일 기록: 번아웃 점수 78% → 62%\" (상향 표시)\n2. \"당신이 했어야 할 일\" vs \"실제 진행\" 비교\n3. 심리 상담 모듈: \"이번 주 감정 일기\" (선택사항)\n\n---\n\n## [3. 입력 설계]\n\n### 초기 온보딩 입력\n\n**1단계: 기술 스택 선택**\n```\n질문: \"현재 주로 사용하는 기술을 선택하세요 (중복 선택 가능)\"\n입력 방식: 태그 버튼 (Multi-select)\n기본값: 없음\n예시: React, Node.js, Python, AWS, Docker, TypeScript\n```\n\n**2단계: 경험 수준**\n```\n질문: \"소프트웨어 엔지니어링 경력\"\n입력 방식: 슬라이더 or 라디오\n옵션: \n  - 3년 이하\n  - 3-7년 (주력 타겟)\n  - 7-10년\n  - 10년 이상\n기본값: 5-7년\n```\n\n**3단계: 현재 상황**\n```\n질문: \"현재 상황을 선택하세요\"\n입력 방식: 라디오 버튼\n옵션:\n  - 번아웃/휴직 상태 (특별한 심리 지원 활성화)\n  - 이직 준비 중\n  - 이직했는데 새 회사가 AI 중심\n  - 프리랜서/스타트업 환경\n기본값: 없음\n```\n\n**4단계: 목표 직군**\n```\n질문: \"6개월 후 어떤 일을 하고 싶나요?\"\n입력 방식: 텍스트 입력 + AI 자동완성\n기본값: (비어있음, 하지만 추천 옵션 표시)\n예시: \"AI/ML Engineer\", \"DevOps Engineer\", \"Product Engineer\", \"AI Product Manager\"\n```\n\n**5단계: 제약사항**\n```\n질문: \"주당 학습 시간은?\"\n입력 방식: 슬라이더 (시간 단위)\n범위: 5-40시간\n기본값: 15시간\n```\n\n```\n질문: \"선호하는 학습 방식은?\"\n입력 방식: 체크박스\n옵션: \n  - 짧은 영상 (5-15분)\n  - 심화 강의 (1-2시간)\n  - 실습 프로젝트\n  - 커뮤니티 토론\n```\n\n### 스킬갭 분석 입력 (동적)\n\n**각 기술 항목 상세 입력:**\n```\n기술: \"LLM Integration / Prompt Engineering\"\n\n질문 1: \"이 기술을 어느 정도 안나요?\"\n입력: 0-100 슬라이더 (현재 숙련도)\n\n질문 2: \"이 기술이 당신의 다음 직무에 얼마나 중요한가요?\"\n입력: 0-100 슬라이더 (시장 중요도)\n\n질문 3: \"이 기술을 배우고 싶나요?\"\n입력: Yes/No (선택적)\n```\n\n### 정기적 입력 (주 1회)\n\n```\n감정 체크인 (선택사항):\n- 이번 주 번아웃 상태: 1-10 슬라이더\n- 한 줄 감정 일기: 텍스트 입력\n- 완료한 학습 시간: 자동 추적\n- 배운 게 도움이 되었나: Yes/No/Not sure\n```\n\n---\n\n## [4. 출력 설계]\n\n### 출력 1: 스킬 갭 분석 리포트\n\n**형태: 인터랙티브 레이더 차트 + 상세 분석**\n\n```\n┌─────────────────────────────────────┐\n│  당신의 AI 시대 스킬 갭 분석        │\n│  분석 날짜: 2024.01.15              │\n└─────────────────────────────────────┘\n\n[레이더 차트]\n        AI/ML\n        /   \\\n  Prompt-Eng  Cloud\n    /           \\\n  DevOps--LLM--API\n    \\           /\n     Team Lead /\n        |\n    (파란색: ",
+      "search_trends": {
+        "keywords": {
+          "경력전환": {
+            "current_score": 0,
+            "trend_pct": -100,
+            "trend": "하락",
+            "peak": 100,
+            "data": [
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0
+            ]
+          },
+          "소프트웨어엔지니어": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 10,
+            "data": [
+              6,
+              9,
+              7,
+              8,
+              0,
+              8,
+              10,
+              0,
+              0,
+              6,
+              0,
+              0
+            ]
+          },
+          "CareerPivot AI": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "경력전환",
+        "interest_score": 0,
+        "trend": "하락",
+        "trend_pct": -100,
+        "summary": "'경력전환' 관심도 0/100 (하락 -100%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-16"
+  },
+  {
+    "category": "스타트업 의사결정 및 스케일링 전략",
+    "pain_point": "창업자들이 스타트업 스케일 여부를 판단할 객관적 데이터와 도구 부재",
+    "post_count": 3,
+    "urgency_score": 7,
+    "target_users": "초기 단계 창업자",
+    "example_posts": [
+      1,
+      11,
+      21
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "창업자의 스케일링 의사결정을 위한 객관적 데이터 분석 도구로 높은 시장 수요와 지속적 구독 수익이 기대되기 때문",
+      "product": {
+        "name": "ScaleScore",
+        "tagline": "스타트업 스케일링 준비도를 AI로 분석하는 의사결정 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 21,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 50,000원",
+        "total_3months": "3개월 150,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원 스타터 / 월 99,900원 프로",
+        "month1": "50~150만원",
+        "month3": "200~500만원",
+        "month6": "500~1500만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "창업자의 실제 데이터(MRR, 성장률, 고객 획득비용 등)를 기반으로 한 객관적 스케일링 신호 제공",
+        "seo_keywords": [
+          "스타트업 성장 측정",
+          "스케일링 의사결정",
+          "창업자 분석 도구",
+          "비즈니스 메트릭"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "대시보드 (매출, 성장률, 지표 시각화)",
+          "스케일링 준비도 진단 (20개 문항 설문)",
+          "맞춤형 리포트 생성",
+          "비교 벤치마킹 (업계 평균 대비)"
+        ],
+        "tech_stack": "Next.js + Supabase + Chart.js + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "Y combinator, 창업 커뮤니티(스타트업코리아, 아마존 스튜디오), 창업 관련 페이스북 그룹 공유"
+      },
+      "risk": {
+        "main_risk": "초기 사용자 확보 전까지 데이터 부족으로 벤치마킹 신뢰도 하락 우려",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 7,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# ScaleScore 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**누가, 언제 필요한가:**\n초기 단계 창업자(매출 1억~10억 원대)가 다음 의사결정 순간에 직면한다:\n- \"지금 팀을 확장해야 할까?\"\n- \"마케팅에 더 투자해야 할까?\"\n- \"아직 너무 이른 건 아닐까?\"\n\n이 순간 객관적 데이터가 없다. 직감, 경쟁사 따라하기, 멘토 조언에만 의존한다.\n\n**현재 대안이 부족한 이유:**\n- 회계 소프트웨어(토스비즈니스, 더존)는 기록만 함\n- VC/엑셀러레이터는 투자 대상만 봄\n- 통상적인 성장 체크리스트는 업계별 차이를 무시\n- AI는 일반적 조언만 제공 (실제 숫자 기반 X)\n\n**사용 후 느껴야 할 감정:**\n\"아, 우리 수치가 이 수준이면 지금이 정확히 스케일 시점이구나\" → 확신 / 또는 \"아직 이 지표를 먼저 개선해야겠다\"는 명확한 다음 스텝\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\nStep 1: 랜딩 페이지 도착 (2분)\n├─ 핵심 문제: \"스케일링 신호를 놓치고 있지 않나?\"\n├─ 가치: 실제 데이터 기반 객관 점수\n└─ CTA: \"지금 진단받기\" → 로그인 유도\n\nStep 2: 회원가입/로그인 (1분)\n├─ Google OAuth 또는 이메일\n└─ 회사명, 업종 입력\n\nStep 3: 기본 정보 입력 (2분)\n├─ 회사명, 설립일, 현재 월매출(MRR), 지난 3개월 평균 성장률\n├─ 팀 규모, 주요 사업 모델\n└─ \"다음\" → Step 4\n\nStep 4: 스케일링 준비도 20문항 (5분)\n├─ 카테고리별 4-5문항씩:\n│  ├─ 재무 건전성 (MRR, CAC, LTV)\n│  ├─ 제품-시장 적합도 (NPS, 이탈율, 재구매율)\n│  ├─ 운영 안정성 (프로세스, 팀 구성)\n│  ├─ 시장 수요 (경쟁도, 시장 규모 인지)\n│  └─ 자금 준비도 (현금 보유량, 자금 조달 계획)\n├─ 각 문항: 객관식(0-10점) 또는 입력형 (숫자 데이터)\n└─ \"분석 시작\" 클릭\n\nStep 5: 실시간 분석 화면 (3초)\n├─ 로딩 애니메이션 + \"당신의 스케일링 신호 분석 중...\"\n└─ Claude API 호출 (백그라운드)\n\nStep 6: 대시보드 (맨 처음 진입 시)\n├─ 스케일링 준비도 점수 (0-100, 원형 게이지)\n├─ 4개 핵심 메트릭 카드:\n│  ├─ MRR 트렌드 (Line Chart, 3개월)\n│  ├─ 성장률 (%)\n│  ├─ CAC vs LTV 비율\n│  └─ NPS 점수\n└─ \"맞춤형 리포트 보기\" 버튼\n\nStep 7: 맞춤형 리포트 (스크롤)\n├─ Executive Summary (3줄 결론)\n├─ 강점 (2-3개 강조)\n├─ 주의할 점 (2-3개 약점)\n├─ 즉시 개선 3가지 액션 아이템\n├─ 12개월 스케일링 로드맵\n└─ \"다운로드 PDF\" / \"공유\" 버튼\n\nStep 8: 벤치마크 비교 (탭)\n├─ 같은 업종/매출대 회사들과 비교\n├─ \"상위 20%\" 또는 \"평균 이하\" 표시\n├─ 각 지표별 백분위수 (percentile)\n└─ \"상위 그룹 달성 방법\" 가이드 제안\n\nStep 9: 재방문 흐름\n├─ 다음 달: \"지난달과 비교해 성장률이 15% 올랐네요!\"\n├─ 분기별: 자동 벤치마크 업데이트 알림\n└─ 유료 전환: \"고급 리포트 잠금 해제\"\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. 기본 정보 섹션\n```\n┌─────────────────────────────────┐\n│ 기본 정보 입력 (회원가입 직후)  │\n└─────────────────────────────────┘\n\n[회사명] 텍스트 입력\n└─ 예시: \"OOO 테크\"\n\n[설립일] 날짜 선택 (Picker)\n└─ 예시: 2023-06-15\n\n[주요 업종] 드롭다운\n├─ SaaS\n├─ E-Commerce\n├─ 플랫폼\n├─ 서비스 (콘텐츠/교육/B2B서비스)\n├─ 기타\n└─ 선택 시 추천 질문 변경\n\n[월 평균 매출(MRR)] 숫자 입력 (₩ 기준)\n├─ 기본값: 빈칸\n├─ 예시: 50,000,000\n└─ 힌트: \"최근 3개월 평균. 없으면 0\"\n\n[지난 3개월 월 평균 성장률] 숫자 입력 (%)\n├─ 기본값: 0\n├─ 예시: 25 (25% 성장)\n└─ 계산법 예시: (이번달 - 3개월전) / 3개월전\n\n[현재 팀 규모] 드롭다운\n├─ 1-2명\n├─ 3-5명\n├─ 6-10명\n├─ 11-20명\n├─ 21명 이상\n\n[비즈니스 모델] 다중선택\n├─ B2B SaaS (구독형)\n├─ B2C 커머스\n├─ 마켓플레이스\n├─ 광고/콘텐츠\n├─ 컨설팅/서비스\n└─ 기타\n```\n\n### 3-2. 스케일링 준비도 설문 (20문항)\n\n**카테고리 1: 재무 건전성 (5문항)**\n```\nQ1. 현재 월 순이익(또는 손실 규모)?\n├─ 객관식 선택지:\n│  ├─ 적자 500만원 이상 → 0점\n│  ├─ 적자 500만 이하 → 3점\n│  ├─ 손익분기점 근처 → 5점\n│  ├─ 순이익 10% 이상 → 10점\n└─ 또는 직접 입력 가능\n\nQ2. 현금 유동성 (몇 개월 운영 자금 보유)?\n├─ 선택지: 0-1개월(0점) ~ 12개월 이상(10점)\n\nQ3. 고객 획득 비용 vs 고객 생애 가치 (CAC:LTV 비율)?\n├─ 입력형: CAC / LTV 비율 입력\n├─ 예시: 1:3 입력 시 자동 계산 → 점수\n└─ (LTV/CAC > 3이면 건전 / < 1이면 위험)\n\nQ4. 현재 구독 고객의 월 이탈율(Churn Rate)?\n├─ 입력형: % 입력\n├─ 산업 평균 대비 표시\n\nQ5. 가장 큰 고객 1"
+    },
+    "is_new": true,
+    "date": "2026-03-16"
   }
 ]
