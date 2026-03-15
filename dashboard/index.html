@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💡 Idea Radar</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#0b0b12;--bg2:#111119;--bg3:#181826;--bg4:#1f1f30;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);
+  --text:#edeaff;--muted:#6e6b90;--muted2:#4d4b6b;
+  --purple:#8b5cf6;--purple-l:#a78bfa;--purple-d:#6d28d9;
+  --purple-dim:rgba(139,92,246,0.11);
+  --teal:#06b6d4;--teal-dim:rgba(6,182,212,0.09);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.09);
+  --green:#10b981;--green-dim:rgba(16,185,129,0.09);
+  --coral:#f43f5e;--coral-dim:rgba(244,63,94,0.09);
+  --blue:#3b82f6;--blue-dim:rgba(59,130,246,0.09);
+  --r:10px;--r2:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,'Pretendard','Noto Sans KR',sans-serif;line-height:1.6;}
+
+/* HEADER */
+.hd{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:700;letter-spacing:-.3px;}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 7px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hd-r{text-align:right;font-size:11px;color:var(--muted);}
+.hd-r strong{display:block;font-size:12px;color:var(--text);margin-bottom:1px;}
+
+.wrap{max-width:1400px;margin:0 auto;padding:22px 18px;}
+
+/* TODAY REC */
+.rec{background:linear-gradient(135deg,rgba(139,92,246,.16),rgba(6,182,212,.08));border:1px solid rgba(139,92,246,.3);border-radius:var(--r2);padding:22px 26px;margin-bottom:18px;}
+.rec-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.badge{background:var(--purple);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.5px;}
+.rec-ts{font-size:11px;color:var(--muted);}
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:660px){.rec-grid{grid-template-columns:1fr;}}
+.rec-item .rl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--purple-l);margin-bottom:4px;}
+.rec-item .rv{font-size:13px;color:var(--text);line-height:1.5;}
+.rec-goals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);}
+.rg{background:rgba(0,0,0,.2);border-radius:8px;padding:10px 12px;}
+.rg .rl{margin-bottom:3px;}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+@media(max-width:660px){.stats{grid-template-columns:repeat(2,1fr);}}
+.sc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+.sc .lb{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
+.sc .vl{font-size:24px;font-weight:700;letter-spacing:-1px;line-height:1;margin-bottom:2px;}
+.sc .sb{font-size:11px;color:var(--muted);}
+
+/* SEC TITLE */
+.sec{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:20px 0 11px;display:flex;align-items:center;gap:8px;}
+.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:2px;}
+.tag{background:var(--purple-dim);border:1px solid rgba(139,92,246,.18);color:#c4b5fd;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;}
+
+/* IDEA CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:13px;margin-bottom:6px;}
+@media(max-width:500px){.grid{grid-template-columns:1fr;}}
+
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:border-color .2s,transform .15s;}
+.card:hover{border-color:rgba(139,92,246,.35);transform:translateY(-2px);}
+.bt-TRAFFIC_TOOL   .card-accent{background:var(--teal);}
+.bt-STANDALONE_SAAS .card-accent{background:var(--amber);}
+.bt-APP_PROGRAM    .card-accent{background:var(--coral);}
+.card-accent{height:3px;width:100%;}
+
+.card-body{padding:18px 20px;}
+
+/* 카드 상단: 이름+점수 */
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.card-cat{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.card-name{font-size:15px;font-weight:700;color:var(--text);line-height:1.3;}
+.card-tagline{font-size:12px;color:var(--muted);margin-top:2px;}
+
+/* 종합 점수 박스 */
+.scores-box{flex-shrink:0;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:8px 12px;text-align:center;min-width:70px;}
+.score-main{font-size:22px;font-weight:700;line-height:1;color:var(--amber);}
+.score-label{font-size:9px;color:var(--muted);letter-spacing:.4px;text-transform:uppercase;}
+.score-bars{margin-top:6px;display:flex;flex-direction:column;gap:3px;}
+.score-mini-row{display:flex;align-items:center;gap:4px;}
+.score-mini-label{font-size:9px;color:var(--muted);width:28px;text-align:right;flex-shrink:0;}
+.score-mini-track{flex:1;height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+.score-mini-fill{height:100%;border-radius:2px;}
+
+/* 불편함 */
+.pain{font-size:12px;color:var(--muted);background:rgba(244,63,94,.06);border-left:2px solid var(--coral);padding:7px 10px;border-radius:0 6px 6px 0;margin-bottom:12px;line-height:1.5;}
+
+/* 빌드 타입 배지 */
+.bt-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;margin-bottom:12px;}
+.bt-badge-TRAFFIC_TOOL   {background:var(--teal-dim);color:var(--teal);border:1px solid rgba(6,182,212,.2);}
+.bt-badge-STANDALONE_SAAS{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,158,11,.2);}
+.bt-badge-APP_PROGRAM    {background:var(--coral-dim);color:var(--coral);border:1px solid rgba(244,63,94,.2);}
+
+/* 핵심 지표 4칸 그리드 */
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;}
+.metric{background:var(--bg3);border-radius:7px;padding:9px 11px;}
+.metric .mk{font-size:10px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px;}
+.metric .mv{font-size:13px;font-weight:600;color:var(--text);}
+.metric .mv.green{color:var(--green);}
+.metric .mv.amber{color:var(--amber);}
+.metric .mv.teal{color:var(--teal);}
+
+/* 수익 타임라인 */
+.rev-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;}
+.rev-item{background:var(--bg3);border-radius:7px;padding:8px 10px;text-align:center;}
+.rev-period{font-size:10px;color:var(--muted);margin-bottom:3px;}
+.rev-val{font-size:12px;font-weight:700;color:var(--green);}
+
+/* 경쟁/기술 필 */
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.pill{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;}
+.p-teal  {background:var(--teal-dim);  color:var(--teal);  border:1px solid rgba(6,182,212,.15);}
+.p-amber {background:var(--amber-dim); color:var(--amber); border:1px solid rgba(245,158,11,.15);}
+.p-green {background:var(--green-dim); color:var(--green); border:1px solid rgba(16,185,129,.15);}
+.p-coral {background:var(--coral-dim); color:var(--coral); border:1px solid rgba(244,63,94,.15);}
+.p-purple{background:var(--purple-dim);color:var(--purple-l);border:1px solid rgba(139,92,246,.15);}
+.p-blue  {background:var(--blue-dim);  color:var(--blue);  border:1px solid rgba(59,130,246,.15);}
+
+/* MVP 기능 */
+.mvp{margin-bottom:10px;}
+.mvp-title{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
+.mvp-feat{font-size:12px;color:var(--text);padding:2px 0;display:flex;gap:6px;align-items:flex-start;}
+.mvp-feat span{color:var(--green);flex-shrink:0;}
+
+/* 전략 */
+.strategy{font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:10px;line-height:1.6;}
+.strategy strong{color:var(--text);display:block;margin-bottom:2px;font-size:11px;text-transform:uppercase;letter-spacing:.3px;}
+
+/* ─── Claude 프롬프트 섹션 ─── */
+.prompt-section{background:var(--bg3);border:1px solid rgba(139,92,246,.25);border-radius:9px;margin-top:14px;overflow:hidden;}
+.prompt-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(139,92,246,.1);cursor:pointer;user-select:none;}
+.prompt-header-left{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--purple-l);}
+.prompt-toggle{font-size:10px;color:var(--muted);}
+.prompt-body{padding:14px;display:none;}
+.prompt-body.open{display:block;}
+.prompt-text{font-size:11px;line-height:1.7;color:var(--text);background:var(--bg4);border:1px solid var(--border);border-radius:7px;padding:12px 14px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow-y:auto;margin-bottom:10px;font-family:-apple-system,sans-serif;}
+.copy-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;background:var(--purple);color:#fff;border:none;border-radius:7px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;}
+.copy-btn:hover{background:var(--purple-d);}
+.copy-btn.copied{background:var(--green);}
+
+/* TABLE */
+.tbl{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:22px;}
+.tr{display:grid;grid-template-columns:26px 1.8fr 2fr 1fr 1fr 80px;gap:8px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--border);font-size:12px;transition:background .15s;}
+.tr:last-child{border-bottom:none;}
+.tr:hover:not(.th){background:var(--bg3);}
+.th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);background:var(--bg3);}
+.th:hover{background:var(--bg3)!important;}
+.rn{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;background:var(--bg3);color:var(--muted);}
+.rn.r1{background:var(--amber-dim);color:var(--amber);}
+.rn.r2{background:var(--teal-dim);color:var(--teal);}
+.rn.r3{background:var(--purple-dim);color:var(--purple-l);}
+.sbar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;margin-top:3px;}
+.sfill{height:100%;border-radius:2px;background:var(--amber);}
+
+/* CHART */
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
+@media(max-width:720px){.charts{grid-template-columns:1fr;}}
+.cc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px;}
+.cc-t{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px;}
+.srow{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
+.sname{width:88px;font-size:11px;color:var(--muted);flex-shrink:0;}
+.btrack{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;}
+.bfill{height:100%;border-radius:3px;transition:width .8s ease;}
+.scnt{font-size:11px;font-weight:600;color:var(--text);width:26px;text-align:right;}
+
+/* SETUP */
+.setup{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:30px;max-width:640px;margin:36px auto;}
+.setup h2{font-size:17px;font-weight:600;margin-bottom:6px;}
+.setup p{color:var(--muted);font-size:12px;margin-bottom:18px;line-height:1.6;}
+.step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start;}
+.sn{width:24px;height:24px;border-radius:50%;background:var(--purple-dim);border:1px solid rgba(139,92,246,.3);color:var(--purple-l);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.sc2 h3{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.sc2 p{font-size:11px;color:var(--muted);margin:0;line-height:1.5;}
+code{background:var(--bg3);border:1px solid var(--border);padding:1px 5px;border-radius:4px;font-size:10px;font-family:monospace;color:var(--teal);}
+
+footer{text-align:center;padding:24px;color:var(--muted2);font-size:11px;border-top:1px solid var(--border);}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="logo"><div class="dot"></div>💡 Idea Radar</div>
+  <div class="hd-r">
+    <strong id="upd">로딩 중...</strong>
+    매일 오전 8시 자동 업데이트
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="loading" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55vh;gap:13px;color:var(--muted);">
+    <div style="width:30px;height:30px;border:2.5px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin .8s linear infinite;"></div>
+    <span>데이터 분석 중...</span>
+  </div>
+  <div id="app" style="display:none"></div>
+</div>
+
+<footer>Idea Radar — Reddit · Hacker News · 클리앙 · Product Hunt 매일 자동 수집 분석</footer>
+
+<script>
+// ──────────────────────────────────────
+// ⚙️ 여기만 수정 (GitHub 아이디)
+const GITHUB_USER = "YOUR_GITHUB_USERNAME";
+const GITHUB_REPO = "idea-radar";
+// ──────────────────────────────────────
+
+const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/data`;
+
+const BT = {
+  TRAFFIC_TOOL:    {label:"📈 트래픽 사이트 툴", desc:"여러 무료 툴 모음 사이트"},
+  STANDALONE_SAAS: {label:"🚀 독립 SaaS",        desc:"월정액 구독 서비스"},
+  APP_PROGRAM:     {label:"📱 앱 / 프로그램",     desc:"모바일 앱 또는 프로그램"}
+};
+const COMP_P = {"낮음":"p-green","중간":"p-amber","높음":"p-coral"};
+const DIFF_P = {"하":"p-green","중":"p-amber","상":"p-coral"};
+const SRC_C  = {reddit:"#f43f5e",hackernews:"#f59e0b",clien:"#06b6d4",producthunt:"#10b981"};
+const SRC_N  = {reddit:"Reddit",hackernews:"Hacker News",clien:"클리앙",producthunt:"Product Hunt"};
+const SCORE_COLORS = ["#8b5cf6","#06b6d4","#f59e0b","#10b981"];
+
+function el(id){return document.getElementById(id);}
+
+async function load(){
+  const [ar,hr]=await Promise.all([
+    fetch(`${BASE}/analysis.json?t=${Date.now()}`),
+    fetch(`${BASE}/history.json?t=${Date.now()}`).catch(()=>({ok:false}))
+  ]);
+  if(!ar.ok) throw new Error();
+  return {data:await ar.json(), history:hr.ok?await hr.json():[]};
+}
+
+// ── 점수 미니바 ──
+function scoreMini(label, val, color){
+  return `<div class="score-mini-row">
+    <div class="score-mini-label">${label}</div>
+    <div class="score-mini-track"><div class="score-mini-fill" style="width:${(val||0)*10}%;background:${color}"></div></div>
+  </div>`;
+}
+
+// ── 아이디어 카드 ──
+function cardHTML(c, rank){
+  const ba = c.business_analysis||{};
+  const bt = ba.build_decision||"";
+  const prod = ba.product||{};
+  const tim = ba.time||{};
+  const cost = ba.cost||{};
+  const rev = ba.revenue||{};
+  const mkt = ba.market||{};
+  const bld = ba.build||{};
+  const risk = ba.risk||{};
+  const sc = ba.score||{};
+  const btInfo = BT[bt]||{label:bt,desc:""};
+
+  const scoreItems = [
+    {l:"시장성", v:sc.market_potential, c:SCORE_COLORS[0]},
+    {l:"제작",   v:sc.build_ease,       c:SCORE_COLORS[1]},
+    {l:"수익속도",v:sc.revenue_speed,   c:SCORE_COLORS[2]},
+    {l:"경쟁우위",v:sc.competition_advantage, c:SCORE_COLORS[3]}
+  ];
+
+  const prompt = ba.claude_prompt||"";
+  const promptId = `prompt-${rank}`;
+  const bodyId   = `body-${rank}`;
+  const btnId    = `btn-${rank}`;
+
+  return `
+<div class="card bt-${bt}">
+  <div class="card-accent"></div>
+  <div class="card-body">
+
+    <!-- 상단: 이름 + 종합점수 -->
+    <div class="card-top">
+      <div>
+        <div class="card-cat">${c.category||"미분류"} · #${rank}</div>
+        <div class="card-name">${prod.name||c.category||"-"}</div>
+        <div class="card-tagline">${prod.tagline||""}</div>
+      </div>
+      <div class="scores-box">
+        <div class="score-main">${sc.overall||0}</div>
+        <div class="score-label">종합 /10</div>
+        <div class="score-bars">
+          ${scoreItems.map(s=>scoreMini(s.l,s.v,s.c)).join("")}
+        </div>
+      </div>
+    </div>
+
+    <!-- 불편함 -->
+    <div class="pain">🔍 ${c.pain_point||"-"}</div>
+
+    <!-- 빌드 타입 -->
+    ${bt?`<div class="bt-badge bt-badge-${bt}">${btInfo.label} <span style="font-weight:400;opacity:.7">— ${btInfo.desc}</span></div>`:""}
+
+    <!-- 핵심 지표 4칸 -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="mk">⏱ MVP 완성</div>
+        <div class="mv teal">${tim.mvp_days?tim.mvp_days+"일":"—"}</div>
+      </div>
+      <div class="metric">
+        <div class="mk">🚀 런칭 가능</div>
+        <div class="mv teal">${tim.launch_ready_days?tim.launch_ready_days+"일":"—"}</div>
+      </div>
+      <div class="metric">
+        <div class="mk">💸 월 고정비</div>
+        <div class="mv amber">${cost.monthly_fixed||"—"}</div>
+      </div>
+      <div class="metric">
+        <div class="mk">💰 첫 수익</div>
+        <div class="mv green">${tim.first_revenue_days?tim.first_revenue_days+"일 후":"—"}</div>
+      </div>
+    </div>
+
+    <!-- 수익 타임라인 -->
+    <div class="rev-timeline">
+      <div class="rev-item"><div class="rev-period">1개월</div><div class="rev-val">${rev.month1||"—"}</div></div>
+      <div class="rev-item"><div class="rev-period">3개월</div><div class="rev-val">${rev.month3||"—"}</div></div>
+      <div class="rev-item"><div class="rev-period">6개월</div><div class="rev-val">${rev.month6||"—"}</div></div>
+    </div>
+
+    <!-- 메타 필 -->
+    <div class="pills">
+      ${rev.model?`<span class="pill p-amber">💰 ${rev.model}</span>`:""}
+      ${rev.price_point?`<span class="pill p-green">${rev.price_point}</span>`:""}
+      ${mkt.competition?`<span class="pill ${COMP_P[mkt.competition]||'p-purple'}">경쟁 ${mkt.competition}</span>`:""}
+      ${bld.difficulty?`<span class="pill ${DIFF_P[bld.difficulty]||'p-purple'}">난이도 ${bld.difficulty}</span>`:""}
+      ${bld.tech_stack?`<span class="pill p-blue">🛠 ${bld.tech_stack}</span>`:""}
+    </div>
+
+    <!-- MVP 기능 -->
+    ${(bld.mvp_features||[]).length?`
+    <div class="mvp">
+      <div class="mvp-title">MVP 핵심 기능</div>
+      ${(bld.mvp_features||[]).slice(0,3).map(f=>`<div class="mvp-feat"><span>›</span>${f}</div>`).join("")}
+    </div>`:""}
+
+    <!-- 전략 + 리스크 -->
+    <div class="strategy">
+      ${bld.quick_traffic?`<strong>🚀 빠른 트래픽</strong>${bld.quick_traffic}`:""}
+      ${risk.main_risk?`<strong style="margin-top:7px">⚠️ 리스크 (${risk.risk_level||""})</strong>${risk.main_risk}`:""}
+    </div>
+
+    <!-- Claude 프롬프트 -->
+    ${prompt?`
+    <div class="prompt-section" id="${promptId}">
+      <div class="prompt-header" onclick="togglePrompt('${bodyId}','${promptId}')">
+        <div class="prompt-header-left">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Claude Opus / Sonnet 개발 프롬프트
+        </div>
+        <span class="prompt-toggle" id="toggle-${rank}">▼ 펼치기</span>
+      </div>
+      <div class="prompt-body" id="${bodyId}">
+        <div class="prompt-text" id="pt-${rank}">${prompt.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
+        <button class="copy-btn" id="${btnId}" onclick="copyPrompt('pt-${rank}','${btnId}')">
+          📋 프롬프트 복사 — Claude에 바로 붙여넣기
+        </button>
+      </div>
+    </div>`:""}
+
+  </div>
+</div>`;
+}
+
+// ── 테이블 행 ──
+function tableRow(c,i){
+  const ba=c.business_analysis||{};
+  const bt=ba.build_decision||"";
+  const btInfo=BT[bt]||{label:bt};
+  const sc=ba.score||{};
+  const btPill={TRAFFIC_TOOL:"p-teal",STANDALONE_SAAS:"p-amber",APP_PROGRAM:"p-coral"};
+  const rc=i<3?`r${i+1}`:"";
+  return `
+  <div class="tr">
+    <div class="rn ${rc}">${i+1}</div>
+    <div style="font-weight:600;font-size:12px">${c.category||"-"}</div>
+    <div style="color:var(--muted);font-size:11px">${ba.product?.tagline||c.pain_point||"-"}</div>
+    <div>${bt?`<span class="pill ${btPill[bt]||'p-purple'}" style="font-size:10px">${btInfo.label}</span>`:""}</div>
+    <div style="font-size:11px;color:var(--green)">${ba.revenue?.month3||"—"}</div>
+    <div>
+      <div style="font-weight:700;font-size:12px;color:var(--amber)">${sc.overall||c.urgency_score||0}/10</div>
+      <div class="sbar"><div class="sfill" style="width:${(sc.overall||c.urgency_score||0)*10}%"></div></div>
+    </div>
+  </div>`;
+}
+
+// ── 프롬프트 토글 ──
+function togglePrompt(bodyId, sectionId){
+  const body = el(bodyId);
+  const isOpen = body.classList.contains("open");
+  body.classList.toggle("open",!isOpen);
+  const rank = bodyId.split("-")[1];
+  el("toggle-"+rank).textContent = isOpen ? "▼ 펼치기" : "▲ 접기";
+}
+
+// ── 프롬프트 복사 ──
+function copyPrompt(textId, btnId){
+  const text = el(textId)?.textContent||"";
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = el(btnId);
+    if(btn){
+      btn.classList.add("copied");
+      btn.textContent = "✅ 복사 완료! Claude에 붙여넣기하세요";
+      setTimeout(()=>{
+        btn.classList.remove("copied");
+        btn.innerHTML = "📋 프롬프트 복사 — Claude에 바로 붙여넣기";
+      },2500);
+    }
+  }).catch(()=>alert("복사 실패. 텍스트를 직접 선택해서 복사하세요."));
+}
+
+// ── 메인 렌더 ──
+function render(data, history){
+  const stats   = data.stats||{};
+  const clusters= data.clusters||[];
+  const top5    = data.top_ideas||clusters.slice(0,5);
+  const rec     = data.daily_recommendation||{};
+  const trends  = data.trending_topics||[];
+  const sorted  = [...clusters].sort((a,b)=>(b.business_analysis?.score?.overall||b.urgency_score||0)-(a.business_analysis?.score?.overall||a.urgency_score||0));
+
+  el("upd").textContent = data.generated_at||"-";
+
+  el("app").innerHTML = `
+
+  <!-- 오늘의 추천 -->
+  <div class="rec">
+    <div class="rec-head">
+      <span class="badge">⭐ 오늘의 추천</span>
+      <span class="rec-ts">${data.generated_at||""}</span>
+    </div>
+    <div class="rec-grid">
+      <div class="rec-item"><div class="rl">지금 만들 것</div><div class="rv" style="font-size:16px;font-weight:700;color:#a78bfa">${rec.recommended_category||"분석 중..."}</div></div>
+      <div class="rec-item"><div class="rl">왜 지금인가</div><div class="rv">${rec.why_first||rec.why_today||"—"}</div></div>
+      <div class="rec-item"><div class="rl">내일 첫 번째 행동</div><div class="rv">${rec.tomorrow_action||rec.first_step||"—"}</div></div>
+    </div>
+    <div class="rec-goals">
+      <div class="rg"><div class="rl">성공 신호</div><div class="rv" style="font-size:12px">${rec.success_signal||"—"}</div></div>
+      <div class="rg"><div class="rl">7일 목표</div><div class="rv" style="font-size:12px">${rec.day7_goal||"—"}</div></div>
+      <div class="rg"><div class="rl">30일 목표</div><div class="rv" style="font-size:12px">${rec.day30_goal||"—"}</div></div>
+    </div>
+  </div>
+
+  <!-- 인사이트 -->
+  ${data.top_insight?`
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:18px;display:flex;gap:9px;align-items:flex-start;">
+    <span style="font-size:16px;flex-shrink:0;margin-top:1px">✨</span>
+    <div>
+      <div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:2px;">오늘의 핵심 인사이트</div>
+      <div style="font-size:13px;font-weight:500;">${data.top_insight}</div>
+    </div>
+  </div>`:""}
+
+  <!-- 통계 -->
+  <div class="stats">
+    <div class="sc"><div class="lb">총 누적</div><div class="vl" style="color:var(--purple-l)">${(stats.total_posts||0).toLocaleString()}</div><div class="sb">30일 게시물</div></div>
+    <div class="sc"><div class="lb">오늘 수집</div><div class="vl" style="color:var(--teal)">${(stats.today_posts||0).toLocaleString()}</div><div class="sb">신규</div></div>
+    <div class="sc"><div class="lb">발견 아이디어</div><div class="vl" style="color:var(--amber)">${clusters.length}</div><div class="sb">오늘 카테고리</div></div>
+    <div class="sc"><div class="lb">최고 종합점수</div><div class="vl" style="color:var(--green)">${sorted[0]?.business_analysis?.score?.overall||sorted[0]?.urgency_score||0}<span style="font-size:11px;font-weight:400;color:var(--muted)">/10</span></div><div class="sb">${sorted[0]?.business_analysis?.product?.name||sorted[0]?.category||"-"}</div></div>
+  </div>
+
+  <!-- 트렌드 -->
+  ${trends.length?`
+  <div class="sec">🔥 트렌드 키워드</div>
+  <div class="tags">${trends.map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
+  <div style="height:10px"></div>`:""}
+
+  <!-- 아이디어 카드 -->
+  <div class="sec">🏆 오늘의 아이디어 (종합점수 순)</div>
+  <div class="grid">${top5.map((c,i)=>cardHTML(c,i+1)).join("")}</div>
+
+  <!-- 차트 -->
+  <div class="sec">📊 수집 현황</div>
+  <div class="charts">
+    <div class="cc"><div class="cc-t">소스별 수집량</div><div id="src-bars"></div></div>
+    <div class="cc"><div class="cc-t">일별 추이</div><canvas id="tc" height="140"></canvas></div>
+  </div>
+
+  <!-- 전체 순위 -->
+  <div class="sec">📋 전체 아이디어 순위</div>
+  <div class="tbl">
+    <div class="tr th"><div></div><div>카테고리</div><div>아이디어</div><div>유형</div><div>3개월 수익</div><div>종합점수</div></div>
+    ${sorted.map((c,i)=>tableRow(c,i)).join("")}
+  </div>
+  `;
+
+  // 소스 바
+  const srcEl=el("src-bars");
+  if(srcEl){
+    const total=Object.values(stats.sources||{}).reduce((a,b)=>a+b,0)||1;
+    srcEl.innerHTML=Object.entries(stats.sources||{}).map(([k,v])=>`
+      <div class="srow">
+        <div class="sname">${SRC_N[k]||k}</div>
+        <div class="btrack"><div class="bfill" style="width:${(v/total*100).toFixed(0)}%;background:${SRC_C[k]||"#8b5cf6"}"></div></div>
+        <div class="scnt">${v}</div>
+      </div>`).join("");
+  }
+
+  // 추이 차트
+  if(history.length>1){
+    const ctx=el("tc")?.getContext("2d");
+    if(ctx) new Chart(ctx,{
+      type:"line",
+      data:{labels:history.map(h=>h.date.slice(5)),datasets:[{
+        data:history.map(h=>h.today_posts||0),
+        borderColor:"#8b5cf6",backgroundColor:"rgba(139,92,246,.07)",
+        borderWidth:2,fill:true,tension:.4,pointRadius:2,pointBackgroundColor:"#8b5cf6"
+      }]},
+      options:{responsive:true,plugins:{legend:{display:false}},scales:{
+        x:{grid:{color:"rgba(255,255,255,.03)"},ticks:{color:"#6e6b90",font:{size:10}}},
+        y:{grid:{color:"rgba(255,255,255,.03)"},ticks:{color:"#6e6b90",font:{size:10}}}
+      }}
+    });
+  }
+}
+
+function renderSetup(){
+  el("app").innerHTML=`
+  <div class="setup">
+    <h2>⚙️ 초기 설정 필요</h2>
+    <p>아래 순서대로 하면 매일 오전 8시 자동으로 아이디어 리포트가 업데이트됩니다.<br>자세한 내용은 <code>SETUP_GUIDE.md</code> 파일을 참고하세요.</p>
+    ${[
+      ["GitHub 저장소 생성","github.com → idea-radar 이름으로 Public 저장소"],
+      ["파일 전체 업로드","이 폴더 안 모든 파일을 GitHub에 드래그앤드롭"],
+      ["Reddit API 키 발급","reddit.com/prefs/apps → script 타입으로 앱 생성 (무료)"],
+      ["Claude API 키 발급","console.anthropic.com → API Keys (월 약 2,000원)"],
+      ["GitHub Secrets 3개 등록","REDDIT_CLIENT_ID · REDDIT_CLIENT_SECRET · CLAUDE_API_KEY"],
+      ["이 파일 수정","index.html 상단 GITHUB_USER를 본인 아이디로 변경"],
+      ["첫 실행","GitHub Actions → Daily Idea Radar → Run workflow"],
+    ].map(([t,d],i)=>`
+    <div class="step"><div class="sn">${i+1}</div><div class="sc2"><h3>${t}</h3><p>${d}</p></div></div>`).join("")}
+    <div style="margin-top:16px;padding:12px;background:var(--bg3);border-radius:7px;font-size:11px;color:var(--muted)">
+      💡 <strong style="color:var(--text)">총 비용:</strong> Reddit·HN 무료 + Claude Haiku 월 약 1,500~3,000원
+    </div>
+  </div>`;
+}
+
+(async()=>{
+  try{
+    if(GITHUB_USER==="YOUR_GITHUB_USERNAME"){el("loading").style.display="none";el("app").style.display="block";renderSetup();return;}
+    const {data,history}=await load();
+    el("loading").style.display="none";el("app").style.display="block";
+    render(data,history);
+  }catch(e){
+    el("loading").style.display="none";el("app").style.display="block";
+    renderSetup();
+  }
+})();
+</script>
+</body>
+</html>
