@@ -26,6 +26,8 @@ def call_claude(prompt, max_tokens=2000):
         resp = requests.post(CLAUDE_API_URL, headers=headers, json=body, timeout=60)
         if resp.status_code == 200:
             return resp.json()["content"][0]["text"]
+        else:
+            print(f"❌ API 오류 {resp.status_code}: {resp.text[:300]}")
     except Exception as e:
         print(f"❌ {e}")
     return None
@@ -33,6 +35,34 @@ def call_claude(prompt, max_tokens=2000):
 def parse_json(text):
     if not text:
         return None
+    # 1) 코드블록 제거
+    text = re.sub(r'```json\s*', '', text)
+    text = re.sub(r'```\s*', '', text)
+    text = text.strip()
+    # 2) 전체 텍스트 직접 파싱 시도
+    try:
+        return json.loads(text)
+    except:
+        pass
+    # 3) 중괄호 범위 추출 (가장 바깥 { } 찾기)
+    try:
+        start = text.index('{')
+        # 끝 중괄호를 올바르게 찾기
+        depth = 0
+        end = start
+        for i, c in enumerate(text[start:], start):
+            if c == '{':
+                depth += 1
+            elif c == '}':
+                depth -= 1
+                if depth == 0:
+                    end = i
+                    break
+        candidate = text[start:end+1]
+        return json.loads(candidate)
+    except:
+        pass
+    # 4) 마지막 시도: 정규식
     try:
         m = re.search(r'\{.*\}', text, re.DOTALL)
         if m:
