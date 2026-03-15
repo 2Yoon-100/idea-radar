@@ -1,10 +1,16 @@
 """
-IDEA RADAR - AI 분석 스크립트 v5
-누적 비교 점수 + KST + score 안정화
+IDEA RADAR - AI 분석 스크립트 v6
+누적 비교 점수 + KST + score 안정화 + 검색량 데이터
 """
 
 import json, os, requests, re, time
 from datetime import datetime, timedelta, timezone
+
+try:
+    from pytrends.request import TrendReq
+    PYTRENDS_AVAILABLE = True
+except ImportError:
+    PYTRENDS_AVAILABLE = False
 
 KST = timezone(timedelta(hours=9))
 def now_kst():
@@ -69,6 +75,113 @@ def safe_int(val, default=5):
         m = re.search(r'\d+', val)
         if m: return max(1, min(10, int(m.group())))
     return default
+
+# ═══════════════════════════════════
+# 검색량 데이터 수집
+# ═══════════════════════════════════
+def get_search_trends(keywords):
+    """
+    Google Trends로 검색량 추이 조회
+    keywords: 검색할 키워드 리스트 (최대 5개)
+    반환: 각 키워드별 트렌드 데이터
+    """
+    if not PYTRENDS_AVAILABLE or not keywords:
+        return {}
+
+    result = {}
+    try:
+        pytrends = TrendReq(hl='ko-KR', tz=540, timeout=(10,25))
+        # 최대 5개만
+        kw_list = keywords[:5]
+
+        # 최근 3개월 데이터
+        pytrends.build_payload(kw_list, cat=0, timeframe='today 3-m', geo='KR')
+        interest_over_time = pytrends.interest_over_time()
+
+        if not interest_over_time.empty:
+            for kw in kw_list:
+                if kw in interest_over_time.columns:
+                    values = interest_over_time[kw].tolist()
+                    if values:
+                        current = values[-1] if values else 0
+                        month_ago = values[-4] if len(values) >= 4 else values[0]
+                        trend_pct = round(((current - month_ago) / max(month_ago, 1)) * 100)
+
+                        result[kw] = {
+                            "current_score": int(current),  # 0~100 상대 점수
+                            "trend_pct": trend_pct,         # 한달 전 대비 변화율
+                            "trend": "급상승" if trend_pct > 50 else
+                                     "상승" if trend_pct > 10 else
+                                     "보합" if trend_pct > -10 else "하락",
+                            "peak": int(max(values)),
+                            "data": [int(v) for v in values[-12:]]  # 최근 12주
+                        }
+        time.sleep(1)
+
+    except Exception as e:
+        print(f"  ⚠️  Google Trends 오류: {e}")
+
+    return result
+
+def get_naver_trends(keywords):
+    """
+    네이버 DataLab 검색량 조회 (API 키 없이 기본 검색어 트렌드)
+    """
+    result = {}
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0",
+            "Accept-Language": "ko-KR"
+        }
+        for kw in keywords[:3]:
+            # 네이버 검색어 트렌드 (비공식)
+            url = f"https://trends.google.co.kr/trends/explore?q={requests.utils.quote(kw)}&geo=KR"
+            result[kw] = {"available": False}  # 네이버는 별도 API 키 필요
+        time.sleep(0.5)
+    except Exception as e:
+        print(f"  ⚠️  네이버 트렌드 오류: {e}")
+    return result
+
+def enrich_with_search_data(idea):
+    """아이디어에 검색량 데이터 추가"""
+    ba = idea.get("business_analysis", {})
+    mkt = ba.get("market", {})
+    seo_keywords = mkt.get("seo_keywords", [])
+    prod = ba.get("product", {})
+    product_name = prod.get("name", "")
+
+    # 검색할 키워드 조합
+    search_kws = []
+    if seo_keywords:
+        search_kws.extend(seo_keywords[:2])
+    if product_name:
+        # 영어 제품명에서 핵심 키워드 추출
+        core = re.sub(r'[^a-zA-Z가-힣\s]', '', product_name).strip()
+        if core and core not in search_kws:
+            search_kws.append(core)
+
+    if not search_kws:
+        return idea
+
+    print(f"      🔍 검색량 조회: {search_kws[:3]}")
+    trends = get_search_trends(search_kws[:3])
+
+    if trends:
+        # 가장 높은 관심도 키워드 기준
+        best_kw = max(trends.keys(), key=lambda k: trends[k].get("current_score", 0))
+        best_data = trends[best_kw]
+
+        idea["business_analysis"]["search_trends"] = {
+            "keywords": trends,
+            "best_keyword": best_kw,
+            "interest_score": best_data.get("current_score", 0),
+            "trend": best_data.get("trend", "데이터없음"),
+            "trend_pct": best_data.get("trend_pct", 0),
+            "summary": f"'{best_kw}' 관심도 {best_data.get('current_score',0)}/100 ({best_data.get('trend','보합')} {'+' if best_data.get('trend_pct',0)>=0 else ''}{best_data.get('trend_pct',0)}%)"
+        }
+
+    return idea
+
 
 # ═══════════════════════════════════
 # 1단계: 클러스터링
@@ -375,6 +488,12 @@ def run_analysis():
         c["business_analysis"] = ba
         c["is_new"] = True  # 오늘 신규 표시
         c["date"] = today
+
+        # 검색량 데이터 추가
+        if PYTRENDS_AVAILABLE:
+            print(f"      [{i+1}/{len(top5)}] {c.get('category')} 검색량 조회...")
+            c = enrich_with_search_data(c)
+
         time.sleep(1.5)
 
     # 누적 아이디어 불러오기
