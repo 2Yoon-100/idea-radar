@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "date": "2026-03-15",
+    "total_posts": 10,
+    "today_posts": 10,
+    "ideas_count": 6,
+    "top_category": "경력 전환 및 심리 건강",
+    "top_score": 9,
+    "recommendation": "AI/LLM 비용 최적화"
+  }
+]

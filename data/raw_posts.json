@@ -1,0 +1,122 @@
+[
+  {
+    "id": "47378453",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Would you use a tool that tells founders whether a startup should scale?",
+    "content": "I’m building ScaleOrKill, a tool that analyzes a startup across market, demand, competition, distribution, monetization and retention, then outputs a verdict like Scale, Refocus, Pivot or Kill.<p>We recently tested it on OpenClaw, an AI infrastructure startup, and it scored as SCALE.<p>I’m curious about something before pushing this further:\nwould founders or investors actually find a verdict-based startup analysis tool useful, or would this feel too opinionated?<p>Happy to share the link and de",
+    "url": "https://news.ycombinator.com/item?id=47378453",
+    "score": 1,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47376451",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: How do you use Coding Agents/CLIs out of coding?",
+    "content": "Everyone is shipping. Open any feed, Twitter, LinkedIn, HN, and it&#x27;s new projects every single day. AI made it so easy to go from an idea to a working product.<p>If you&#x27;re not a developer, or you&#x27;re just starting out, or you only knew one area of software, AI is amazing for you. You can build things you could never build before. If you&#x27;re experienced, you&#x27;re just way faster now. Both are great.<p>I think we can use that same energy on learning new things too. Not just us",
+    "url": "https://news.ycombinator.com/item?id=47376451",
+    "score": 4,
+    "comments": 5,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47376237",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Looking for a job after layoff and burnout. What should I focus on",
+    "content": "Hi everyone,<p>I spent about a decade working in the finance industry as a software engineer. Most of my experience has been on brownfield systems, using technologies like Java, Python, and React. I’ve worked on a mix of things — building data pipelines, dashboards, and web applications — as well as doing a fair amount of maintenance and incremental improvements on existing systems.<p>I was laid off in 2024 and have taken a gap year career break. I’m now planning my next move and aiming to look ",
+    "url": "https://news.ycombinator.com/item?id=47376237",
+    "score": 6,
+    "comments": 10,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47374883",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: When I submit my \"Show HN\" still toonew?",
+    "content": "i am trying to submit a &quot;Show HN&quot; but every time i get &quot;toonew&quot; tag in url, and &quot;this account can&#x27;t submit&quot;, its been 3rd day i am still trying ??, \nalso first time trying to submit a ask hn.",
+    "url": "https://news.ycombinator.com/item?id=47374883",
+    "score": 1,
+    "comments": 3,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47373771",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: 100k/year individual token usage?",
+    "content": "I was watching the all in podcast where they are talking about devs spending $300&#x2F;day on LLM tokens. I’m only able to do about $2k per month, that too on the high end, if I’m programming for 14 hours a day every day.<p>Is anyone spending that many tokens? How? What exactly are you’ll doing?<p>Here is the Instagram clip: https:&#x2F;&#x2F;www.instagram.com&#x2F;reel&#x2F;DV0Z0qmDa28",
+    "url": "https://news.ycombinator.com/item?id=47373771",
+    "score": 7,
+    "comments": 3,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47379595",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: How do you enforce least-privilege when an API token has full access?",
+    "content": "Curious how people handle least-privilege access when integrating third-party APIs that only offer a single coarse permission scope (or limited scopes that are still over-provisioned for a specific use case).<p>A lot of services expose APIs where the token basically grants everything the integration can do (read&#x2F;write&#x2F;delete across the entire account), making it hard to enforce the principle of least privilege internally when multiple internal services or agents are calling the same AP",
+    "url": "https://news.ycombinator.com/item?id=47379595",
+    "score": 2,
+    "comments": 1,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47377717",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Multi-tenancy for Markdown-based agentic systems",
+    "content": "So I&#x27;ve been looking at how companies are building their agentic setups - OpenClaw, Claude Code type systems. And one thing I keep seeing is everyone is storing memory&#x2F;config&#x2F;state as markdown files on disk instead of a proper database. OpenClaw literally keeps conversations, memory, skills all as .md and YAML files. Claude Code has this whole CLAUDE.md hierarchy thing where it reads markdown at the start of every session.<p>For single user this makes total sense - you can git tra",
+    "url": "https://news.ycombinator.com/item?id=47377717",
+    "score": 2,
+    "comments": 3,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47376342",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Show HN: Got tired of AI copilots just autocompleting, and built Glass Arc",
+    "content": "Hey HN,<p>Over the last few months, I realized I was paying $20&#x2F;month for an AI that essentially just acts as a really good autocomplete. It waits for me to type, guesses the next block, and stops. But software engineering isn&#x27;t just writing syntax, it&#x27;s managing the file system, running terminal commands, and debugging stack traces.<p>So I pivoted my project and built Glass Arc. It’s an agentic workspace that lives directly inside VS Code.<p>Instead of just generating text, I gav",
+    "url": "https://news.ycombinator.com/item?id=47376342",
+    "score": 4,
+    "comments": 2,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47376169",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Have you successfully treated forward head posture (\"nerd neck\")?",
+    "content": "I am struggling with regular tension headaches and stiff neck muscles. When standing at a wall, there is about one hand width between the wall and the back of my head. For my partner it&#x27;s just a finger width.<p>I have seen lots of videos that claim to be able to treat nerd neck, but some of them are conflicting. Example: some say &quot;don&#x27;t do chin tucks&quot;, some say the opposite. I am suspicious of grifters and would like to find trustworthy advice.<p>Has anyone here successfully ",
+    "url": "https://news.ycombinator.com/item?id=47376169",
+    "score": 41,
+    "comments": 30,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47377046",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Would this eliminate bots for good?",
+    "content": "I had an idea to eliminate the bot problem, or at the very least make it significantly harder to operate one. Here is my plan.<p>A new web browser built on a new HTTP protocol that accepts a human identity glove using cryptography. Instead of using your fingers directly on a mouse or trackpad, you wear a hardware glove that continuously records your pulse and your fingerprint, your machine information, and the average movement map that is unique to you as you interact with your device. The glove",
+    "url": "https://news.ycombinator.com/item?id=47377046",
+    "score": 2,
+    "comments": 10,
+    "date": "2026-03-15",
+    "language": "en"
+  }
+]
