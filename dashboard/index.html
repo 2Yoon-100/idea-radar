@@ -87,7 +87,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,'Pretendar
 .score-bars{margin-top:6px;display:flex;flex-direction:column;gap:3px;}
 .score-mini-row{display:flex;align-items:center;gap:4px;}
 .score-mini-label{font-size:9px;color:var(--muted);width:28px;text-align:right;flex-shrink:0;}
-.score-mini-track{flex:1;height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+.score-mini-track{flex:1;height:5px;background:var(--bg4);border-radius:2px;overflow:hidden;}
 .score-mini-fill{height:100%;border-radius:2px;}
 
 /* 불편함 */
@@ -208,7 +208,7 @@ footer{text-align:center;padding:24px;color:var(--muted2);font-size:11px;border-
 <script>
 // ──────────────────────────────────────
 // ⚙️ 여기만 수정 (GitHub 아이디)
-const GITHUB_USER = "2Yoon-100";
+const GITHUB_USER = "YOUR_GITHUB_USERNAME";
 const GITHUB_REPO = "idea-radar";
 // ──────────────────────────────────────
 
@@ -238,10 +238,27 @@ async function load(){
 
 // ── 점수 미니바 ──
 function scoreMini(label, val, color){
+  const n = parseInt(val) || 0;
   return `<div class="score-mini-row">
     <div class="score-mini-label">${label}</div>
-    <div class="score-mini-track"><div class="score-mini-fill" style="width:${(val||0)*10}%;background:${color}"></div></div>
+    <div class="score-mini-track"><div class="score-mini-fill" style="width:${n*10}%;background:${color}"></div></div>
+    <div style="font-size:9px;color:var(--muted);width:14px;text-align:right">${n}</div>
   </div>`;
+}
+
+// ── 수익 숫자 포맷 (80000~150000 → 8~15만원) ──
+function formatRevenue(val){
+  if(!val) return "—";
+  if(typeof val === "string" && val.includes("만")) return val;
+  // 숫자만 있는 경우 변환
+  if(typeof val === "string" && /^\d/.test(val)){
+    return val.replace(/(\d+)/g, m => {
+      const n = parseInt(m);
+      if(n >= 10000) return Math.round(n/10000) + "만";
+      return m;
+    }) + (val.includes("원") ? "" : "원");
+  }
+  return val;
 }
 
 // ── 아이디어 카드 ──
@@ -319,9 +336,9 @@ function cardHTML(c, rank){
 
     <!-- 수익 타임라인 -->
     <div class="rev-timeline">
-      <div class="rev-item"><div class="rev-period">1개월</div><div class="rev-val">${rev.month1||"—"}</div></div>
-      <div class="rev-item"><div class="rev-period">3개월</div><div class="rev-val">${rev.month3||"—"}</div></div>
-      <div class="rev-item"><div class="rev-period">6개월</div><div class="rev-val">${rev.month6||"—"}</div></div>
+      <div class="rev-item"><div class="rev-period">1개월</div><div class="rev-val">${formatRevenue(rev.month1)}</div></div>
+      <div class="rev-item"><div class="rev-period">3개월</div><div class="rev-val">${formatRevenue(rev.month3)}</div></div>
+      <div class="rev-item"><div class="rev-period">6개월</div><div class="rev-val">${formatRevenue(rev.month6)}</div></div>
     </div>
 
     <!-- 메타 필 -->
