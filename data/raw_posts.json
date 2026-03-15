@@ -166,5 +166,89 @@
     "comments": 0,
     "date": "2026-03-15",
     "language": "en"
+  },
+  {
+    "id": "47384485",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Balancing the use of AI in out inter communication (h2h)",
+    "content": "It is a fact that we are all* using LLM throughout our workflows.\nAnd yet, there is an automatic frustration when one&#x27;s receiving an email that was clearly &quot;polished&quot; by an LLM, or say, a comment here on HN that was &quot;rephrased&quot; by an LLM.<p>Why are we getting upset when someone is doing what we all do?\nIs it the obvious (over) use?<p>It got to a point where I am not revising my writing as I used to, so it will remain &quot;authentic&quot; (leaving minor spelling and perh",
+    "url": "https://news.ycombinator.com/item?id=47384485",
+    "score": 1,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "47384373",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Do yall know how to connect Roku remote to fire stick",
+    "content": "I am at my nanas rn, she aint givin me\nDa remote.",
+    "url": "https://news.ycombinator.com/item?id=47384373",
+    "score": 1,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "devto_3353497",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "GPT-4o vs Claude vs Gemini: I ran the same 50 prompts through all three so you don't have to",
+    "content": "I got tired of the copy-paste workflow.  You know the one: write a prompt in ChatGPT, screenshot the...",
+    "url": "https://dev.to/oneaiworld/gpt-4o-vs-claude-vs-gemini-i-ran-the-same-50-prompts-through-all-three-so-you-dont-have-to-2872",
+    "score": 0,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "devto_3350823",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "I Got Tired of Re-Explaining My Codebase to Claude Every Day - So I Built ContextKeep",
+    "content": "The Problem: AI Amnesia   If you use AI coding assistants like Claude, GPT-4, or Cursor,...",
+    "url": "https://dev.to/glyph_ravenops/i-got-tired-of-re-explaining-my-codebase-to-claude-every-day-so-i-built-contextkeep-26ck",
+    "score": 0,
+    "comments": 1,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "devto_3353689",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "I Let AI Agents Build My Entire Side Project — Here's What Happened",
+    "content": "I had a simple problem: every \"free\" resume formatter online requires an account, upsells you to a...",
+    "url": "https://dev.to/chillkimtestoss/i-let-ai-agents-build-my-entire-side-project-heres-what-happened-2bbg",
+    "score": 0,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "devto_3353652",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "The .cursorrules file I wish I had when building my SaaS",
+    "content": "I've been using Cursor to build a Node.js + TypeScript SaaS,  and it's genuinely impressive — until...",
+    "url": "https://dev.to/mohamedp09/the-cursorrules-file-i-wish-i-had-when-building-my-saas-5c5p",
+    "score": 0,
+    "comments": 1,
+    "date": "2026-03-15",
+    "language": "en"
+  },
+  {
+    "id": "devto_3353771",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "Stop Brainstorming Startup Ideas. Mine Them From Developer Communities",
+    "content": "ideasaas.xyz    I Built a Tool That Finds SaaS Ideas From Real Developer communities  Every day...",
+    "url": "https://dev.to/kushagara_singh_e8cddd8fa/stop-brainstorming-startup-ideas-mine-them-from-developer-communities-46al",
+    "score": 0,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
   }
 ]
