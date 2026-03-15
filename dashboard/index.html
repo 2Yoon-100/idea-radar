@@ -214,7 +214,7 @@ const GITHUB_USER = "2Yoon-100";
 const GITHUB_REPO = "idea-radar";
 // ──────────────────────────────────────
 
-const BASE = `./data`;
+const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/data`;
 
 const BT = {
   TRAFFIC_TOOL:    {label:"📈 트래픽 사이트 툴", desc:"무료 툴 모음 사이트"},
@@ -394,6 +394,14 @@ function tableRow(c,i){
   </div>`;
 }
 
+function toggleAllIdeas(){
+  const wrap = el("all-ideas-wrap");
+  const btn  = el("all-toggle-btn");
+  const isOpen = wrap.style.display !== "none";
+  wrap.style.display = isOpen ? "none" : "block";
+  btn.textContent = isOpen ? "▼ 펼치기" : "▲ 접기";
+}
+
 function togglePrompt(bodyId, rank){
   const body=el(bodyId);
   const isOpen=body.classList.contains("open");
@@ -482,11 +490,16 @@ function render(data, history){
     <div class="cc"><div class="cc-t">일별 수집량 추이</div><canvas id="tc" height="140"></canvas></div>
   </div>
 
-  <!-- 전체 누적 순위 -->
-  <div class="sec">📋 전체 누적 아이디어 순위</div>
-  <div class="tbl">
-    <div class="tr th"><div>순위</div><div></div><div>카테고리</div><div>아이디어</div><div>유형</div><div>종합점수</div></div>
-    ${allAcc.map((c,i)=>tableRow(c,i)).join("")}
+  <!-- 전체 누적 순위 (기본 접힘) -->
+  <div class="sec" style="cursor:pointer" onclick="toggleAllIdeas()">
+    📋 전체 누적 아이디어 순위
+    <span id="all-toggle-btn" style="background:var(--purple-dim);color:var(--purple-l);border:1px solid rgba(139,92,246,.3);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-left:8px">▼ 펼치기</span>
+  </div>
+  <div id="all-ideas-wrap" style="display:none">
+    <div class="tbl">
+      <div class="tr th"><div>순위</div><div></div><div>카테고리</div><div>아이디어</div><div>유형</div><div>종합점수</div></div>
+      ${allAcc.map((c,i)=>tableRow(c,i)).join("")}
+    </div>
   </div>
   `;
 
