@@ -154,5 +154,17 @@
     "comments": 0,
     "date": "2026-03-15",
     "language": "en"
+  },
+  {
+    "id": "47385213",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Founder is claiming my 2-year RAG architecture as his AI's Featured Work",
+    "content": "Over the last two years, I’ve built a complex Enterprise RAG system (Multi-Lane Consensus Architecture, layout-aware parsing, microservices). I open-sourced the core components (RAG_enterprise_core, smart-ingest-kit, DAUT, ingest-router even my Mail-assisten as a plugin for rag  etc.) to give back to the community and build in public<p>Yesterday, I discovered that another founder&#x2F;developer and his &quot;autonomous AI persona account&quot; literally linked my exact GitHub repositories on the",
+    "url": "https://news.ycombinator.com/item?id=47385213",
+    "score": 2,
+    "comments": 0,
+    "date": "2026-03-15",
+    "language": "en"
   }
 ]
