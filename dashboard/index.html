@@ -347,6 +347,41 @@ function cardHTML(c, rank, isNew){
       ${(bld.mvp_features||[]).slice(0,3).map(f=>`<div class="mvp-feat"><span>›</span>${f}</div>`).join("")}
     </div>`:""}
 
+    <!-- 검색량 트렌드 -->
+    ${ba.search_trends?`
+    <div style="background:var(--bg3);border-radius:8px;padding:10px 13px;margin-bottom:12px;border:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">🔍 구글 검색량 트렌드</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div style="font-size:14px;font-weight:700;color:${
+          ba.search_trends.trend==='급상승'?'var(--green)':
+          ba.search_trends.trend==='상승'?'var(--teal)':
+          ba.search_trends.trend==='하락'?'var(--coral)':'var(--amber)'
+        }">
+          ${ba.search_trends.trend==='급상승'?'🚀':
+            ba.search_trends.trend==='상승'?'📈':
+            ba.search_trends.trend==='하락'?'📉':'➡️'}
+          ${ba.search_trends.trend}
+          <span style="font-size:12px;font-weight:400">
+            ${ba.search_trends.trend_pct>=0?'+':''}${ba.search_trends.trend_pct}%
+          </span>
+        </div>
+        <div style="flex:1;min-width:120px;">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px;">관심도 ${ba.search_trends.interest_score}/100</div>
+          <div style="height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;border-radius:3px;background:var(--purple);width:${ba.search_trends.interest_score}%"></div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;">'${ba.search_trends.best_keyword}' 기준 · 최근 3개월 구글 트렌드</div>
+      ${ba.search_trends.keywords&&Object.keys(ba.search_trends.keywords).length>1?`
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;">
+        ${Object.entries(ba.search_trends.keywords).map(([kw,d])=>`
+          <span style="font-size:10px;background:var(--bg4);border:1px solid var(--border);border-radius:4px;padding:2px 7px;color:var(--muted)">
+            ${kw}: ${d.current_score||0}
+          </span>`).join('')}
+      </div>`:''}
+    </div>`:""}
+
     <div class="strategy">
       ${bld.quick_traffic?`<strong>🚀 빠른 트래픽</strong>${bld.quick_traffic}`:""}
       ${risk.main_risk?`<strong style="margin-top:8px">⚠️ 리스크 (${risk.risk_level||""})</strong>${risk.main_risk}`:""}
