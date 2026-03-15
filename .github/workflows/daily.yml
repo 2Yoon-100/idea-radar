@@ -1,45 +1,77 @@
+# IDEA RADAR - 자동 실행 스케줄러
+# 매일 오전 8시 (KST) 자동으로 데이터 수집 & 분석 실행
+# KST 오전 8시 = UTC 전날 밤 11시 (cron: '0 23 * * *')
+
 name: Daily Idea Radar
 
 on:
   schedule:
-    - cron: '0 23 * * *'
-  workflow_dispatch:
+    - cron: '0 23 * * *'   # 매일 UTC 23:00 = KST 오전 8:00
+  workflow_dispatch:        # 수동 실행 버튼 (테스트용)
 
 jobs:
   collect-and-analyze:
     runs-on: ubuntu-latest
+    
     permissions:
-      contents: write
+      contents: write       # 결과 파일을 저장소에 커밋하기 위해 필요
+    
     steps:
+      # 1. 저장소 불러오기
       - name: 저장소 체크아웃
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 2. Python 설치
       - name: Python 설치
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
+      
+      # 3. 필요한 라이브러리 설치
       - name: 라이브러리 설치
         run: pip install -r requirements.txt
-      - name: 데이터 수집
+      
+      # 4. 데이터 수집 실행
+      - name: 데이터 수집 (커뮤니티 스크래핑)
         env:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-        run: python scripts/collector.py
-      - name: AI 분석
+        run: |
+          echo "📥 데이터 수집 시작..."
+          python scripts/collector.py
+          echo "✅ 수집 완료"
+      
+      # 5. AI 분석 실행
+      - name: AI 분석 (Claude API)
         env:
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
-        run: python scripts/analyzer.py
+        run: |
+          echo "🧠 AI 분석 시작..."
+          python scripts/analyzer.py
+          echo "✅ 분석 완료"
+      
+      # 6. 결과 파일을 저장소에 자동 저장
       - name: 결과 저장 (자동 커밋)
         run: |
           mkdir -p dashboard/data
           cp data/analysis.json dashboard/data/analysis.json
           cp data/history.json dashboard/data/history.json
+          if [ -f data/accumulated_ideas.json ]; then
+            cp data/accumulated_ideas.json dashboard/data/accumulated_ideas.json
+          fi
           git config --local user.email "action@github.com"
           git config --local user.name "Idea Radar Bot"
           git add data/ dashboard/data/
-          git diff --staged --quiet || git commit -m "자동 업데이트: $(date '+%Y-%m-%d %H:%M KST')"
+          git diff --staged --quiet || git commit -m "🤖 자동 업데이트: $(date '+%Y-%m-%d %H:%M KST')"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 7. 완료 알림 (옵션)
+      - name: 완료 로그
+        run: |
+          echo "🎉 오늘의 Idea Radar 업데이트 완료!"
+          echo "📊 대시보드에서 확인하세요."
