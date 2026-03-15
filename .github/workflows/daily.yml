@@ -33,9 +33,12 @@ jobs:
         run: python scripts/analyzer.py
       - name: 결과 저장 (자동 커밋)
         run: |
+          mkdir -p dashboard/data
+          cp data/analysis.json dashboard/data/analysis.json
+          cp data/history.json dashboard/data/history.json
           git config --local user.email "action@github.com"
           git config --local user.name "Idea Radar Bot"
-          git add data/
+          git add data/ dashboard/data/
           git diff --staged --quiet || git commit -m "자동 업데이트: $(date '+%Y-%m-%d %H:%M KST')"
           git push
         env:
