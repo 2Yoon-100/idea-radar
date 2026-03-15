@@ -214,7 +214,7 @@ const GITHUB_USER = "2Yoon-100";
 const GITHUB_REPO = "idea-radar";
 // ──────────────────────────────────────
 
-const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/data`;
+const BASE = `./data`;
 
 const BT = {
   TRAFFIC_TOOL:    {label:"📈 트래픽 사이트 툴", desc:"무료 툴 모음 사이트"},
@@ -542,7 +542,7 @@ function renderSetup(){
 
 (async()=>{
   try{
-    if(GITHUB_USER==="2Yoon-100"){el("loading").style.display="none";el("app").style.display="block";renderSetup();return;}
+    if(GITHUB_USER==="YOUR_GITHUB_USERNAME"){el("loading").style.display="none";el("app").style.display="block";renderSetup();return;}
     const {data,history}=await load();
     el("loading").style.display="none";el("app").style.display="block";
     render(data,history);
