@@ -1957,5 +1957,711 @@
     },
     "is_new": true,
     "date": "2026-03-16"
+  },
+  {
+    "category": "AI/개발자 도구 통합 문제",
+    "pain_point": "AI 도구와 개발 플랫폼을 전환할 때마다 코드를 재작성해야 하는 번거로움",
+    "post_count": 2,
+    "urgency_score": 8,
+    "target_users": "AI 활용 개발자, RAG 파이프라인 개발자",
+    "example_posts": [
+      4,
+      5
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 도구 간 코드 변환의 반복적 번거로움을 자동화하는 SaaS로 개발자 수요가 높고 구독 수익화가 명확함.",
+      "product": {
+        "name": "CodeBridge",
+        "tagline": "AI 도구 간 코드 자동 변환으로 개발 속도 10배 향상",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 28,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 150,000원",
+        "total_3months": "3개월 450,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원",
+        "month1": "80~150만원",
+        "month3": "200~450만원",
+        "month6": "600~1500만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "ChatGPT, Claude, Gemini 등 주요 AI 플랫폼 간 RAG 코드 자동 변환으로 개발자의 재작성 시간 제거.",
+        "seo_keywords": [
+          "AI 코드 변환",
+          "RAG 파이프라인",
+          "AI 도구 통합",
+          "개발자 도구",
+          "코드 마이그레이션"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "OpenAI/Claude/Gemini API 코드 변환기",
+          "RAG 파이프라인 템플릿 자동 생성",
+          "코드 비교 및 테스트 기능"
+        ],
+        "tech_stack": "React + Node.js + FastAPI + PostgreSQL + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "개발자 커뮤니티(Reddit, GitHub), Product Hunt, Dev.to 포스팅으로 초기 100명 확보"
+      },
+      "risk": {
+        "main_risk": "AI 모델 업데이트로 코드 변환 정확도가 지속적으로 유지되어야 하며, 각 플랫폼의 API 변경에 빠르게 대응해야 함.",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 7,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# CodeBridge - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페인 포인트:**\nAI 활용 개발자가 ChatGPT에서 작성한 RAG 파이프라인 코드를 Claude로 옮길 때, 또는 Gemini로 전환할 때 매번 처음부터 코드를 다시 작성해야 한다. 같은 기능이지만 API 형식, 라이브러리, 인증 방식이 모두 다르기 때문이다.\n\n**현재 대안의 부족함:**\n- 수동 변환: 30분~2시간 소요, 휴먼 에러 위험\n- 일반 코드 변환기: RAG 특화 로직 미지원 (Vector DB, Embedding, Prompt Engineering 무시)\n- 각 AI 플랫폼 공식 문서: 학습곡선 높음, 보일러플레이트 코드 반복 작성 필요\n\n**사용 후 느껴야 할 감정:**\n\"아, 이제 AI 도구 선택이 자유로워졌다. 코드 재작성 걱정 없이 최적의 도구를 선택할 수 있다.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Step 1: 가입 및 온보딩 (30초)**\n- Google/GitHub 소셜로그인\n- 사용하는 AI 플랫폼 선택 (OpenAI/Claude/Gemini 복수선택)\n- API 키 안전하게 저장 (클라이언트 암호화)\n\n**Step 2: 코드 입력 (1분)**\n- 왼쪽 패널: 소스 코드 붙여넣기 또는 파일 업로드 (.py, .js, .ts)\n- 드롭다운: \"소스 플랫폼\" 선택 (예: OpenAI)\n- 드롭다운: \"타겟 플랫폼\" 선택 (예: Claude)\n- 선택사항: 프레임워크 (LangChain, LlamaIndex, Haystack 등)\n\n**Step 3: 실시간 변환 (5초)**\n- 우측 패널: 변환된 코드 실시간 표시\n- 차이점 하이라이팅 (orange: 수정된 부분)\n- 설명 토스트: \"임베딩 모델을 claude-embedding으로 변경했습니다\"\n\n**Step 4: 비교 및 테스트 (2분)**\n- 탭1: \"코드 비교\" - 라인별 diff 뷰\n- 탭2: \"테스트\" - 간단한 유닛 테스트 생성 및 실행\n- 탭3: \"문서\" - 변환된 코드 자동 주석 생성\n\n**Step 5: 내보내기 및 저장 (30초)**\n- \"복사\" 버튼 (클립보드)\n- \"다운로드\" 버튼 (zip 파일)\n- \"GitHub 연동\" 버튼 (자동 PR 생성)\n- \"변환 히스토리\" 저장\n\n---\n\n## [3. 입력 설계]\n\n**필수 입력:**\n\n```\n{\n  \"source_code\": \"string (최대 100KB)\",\n  \"source_platform\": \"enum [openai, claude, gemini]\",\n  \"target_platform\": \"enum [openai, claude, gemini]\",\n  \"source_language\": \"enum [python, javascript, typescript]\",\n  \"target_language\": \"enum [python, javascript, typescript]\"\n}\n```\n\n**선택적 입력:**\n\n```\n{\n  \"framework\": \"enum [langchain, llamaindex, haystack, custom]\",\n  \"include_tests\": \"boolean (default: true)\",\n  \"include_documentation\": \"boolean (default: true)\",\n  \"optimization_level\": \"enum [fast, balanced, quality] (default: balanced)\",\n  \"rag_components\": \"array [vector_db, embedding_model, retriever, chain]\"\n}\n```\n\n**입력 방식:**\n- 텍스트 에디터 (좌측 50% 너비, 구문강조)\n- 드래그앤드롭 파일 업로드\n- GitHub URL 직접 입력 옵션\n- 템플릿 라이브러리 빠른선택\n\n**기본값 및 예시:**\n\n```\n기본값:\n- source_language: \"python\"\n- target_language: \"python\"\n- optimization_level: \"balanced\"\n- framework: 자동감지\n\n예시 1 (OpenAI → Claude):\nsource_code: \"\"\"\nfrom openai import OpenAI\nclient = OpenAI(api_key=\"...\")\nresponse = client.chat.completions.create(\n  model=\"gpt-4\",\n  messages=[...],\n  temperature=0.7\n)\n\"\"\"\n\n예시 2 (RAG 파이프라인):\nsource_code: \"\"\"\nfrom langchain.chains import RetrievalQA\nfrom langchain.vectorstores import Pinecone\nqa = RetrievalQA.from_chain_type(\n  llm=OpenAI(),\n  chain_type=\"stuff\",\n  retriever=vectorstore.as_retriever()\n)\n\"\"\"\n```\n\n---\n\n## [4. 출력 설계]\n\n**\"이게 다르다\"고 느끼는 출력 형태:**\n- 좌우 split view (Before/After 즉시 비교)\n- 변경된 라인 주황색 강조 + 이유 설명 (호버 시)\n- 복사 성공 애니메이션 (체크마크 + 토스트)\n\n**각 결과물 설명:**\n\n**탭1: 변환된 코드**\n```\n좌측: 원본 코드 (읽기전용, 회색)\n중앙: 차이점 표시 (주황색 라인)\n우측: 변환된 코드 (편집가능, 파란 배경)\n\n각 변경점에 대한 설명:\nLine 2: \"OpenAI → Claude로 변경\"\nLine 5: \"gpt-4 → claude-3-sonnet으로 변경\"\nLine 8: \"temperature 매개변수명 동일하지만 범위 확인 필요\"\n```\n\n**탭2: 자동 비교 보고서**\n```json\n{\n  \"compatibility_score\": 95,\n  \"breaking_changes\": [],\n  \"warnings\": [\n    {\n      \"type\": \"api_difference\",\n      \"line\": 5,\n      \"original\": \"model='gpt-4'\",\n      \"converted\": \"model='claude-3-sonnet-20240229'\",\n      \"note\": \"Claude는 다른 모델 ID 체계 사용\"\n    }\n  ],\n  \"migration_time_saved\": \"1.5 hours\",\n  \"estimated_cost_difference\": \"-$0.10 per 1000 requests\"\n}\n```\n\n**탭3: 자동 생성된 테스트**\n```python\n# test_conversion.py\ndef test_api_call():\n    response = client.messages.create(...)\n    assert response.status_code == 200\n    assert \"content\" in response\n\ndef test_rag_pipeline():\n    result = qa.run(\"query\")\n    assert len(result) > 0\n```\n\n**탭4: 문서**\n```markdown\n## 변환 내역\n- OpenAI API → Claude API로 변환\n- 호환성: 95% (미세한 조정 필요)\n\n## 주의사항\n1. API 키 변경 필수\n2. 모델 이름 확인 필수\n3. 응답 형식 차이 검증\n\n## 체크리스트\n- [ ] API 키 업데이트\n- [ ] 환경변수 (.env) 변경\n- [ ] 테스트 실행\n- [ ] 프로덕션 배포\n```\n\n**복사/저장 UX:**\n```\n하단 고정바:\n[복사] [다운로드] [GitHub 연동] [변환 저장] [공유]\n\n복사 클릭:\n1. 클립보드에 복사됨\n2. \"복사되었습니다!\" 토스트 (2초)\n3. 버튼 아이콘 변경 (복사 → 체크마크)\n\n다운로드 클릭:\n1. zip 생성 (변환된 코드 + 테스트 + 마이그레이션 가이드)\n2. 브라우저 자동 다운로드\n\nGitHub 연동:\n1. \"New PR 생성\" 버튼\n2. Fork → 브랜치 생성 → 변환코드 추가 → PR 오픈\n```\n\n---\n\n## [5. UI/UX 상세]\n\n**레이아웃:**\n\n```\n┌─────────────────────────────────────────────────",
+      "search_trends": {
+        "keywords": {
+          "AI 코드 변환": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "RAG 파이프라인": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 8,
+            "data": [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "CodeBridge": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 코드 변환",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'AI 코드 변환' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-17"
+  },
+  {
+    "category": "개발자 채용 및 국제 페이롤 문제",
+    "pain_point": "해외 원격 개발자(특히 나이지리아) 급여 지급 및 채용 프로세스의 복잡성",
+    "post_count": 2,
+    "urgency_score": 8,
+    "target_users": "US 스타트업 창업자, HR 담당자",
+    "example_posts": [
+      3,
+      7
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "복잡한 국제 페이롤 프로세스를 자동화하여 스타트업의 즉각적인 니즈를 해결하고 반복 수익 창출 가능",
+      "product": {
+        "name": "PayFlow Africa",
+        "tagline": "해외 개발자 급여를 5분 안에 자동 지급하세요",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 21,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 800,000원",
+        "total_3months": "3개월 2,400,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 99,000원~299,000원",
+        "month1": "500,000~1,500,000원",
+        "month3": "5,000,000~15,000,000원",
+        "month6": "20,000,000~50,000,000원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "나이지리아 특화 규정 자동 반영 및 로컬 은행 연동으로 국제 페이롤 시간 90% 단축",
+        "seo_keywords": [
+          "국제페이롤",
+          "해외개발자급여",
+          "원격근로자급여지급",
+          "나이지리아개발자",
+          "스타트업HR자동화"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "급여 자동 계산 및 세금공제",
+          "나이지리아 은행 API 연동",
+          "규정 자동 업데이트",
+          "지급 히스토리 대시보드",
+          "다중 통화 변환"
+        ],
+        "tech_stack": "React + Node.js + PostgreSQL + Stripe API + Paystack API",
+        "difficulty": "상",
+        "quick_traffic": "LinkedIn의 US 스타트업 HR 담당자 커뮤니티 타겟팅 및 Product Hunt 출시"
+      },
+      "risk": {
+        "main_risk": "각국의 복잡한 규정 변경 추적 및 금융 규제 준수의 지속적 비용 부담",
+        "risk_level": "높음"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 5,
+        "revenue_speed": 7,
+        "competition_advantage": 7
+      },
+      "claude_prompt": "# PayFlow Africa - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자의 순간:**\n- US 스타트업 창업자가 나이지리아의 우수한 개발자 3명을 채용했다\n- 매월 급여를 보낼 때마다 현재 환율 확인 → 나이지리아 세금 규정 검색 → Wise 계좌이체 신청 → 3-5일 대기 → 착금 확인 이 과정에서 2시간이 소요된다\n- HR 담당자는 각 개발자별로 다른 은행 계좌, 다른 세금 공제 기준을 엑셀로 관리하고 있다\n- 나이지리아 세금 규정이 변경되었는데 이를 자동 반영할 방법이 없다\n\n**현재 대안의 부족함:**\n- Wise: 환율 변환만 가능, 세금 계산 자동화 없음, 규정 업데이트 없음\n- Stripe Connect: 나이지리아 은행 연동 불가\n- 엑셀/구글시트: 수동 계산, 오류 위험, 감사추적 불가, 확장성 없음\n- Guidepoint 같은 글로벌 페이롤: 너무 비싸고 (월 $500+), 나이지리아 특화 아님\n\n**사용 후 느껴야 할 감정:**\n\"와, 3명의 급여를 5분 안에 처리했다. 세금도 자동으로 맞춰졌고, 다음달부터는 버튼 한 번이면 되겠네\" (심리적 안도감, 관리의 부담 해소)\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**1단계: 가입 (0-2분)**\n```\n랜딩페이지 방문 \n→ \"5분 안에 급여 지급 시작\" 버튼 클릭\n→ 이메일/구글 로그인\n→ 회사명, 월 급여 총액 입력 (1분)\n→ Stripe 결제 정보 등록 (선택)\n→ 스킵하고 무료 체험 시작 가능\n```\n\n**2단계: 개발자 등록 (1-3분)**\n```\n대시보드 진입\n→ \"개발자 추가\" 버튼\n→ 이름, 은행 계좌번호(Nigerian bank), 월급여, 직급 입력\n→ \"나이지리아 세금 규정 자동 적용\" 확인 체크\n→ 저장 → 개발자 프로필 카드 생성\n```\n\n**3단계: 급여 자동 계산 (1분)**\n```\n\"이번 달 급여 처리\" 버튼 클릭\n→ 시스템: 실시간 환율 조회 (USD→NGN)\n→ 각 개발자별 세금/공제 자동 계산 표시\n→ \"확인 및 지급\" 버튼 (Stripe/Paystack 결제)\n→ 완료 → 각 개발자에게 SMS/이메일 알림\n```\n\n**4단계: 히스토리 추적 (투명성)**\n```\n대시보드의 \"지급 히스토리\" 탭\n→ 매달 지급액, 환율, 세금 공제액, 최종 수령액 표 형태\n→ 각 행 클릭 → 상세 계산 과정 표시\n→ PDF 다운로드 (감사/보고용)\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. 초기 가입 단계\n| 필드 | 데이터타입 | 유효성 | 기본값 | 예시 |\n|------|-----------|-------|-------|------|\n| 회사명 | Text | 1-100자 | - | \"TechFlow Inc\" |\n| 이메일 | Email | RFC 5322 | - | cto@techflow.com |\n| 월 총급여예산 | Number | $500-$100k | - | 15000 |\n| 개발자 수 | Number | 1-500 | 1 | 3 |\n\n### 3-2. 개발자 등록 단계\n```\nForm Group:\n├─ 이름 (Text, 필수, 2-50자)\n│  └ 예시: \"Chisom Okafor\"\n├─ 역할 (Select Dropdown, 필수)\n│  ├─ Junior Developer\n│  ├─ Mid-level Developer\n│  ├─ Senior Developer\n│  └─ Tech Lead\n├─ 월급여 (USD, 필수, $500-$50k)\n│  └ 슬라이더 + 수동입력 듀얼 인터페이스\n├─ 나이지리아 은행 정보\n│  ├─ 은행명 (Dropdown: \"First Bank\", \"GTBank\", \"Zenith\", etc.)\n│  ├─ 계좌번호 (10자 정확)\n│  └─ 계좌명 (자동 검증 API로 확인)\n├─ 고용 시작일 (DatePicker)\n│  └ 예시: \"2024-01-15\"\n└─ 부양가족수 (Number, 0-10)\n   └ 세금 공제 계산용\n```\n\n### 3-3. 급여 처리 단계\n```\nModal:\n├─ 처리 대상월 (Month/Year picker, 기본값: 다음달)\n├─ 환율 선택\n│  ├─ 실시간 환율 자동 (기본)\n│  └─ 고정 환율 수동 입력 (옵션)\n├─ 보너스/공제 추가 (선택)\n│  ├─ 보너스 금액 (USD)\n│  ├─ 특별공제 (USD)\n│  └─ 사유 텍스트\n├─ 최종 확인 체크박스\n│  └ \"위 정보가 정확함을 확인합니다\"\n└─ 지급 방법 선택 (Stripe / Paystack)\n```\n\n### 3-4. 입력 UX 상세\n- **자동완성**: 은행명 입력 시 자동완성 (Nigerian banks 리스트)\n- **실시간 검증**: 계좌번호 입력 후 0.5초 후 Paystack API로 계좌명 확인\n- **기본값 스마트 설정**: 두 번째 개발자 등록 시 첫 개발자의 은행명/역할 제안\n- **토글 옵션**: \"매월 자동 지급\" 토글 (활성화 시 다음달부터 자동 처리)\n\n---\n\n## [4. 출력 설계]\n\n### 4-1. 급여 명세서 (The Wow Moment)\n```\n┌─────────────────────────────────────────┐\n│ 💰 PAYFLOW SALARY SLIP                  │\n│ ─────────────────────────────────────── │\n│ 직원: Chisom Okafor                     │\n│ 월: November 2024                       │\n│ ─────────────────────────────────────── │\n│                                         │\n│ 💵 기본급 (USD)         $3,500.00      │\n│ + 보너스               $   0.00      │\n│ ─────────────────────────────────────── │\n│ = 총액 (USD)          $3,500.00      │\n│                                         │\n│ 🏦 환율 (USD→NGN)    1 USD = 1,542 NGN│\n│ = 나이지리아 금액      ₦5,397,000      │\n│                                         │\n│ 📊 세금 & 공제                         │\n│ - 개인소득세 (PIT)    ₦1,079,400  (20%)│\n│ - 건강보험           ₦ 269,850  (5%) │\n│ - 연금기금           ₦ 539,700  (10%)│\n│ ─────────────────────────────────────── │\n│ ✅ 최종 수령액        ₦3,508,050      │\n│                                         │\n│ 📅 예상 착금: Nov 28, 2024              │\n│ 🔐 거래ID: TXN-24-11-0847             │\n└─────────────────────────────────────────┘\n\n[📋 PDF ",
+      "search_trends": {
+        "keywords": {
+          "국제페이롤": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "해외개발자급여": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "PayFlow Africa": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "국제페이롤",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'국제페이롤' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-17"
+  },
+  {
+    "category": "마케팅 비용 최적화",
+    "pain_point": "고가의 마케팅 도구와 광고 제작 서비스로 인한 과도한 비용 부담",
+    "post_count": 3,
+    "urgency_score": 7,
+    "target_users": "DTC 브랜드, 초기 스타트업 창업자",
+    "example_posts": [
+      1,
+      11,
+      12
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "낮은 진입 비용으로 DTC 브랜드의 마케팅 자동화 수요를 빠르게 충족할 수 있는 SaaS 모델이 최적",
+      "product": {
+        "name": "AdFlow - AI 마케팅 자동화 플랫폼",
+        "tagline": "AI가 만들어주는 광고, 누구나 쓸 수 있는 가격",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 21,
+        "first_revenue_days": 30
+      },
+      "cost": {
+        "monthly_fixed": "월 80만원",
+        "total_3months": "3개월 240만원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원 / 월 99,900원",
+        "month1": "50만원",
+        "month3": "300만원",
+        "month6": "1000만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "AI 기반 광고 제작 + 성과 분석으로 고가 에이전시 비용을 90% 절감",
+        "seo_keywords": [
+          "DTC 마케팅",
+          "AI 광고 생성",
+          "마케팅 자동화",
+          "저비용 광고제작",
+          "스타트업 마케팅"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "AI 기반 광고 카피 생성",
+          "소셜미디어 멀티채널 배포",
+          "기본 성과 분석 대시보드",
+          "템플릿 라이브러리",
+          "A/B 테스트 기능"
+        ],
+        "tech_stack": "React + Node.js + OpenAI API + PostgreSQL + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "DTC 커뮤니티(당근, 오늘의집) + 스타트업 페이스북 그룹 + 유튜브 튜토리얼"
+      },
+      "risk": {
+        "main_risk": "OpenAI API 비용 증가 및 규정 변경으로 인한 수익성 악화 가능성",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 8,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# AdFlow - AI 마케팅 자동화 플랫폼 | 완전한 개발 지시서\n\n---\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**대상 사용자의 순간:**\n- DTC 브랜드 마케터가 월요일 아침 9시, 이번 주 인스타그램/틱톡/페이스북 광고 3개를 만들어야 하는데 1시간 안에 완성해야 할 때\n- 초기 스타트업 창업자가 마케팅 에이전시 견적서를 받고 \"300만원?\"이라며 놀랄 때\n- 소상공인이 직접 광고를 만들다가 \"이게 잘 나가는 건지 아닌지 모르겠네\"라며 답답해할 때\n\n**현재 대안의 부족함:**\n1. **고가 에이전시** (월 200~500만원): 초기 스타트업에게 과도함. 의사결정 느림. 수정에 10일 걸림.\n2. **Canva/일반 디자인 도구**: 광고 카피 생성 불가. 성과 분석 없음. 채널별 최적화 없음.\n3. **Meta/Google 광고 대행사**: 최소 광고비 월 500만원. 운영비 별도.\n4. **저가 AI 도구**: 광고 특화 아님. 한 문장만 생성. 채널별 톤 차이 없음.\n\n**사용 후 느껴야 할 감정:**\n- 🎯 \"5분 만에 3채널 광고 3개가 나왔다?\"\n- 💰 \"에이전시 비용의 10분의 1이네\"\n- 📊 \"아, 이 광고가 잘 되는 이유를 이제 알겠다\"\n- ⚡ \"A/B 테스트를 이렇게 빠르게 할 수 있다고?\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\n[회원가입] → [온보딩: 브랜드 정보입력] → [템플릿 선택 or 처음부터]\n    ↓\n[Step 1: 광고 목표 & 상품 정보 입력]\n    ↓\n[Step 2: AI가 카피 3~5개 생성 (1~3초)]\n    ↓\n[Step 3: 각 카피마다 인스타/틱톡/페이스북 채널별 최적화]\n    ↓\n[Step 4: 생성된 광고 미리보기 (모바일 / 데스크톱)]\n    ↓\n[Step 5: 선택한 광고 소셜미디어에 한 번에 배포]\n    ↓\n[대시보드: 실시간 성과 추적]\n    ↓\n[A/B 테스트 설정 & 자동 최적화 제안]\n    ↓\n[성과 리포트 자동 생성 및 다음 주 개선안 제시]\n```\n\n**각 단계별 예상 체류 시간:**\n- 온보딩: 2분\n- 광고 생성: 3분\n- 검토 & 수정: 2분\n- 배포: 1분\n- **총 8분 안에 첫 결과물 완성**\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 첫 온보딩 (회원가입 후 즉시)\n\n```\n필수 입력 정보:\n┌─────────────────────────────────────┐\n│ 1. 브랜드 이름                      │ (예: \"프리미엄 스킨케어 스타트업\")\n│ 2. 업종 선택                        │ (드롭다운: 뷰티, 패션, 식품, 기술...)\n│ 3. 브랜드 톤 & 매너                 │ (선택지: 친근함, 고급스러움, 유머러스...)\n│ 4. 타겟 고객 연령대                 │ (범위 선택: 20~30대, 30~40대...)\n│ 5. 월 예산 (참고용)                 │ (텍스트: \"광고비는 얼마 정도 돌려요?\")\n└─────────────────────────────────────┘\n\n입력 방식: \n- 드롭다운 (업종, 톤)\n- 슬라이더 (연령대)\n- 텍스트 입력 (브랜드명)\n- 라디오 버튼 (톤)\n\n기본값:\n- 톤: \"친근함\"\n- 업종: \"일반 전자상거래\"\n- 연령대: 20~40\n\n예시 데이터:\n{\n  \"brandName\": \"르포 - 프리미엄 향초\",\n  \"industry\": \"뷰티/라이프스타일\",\n  \"tone\": \"고급스럽고 신비로움\",\n  \"targetAge\": [25, 45],\n  \"monthlyBudget\": \"300만원\"\n}\n```\n\n### 3.2 광고 생성 단계 입력\n\n```\n필수 정보:\n┌──────────────────────────────────────────┐\n│ 1. 광고 목표                            │ (라디오: 인지도↑ / 클릭↑ / 구매↑)\n│ 2. 상품명 & 설명                         │ (텍스트 에어리어, 50~200자)\n│ 3. 핵심 특징 3개                        │ (각 1줄씩, 예: \"천연성분 100%\")\n│ 4. 행동유도 (CTA)                      │ (예: \"지금 구매\", \"무료 샘플받기\")\n│ 5. 프로모션 (선택사항)                  │ (예: \"첫 구매 20% 할인\", \"무료배송\")\n└──────────────────────────────────────────┘\n\n예시:\n{\n  \"goal\": \"구매\",\n  \"productName\": \"르포 우드스트림 향초\",\n  \"description\": \"자연 오일 100% 사용, 8시간 지속되는 향기, 친환경 패키징\",\n  \"keyFeatures\": [\n    \"천연 향료만 사용\",\n    \"플라스틱 0% 에코 용기\",\n    \"K-뷰티 마켓 1위 원료사 협력\"\n  ],\n  \"cta\": \"지금 만나보기\",\n  \"promo\": \"첫 구매 15% 할인 코드: REPO15\"\n}\n```\n\n### 3.3 채널 선택 입력\n\n```\n체크박스:\n☑ Instagram (기본 선택)\n☑ TikTok (기본 선택)\n☑ Facebook (기본 선택)\n☐ Pinterest\n☐ LinkedIn\n\n기본값: Instagram, TikTok, Facebook 모두 체크\n```\n\n---\n\n## [4. 출력 설계]\n\n### 4.1 AI가 생성한 광고 카피 (핵심 차별점)\n\n```\n[생성 완료 화면]\n\n┌─────────────────────────────────────────────────────────┐\n│  🎨 당신의 광고가 준비됐습니다 (생성시간: 2.3초)        │\n└─────────────────────────────────────────────────────────┘\n\n📱 [Instagram] 버전 1\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n헤드라인: \"자면서 향기로워진다?\"\n본문: \"깨어날 때마다 숲 내음이 피어오르는 밤을 경험해보세요. \n르포 우드스트림은 천연 향료 100%로 당신의 밤을 재정의합니다. \n🌿 플라스틱 0%, 당신의 집도 지구도 행복하게.\"\n\nCTA: \"지금 만나보기 → \"\n해시태그: #천연향초 #에코라이프 #숲내음 #당신의밤을바꿀시간\n\n채널 최적화도: ★★★★★ (Instagram 최적화)\n예상 성과: CTR 2.8~3.2% | 추정 도달: 5,000~8,000명\n━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "search_trends": {
+        "keywords": {
+          "DTC 마케팅": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 88,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "AI 광고 생성": {
+            "current_score": 6,
+            "trend_pct": 600,
+            "trend": "급상승",
+            "peak": 98,
+            "data": [
+              0,
+              6,
+              7,
+              6,
+              0,
+              5,
+              5,
+              5,
+              0,
+              0,
+              5,
+              6
+            ]
+          },
+          "AdFlow  AI 마케팅 자동화 플랫폼": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 광고 생성",
+        "interest_score": 6,
+        "trend": "급상승",
+        "trend_pct": 600,
+        "summary": "'AI 광고 생성' 관심도 6/100 (급상승 +600%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-17"
+  },
+  {
+    "category": "AI 기술 도입의 모순과 인력 정책",
+    "pain_point": "AI 생산성 향상이 오히려 대규모 인원 감축으로 이어지는 모순적 상황 이해 부족",
+    "post_count": 1,
+    "urgency_score": 7,
+    "target_users": "스타트업 창업자, 개발자, 경영진",
+    "example_posts": [
+      9
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 도입 시 조직 구조 최적화와 인력 정책의 균형을 찾는 실용적 가이드 제공으로 시장 공백 해소",
+      "product": {
+        "name": "AIShift - AI 도입 시 인력 정책 최적화 플랫폼",
+        "tagline": "AI로 생산성을 높이면서도 인력을 지키는 방법을 찾다",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": "14",
+        "launch_ready_days": "30",
+        "first_revenue_days": "45"
+      },
+      "cost": {
+        "monthly_fixed": "월 150,000원",
+        "total_3months": "3개월 450,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원",
+        "month1": "50~100만원",
+        "month3": "200~400만원",
+        "month6": "600~1200만원"
+      },
+      "market": {
+        "competition": "낮음",
+        "differentiation": "AI 도입의 긍정적 효과와 인력 정책을 동시에 고려한 유일한 의사결정 지원 도구",
+        "seo_keywords": [
+          "AI 도입 전략",
+          "조직 구조 최적화",
+          "인력 정책",
+          "AI 시대 인재 관리",
+          "생산성 향상"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "AI 도입 시나리오 분석 시뮬레이터",
+          "직무별 영향도 분석 대시보드",
+          "인력 재배치 및 교육 플랜 생성기",
+          "실제 도입 사례 및 모범 사례 라이브러리",
+          "비용-효과 분석 리포트"
+        ],
+        "tech_stack": "React + Node.js + PostgreSQL + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "스타트업 커뮤니티 강연, HR 담당자 네트워크 타겟팅, 경영진 포럼 PR"
+      },
+      "risk": {
+        "main_risk": "기업 의사결정 사이클이 길어 초기 고객 확보까지 시간이 소요될 수 있음",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 5,
+        "competition_advantage": 9
+      },
+      "claude_prompt": "# AIShift - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**필요한 사람과 순간:**\n- 스타트업 창업자가 팀을 10명에서 50명으로 확장하면서 AI 도구 도입을 고려하는 순간\n- 기술 경영진이 ChatGPT/Claude 도입으로 개발 속도는 2배 올랐는데 \"그럼 인력은?\"이라는 압박을 받는 순간\n- HR담당자가 CEO에게 \"AI로 생산성 올리면서 누구를 어떻게 지킬지\"에 대한 구체적 플랜을 요구받는 순간\n\n**현재 대안의 부족함:**\n- AI 솔루션은 순수 생산성만 강조 (Notion AI, GitHub Copilot 등) → 조직 영향도 무시\n- HR 소프트웨어는 인력 관리만 관여 (Workday, SAP SuccessFactors) → AI와의 상호작용 이해 부족\n- 경영 컨설팅은 수백만 원대 비용 → 스타트업이 접근 불가능\n- 데이터 기반 시뮬레이션 도구 전무 → 추측만으로 결정\n\n**사용 후 느껴야 할 감정:**\n\"아, AI 도입이 자동 인원 감축을 의미하는 건 아니구나. 이렇게 하면 생산성도 올리고 팀도 키울 수 있겠네.\"\n→ 불안감 → 신뢰감 → 실행 능력\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\n[1단계] 랜딩 → 회원가입\n├─ 문제: \"AI 도입하면 우리 조직은?\"\n├─ CTA: \"1분만에 분석 시작\" (이메일 가입)\n└─ 심리: \"간단하면서도 효과적일 것 같은데?\"\n\n[2단계] 온보딩 - 조직 프로필 수집\n├─ Q1: 회사명, 산업, 현재 인원?\n├─ Q2: 어떤 AI를 도입할 계획?\n├─ Q3: 주요 업무 프로세스 3개?\n├─ Q4: 각 직무별 인원 구성?\n└─ 예상 소요시간: 3분 (진행률 바 표시)\n\n[3단계] 시나리오 선택\n├─ 보수적 (생산성 20% 향상)\n├─ 중도적 (생산성 40% 향상) ← 기본 권장\n├─ 적극적 (생산성 60% 향상)\n└─ 각 시나리오 선택 시 미리보기 표시\n\n[4단계] 분석 결과 대시보드 (메인 가치)\n├─ 직무별 영향도 매트릭스 (시각화)\n├─ 6개월/12개월 로드맵 (타임라인)\n├─ 인력 재배치 플랜 (구체적 액션)\n├─ 교육 커리큘럼 (역량별)\n├─ 비용-효과 분석 (투자수익률)\n└─ 모범 사례 매칭 (동종 회사 사례)\n\n[5단계] 상세 리포트 다운로드\n├─ PDF 생성 (exec summary 포함)\n├─ 이메일로 발송\n└─ 협업을 위해 공유 링크 생성\n\n[6단계] 추가 분석 도구 접근\n├─ \"What-if\" 시뮬레이터 (변수 조정)\n├─ 팀원 초대 (협업)\n└─ 업그레이드 유도 (유료 기능)\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 초기 데이터 수집 스키마\n\n```javascript\n// 온보딩 폼 구조\nconst onboardingSchema = {\n  // 기본 정보\n  organization: {\n    name: \"string (회사명)\",\n    industry: \"select (IT/금융/제조/마케팅/HR/기타)\",\n    size: \"select (1-10/11-50/51-200/201-500/500+)\",\n    yearFounded: \"number\",\n    description: \"textarea (회사 설명, 선택사항)\"\n  },\n  \n  // AI 도입 계획\n  aiAdoption: {\n    primaryTools: \"multiselect (ChatGPT/Claude/GitHub Copilot/Midjourney/Custom LLM)\",\n    targetDepartments: \"multiselect (개발/마케팅/영업/운영/고객지원/기타)\",\n    timeline: \"select (즉시/1개월/3개월/6개월)\",\n    budgetRange: \"select (1M/5M/10M/50M/100M+원)\"\n  },\n  \n  // 조직 구조 (직무별 인원)\n  departments: [\n    {\n      departmentName: \"string\",\n      roles: [\n        {\n          roleName: \"string (예: 백엔드 개발자)\",\n          count: \"number\",\n          avgSalary: \"number (연봉, KRW)\",\n          keyActivities: \"textarea (주요 업무)\",\n          aiImpactLevel: \"auto-detect or manual\" // 백엔드는 Copilot으로 40% 효율상승\n        }\n      ]\n    }\n  ],\n  \n  // 기대효과\n  expectations: {\n    primaryGoal: \"select (생산성/비용절감/품질향상/확장성)\",\n    headcountStrategy: \"select (유지/축소/확대)\",\n    retentionCommitment: \"boolean (인력 보호 의지)\"\n  }\n};\n```\n\n### 3.2 입력 방식\n\n**[Phase 1] 단계별 폼 (Progressive Disclosure)**\n```\n화면 1: 조직 기본정보 (회사명, 산업, 인원)\n화면 2: AI 도입 계획 (도구, 부서, 예산)\n화면 3: 부서별 직무 상세 (드래그앤드롭으로 추가)\n화면 4: 기대 효과 (목표, 전략)\n```\n\n**[Phase 2] 스마트 기본값**\n```\n✓ 산업 선택 → 해당 산업 평균 직무 구조 자동 제안\n✓ AI 도구 선택 → 각 직무별 생산성 향상도 기본값 제시\n✓ \"사전 작성된 템플릿\" 버튼 (스타트업/대기업/크리에이티브팀 등)\n✓ \"직전 회사 데이터 import\" (유료 기능 힌트)\n```\n\n### 3.3 예시 데이터\n\n```json\n{\n  \"exampleOrganization\": {\n    \"name\": \"AI파이 스타트업\",\n    \"industry\": \"IT\",\n    \"size\": \"11-50\",\n    \"departments\": [\n      {\n        \"departmentName\": \"개발팀\",\n        \"roles\": [\n          {\n            \"roleName\": \"백엔드 개발자\",\n            \"count\": 5,\n            \"avgSalary\": 70000000,\n            \"keyActivities\": \"API 개발, DB 설계, 배포\",\n            \"aiImpactLevel\": \"high\" // GitHub Copilot으로 40% 생산성↑\n          },\n          {\n            \"roleName\": \"프론트엔드 개발자\",\n            \"count\": 3,\n            \"avgSalary\": 60000000,\n            \"keyActivities\": \"UI 개발, 성능 최적화\",\n            \"aiImpactLevel\": \"medium\" // Copilot + Figma AI로 30% ↑\n          }\n        ]\n      },\n      {\n        \"departmentName\": \"마케팅팀\",\n        \"roles\": [\n          {\n            \"roleName\": \"콘텐츠 마케터\",\n            \"count\": 2,\n            \"avgSalary\": 40000000,\n            \"keyActivities\": \"블로그, SNS, 이메일 작성\",\n            \"aiImpactLevel\": \"high\" // ChatGPT로 50% 생산성↑\n          }\n        ]\n      }\n    ]\n  }\n}\n```\n\n---\n\n## [4. 출력 설계]\n\n### 4.1 핵심 출력: 대시보드 (사용자가 \"오, 이게 다르네\"라고 느끼는",
+      "search_trends": {
+        "keywords": {
+          "AI 도입 전략": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 92,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "조직 구조 최적화": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "AIShift  AI 도입 시 인력 정책 최적화 플랫폼": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 도입 전략",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'AI 도입 전략' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-17"
+  },
+  {
+    "category": "AI 브라우저 자동화 기술",
+    "pain_point": "로컬 실행 가능하면서도 고도의 AI 기능을 갖춘 브라우저 자동화 도구 부재",
+    "post_count": 1,
+    "urgency_score": 7,
+    "target_users": "개발자, 자동화 엔지니어",
+    "example_posts": [
+      2
+    ],
+    "business_analysis": {
+      "build_decision": "APP_PROGRAM",
+      "build_reason": "로컬 실행 가능한 데스크톱 앱으로 엔터프라이즈급 고객 확보 가능",
+      "product": {
+        "name": "LocalBrain Browser",
+        "tagline": "로컬 LLM 기반 지능형 브라우저 자동화 플랫폼",
+        "product_type": "데스크톱 앱"
+      },
+      "time": {
+        "mvp_days": 21,
+        "launch_ready_days": 45,
+        "first_revenue_days": 60
+      },
+      "cost": {
+        "monthly_fixed": "월 300,000원",
+        "total_3months": "3개월 900,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 49,900원(개발자) / 월 199,900원(기업)",
+        "month1": "100~300만원",
+        "month3": "500~1500만원",
+        "month6": "2000~5000만원"
+      },
+      "market": {
+        "competition": "낮음",
+        "differentiation": "온프레미스 LLM 통합으로 데이터 보안 걱정 없이 고도의 AI 자동화 가능",
+        "seo_keywords": [
+          "로컬 AI 브라우저 자동화",
+          "온프레미스 RPA",
+          "개발자용 자동화 도구",
+          "Playwright AI",
+          "로컬 LLM 자동화"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "Python/JavaScript 기반 스크립트 레코딩 및 재생",
+          "로컬 LLM(Ollama/LM Studio) 연동",
+          "시각적 요소 AI 인식 및 상호작용",
+          "API 기반 워크플로우 자동화"
+        ],
+        "tech_stack": "Python + Electron + Ollama + Playwright + SQLite",
+        "difficulty": "상",
+        "quick_traffic": "GitHub 오픈소스 버전 배포 후 프리미엄 기능 모니타이징"
+      },
+      "risk": {
+        "main_risk": "LLM 로컬 실행 시스템 리소스 최적화 어려움 및 사용자 경험 편의성 확보 필요",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 9,
+        "build_ease": 5,
+        "revenue_speed": 7,
+        "competition_advantage": 9
+      },
+      "claude_prompt": "# LocalBrain Browser - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**현재의 문제점:**\n- Selenium, Playwright 같은 기존 자동화 도구는 단순 반복 작업만 가능 → 동적 변화에 약함\n- UiPath, Blue Prism은 클라우드 기반이라 민감한 데이터 자동화에 부적합 → 규제 산업(금융, 의료)에서 사용 불가\n- ChatGPT API 연동 도구들은 매번 외부 서버에 스크린샷을 전송 → 기밀 유지 불가능\n- 로컬 LLM(Ollama)은 강력하지만 이를 브라우저 자동화에 활용할 UI/UX가 전무\n\n**타겟 사용자의 순간:**\n- 금융사 개발자가 매일 3시간 수작업으로 하는 계좌 이체 자동화 → LocalBrain으로 10분 스크립트 작성\n- 보안팀이 \"LLM을 써야 하는데 데이터가 나갈 수 없다\"는 딜레마 → 온프레미스 해결\n- 자동화 엔지니어가 \"AI가 이 버튼을 찾아줄 수 있나?\"라고 생각 → \"가능합니다\"라고 대답\n\n**사용 후 느껴야 할 감정:**\n- \"드디어 내 데이터가 내 컴퓨터 안에만 있으면서도 AI 수준의 자동화가 된다\"\n- \"이전에는 불가능했던 동적 시나리오를 이제 쉽게 자동화한다\"\n- \"보안팀이 승인해준 첫 번째 AI 자동화 도구다\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Step 1: 온보딩 (2분)**\n- 앱 실행 → \"Ollama 연결\" 팝업 (자동 감지 또는 수동 입력: localhost:11434)\n- Ollama 미설치 시 → \"지금 설치하기\" 버튼으로 공식 사이트 연결\n- 모델 선택 (기본값: llama2, mistral, neural-chat 중 선택)\n\n**Step 2: 첫 자동화 스크립트 생성 (5분)**\n- 좌측 패널: \"새 워크플로우\" 버튼 클릭\n- 우측 화면: 데모 웹사이트(https://example-automation-target.com) 자동 로드\n- 녹화 모드 활성화 → 사용자가 3-4개 클릭/입력 수행\n- \"AI 패턴 인식\" 버튼 → LLM이 의도 분석 (\"로그인 → 검색 → 결과 저장\")\n\n**Step 3: 자동화 실행 (1분)**\n- 생성된 워크플로우 코드 검토 (자동 생성)\n- \"재생\" 버튼 → 실시간 브라우저 창에서 자동 실행\n- 결과 저장 (JSON/CSV) → 대시보드에 기록\n\n**Step 4: 고급 설정 (선택)**\n- 조건부 분기 추가 (\"금액 > 1000이면 승인 메일 발송\")\n- 스케줄링 (매일 오전 9시 실행)\n- API 엔드포인트 생성 (외부 시스템과 연동)\n\n**전체 시간: 초기 30분 → 반복 작업 1분**\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 녹화 단계에서의 입력\n**형식:**\n```\n- 마우스 클릭 (자동 감지)\n- 텍스트 입력 (자동 감지)\n- 키보드 단축키 (Ctrl+C, Enter 등)\n- 대기 시간 (자동 감지: 페이지 로드 완료까지)\n- 조건 분기 (수동 추가)\n```\n\n**기본값 & 예시:**\n```json\n{\n  \"action\": \"click\",\n  \"selector\": \".login-button\",\n  \"waitTime\": 2000,\n  \"description\": \"로그인 버튼 클릭\"\n}\n```\n\n### 3.2 LLM 프롬프트 입력\n**형식:** 자연어 지시사항\n```\n입력 예시:\n- \"LinkedIn에서 'Python Developer' 직무의 채용 공고 URL 5개를 찾고 CSV 저장\"\n- \"매일 아침 신문사 메인페이지에서 정치면 기사 제목 10개를 이메일로 전송\"\n- \"쿠팡에서 '무선 이어폰' 검색 후 가격순으로 정렬해서 상위 20개 상품명+가격 저장\"\n```\n\n**기본값:**\n- 언어: 한글\n- 자동 재시도: 3회\n- 타임아웃: 30초\n- 스크린샷 캡처: ON (AI 인식용)\n\n### 3.3 API 워크플로우 입력\n```json\n{\n  \"trigger\": \"http_request\",\n  \"triggerUrl\": \"/api/start-automation\",\n  \"requestBody\": {\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"searchKeyword\": \"string\"\n  },\n  \"steps\": [\n    {\n      \"type\": \"navigate\",\n      \"url\": \"https://target-site.com\"\n    },\n    {\n      \"type\": \"ai_instruction\",\n      \"instruction\": \"{{requestBody.username}}을 입력하고 로그인해\"\n    }\n  ]\n}\n```\n\n---\n\n## [4. 출력 설계]\n\n### 4.1 \"이게 다르다\"고 느끼는 출력\n\n**기존 도구 (Selenium):**\n```\n[PASS] test_login\n[FAIL] test_search (타임아웃)\n실패 이유: 불명\n```\n\n**LocalBrain:**\n```\n✅ 로그인 성공 (2.3초)\n   ├─ 이메일 입력 감지\n   ├─ 비밀번호 입력 감지\n   └─ \"로그인\" 버튼 클릭 (신뢰도 98%)\n\n❌ 검색 실패 - AI 분석\n   └─ 원인: 검색창이 \"display: none\"이므로 보이지 않음\n   └─ 해결책: JavaScript로 강제 표시 또는 메뉴에서 검색 접근\n```\n\n### 4.2 각 결과물 설명\n\n**A. 실행 로그 (Timeline View)**\n```\n09:15:23 - 페이지 로드 (2.1초)\n09:15:25 - AI 인식: 로그인 폼 감지 (신뢰도 99%)\n09:15:26 - 이메일 입력 (user@example.com)\n09:15:27 - 비밀번호 입력 (****)\n09:15:28 - 로그인 버튼 클릭\n09:15:31 - 리다이렉트 감지 → 성공\n09:15:32 - 대시보드 로드 (1.2초)\n```\n\n**B. 스크린샷 어노테이션**\n```\n- 감지된 요소를 박스로 표시 (빨강 = 클릭, 파랑 = 입력, 초록 = 성공)\n- 마우스오버 시 요소의 HTML 경로 표시\n- AI 신뢰도 점수 (0-100%)\n```\n\n**C. 구조화된 데이터 추출**\n```json\n{\n  \"status\": \"success\",\n  \"executionTime\": 8.4,\n  \"extractedData\": [\n    {\n      \"title\": \"상품명 1\",\n      \"price\": 29900,\n      \"rating\": 4.8,\n      \"extractedBy\": \"ai_vision\"\n    }\n  ],\n  \"nextAction\": \"save_to_csv\"\n}\n```\n\n### 4.3 복사/저장 UX\n\n**한 클릭 저장:**\n- 결과 영역 우측상단 \"⬇️ 저장\" 버튼\n  - CSV 다운로드\n  - JSON 복사 (클립보드)\n  - API로 전송 (설정된 엔드포인트)\n  ",
+      "search_trends": {
+        "keywords": {
+          "로컬 AI 브라우저 자동화": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "온프레미스 RPA": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "LocalBrain Browser": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "로컬 AI 브라우저 자동화",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'로컬 AI 브라우저 자동화' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-17"
   }
 ]
