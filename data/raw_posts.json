@@ -538,5 +538,101 @@
     "comments": 0,
     "date": "2026-03-18",
     "language": "en"
+  },
+  {
+    "id": "47430736",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: How are you protecting yourself from skill atrophy?",
+    "content": "I’m interested in how people working in tech are avoiding skill atrophy in this LLM age?<p>We’ve all seen both sides of the argument spectrum, with “Let them atrophy, LLMs are the future, just look at the abacus!” to “I don’t use LLMs, they make mistakes and get in the way”. But the reality for many is that LLMs give a real performance boost and take on many tasks, even if they do make mistakes and need babysitting.<p>I fall on the side of caution in letting skills fall behind, there are too man",
+    "url": "https://news.ycombinator.com/item?id=47430736",
+    "score": 3,
+    "comments": 4,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "47430475",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: How to Evaluate IP Dataset?",
+    "content": "I&#x27;ve been researching solutions for cost effective method to enrich millions of IPs per day (only need country, city, ASN), and I came across ip-api.com.<p>The service is mentioned in a few random Reddit threads as cost effective option, but I cannot find any discussions about accuracy of data.<p>How would one even go about verifying it?<p>For context, I am paying at the moment a few thousand&#x2F;per month to another provider for IP data. I am not really using this data for anything other ",
+    "url": "https://news.ycombinator.com/item?id=47430475",
+    "score": 1,
+    "comments": 4,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "47429510",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Can we please stop with the posts about Claude outages?",
+    "content": "Yes, I get it, you&#x27;re impacted and it sucks. But given how frequently it occurs, these posts are starting to feel very spam-like. HN is not your favorite tool&#x27;s status page, and in fact Claude has one already (even if it doesn&#x27;t update as immediately as you&#x27;d like). I much prefer interesting discussions under Ask HN than yet another status question with a chorus of me-toos. And yes, I recognize this meta-rant might be one as well. Thank you!",
+    "url": "https://news.ycombinator.com/item?id=47429510",
+    "score": 4,
+    "comments": 4,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "47426577",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: How is your company managing internal AI agents?",
+    "content": "We&#x27;re a small team researching how companies handle the operational side of internal AI agents -- the ones you&#x27;ve built for finance, ops, or marketing workflows. Not the off-the-shelf SaaS tools, but the custom agents your engineering team shipped.\nSpecific things we&#x27;re curious about:<p>How many agents are running internally that you know of?\nWho manages them day-to-day -- engineering or the business team that uses them?\nHow do you track what they cost (LLM API fees, compute)?\nIf ",
+    "url": "https://news.ycombinator.com/item?id=47426577",
+    "score": 2,
+    "comments": 0,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "47428505",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Does Window's \"Set Time Automatically\" feature require the correct time?",
+    "content": "I test builds using a Windows VM. It&#x27;s often off for weeks at a time. When I boot up, the time is usually stale and any HTTPS&#x2F;TLS request won&#x27;t work (by TLS design).<p>However, the Windows &quot;Set Time Automatically&quot; feature never works for me, no matter how often I toggle it.<p>Today I had a hunch: &quot;Set Time Automatically&quot; calls a server over TLS, so also doesn&#x27;t work if the time is incorrect. To check I set the time to a few minutes off: close enough for HT",
+    "url": "https://news.ycombinator.com/item?id=47428505",
+    "score": 2,
+    "comments": 0,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "47428060",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Show HN: I got tired of print(x.shape) so I built runtime type hints for Python",
+    "content": "As a beginner learning to build ML models, I found it annoying to have to keep printing tensor shapes every other line, having to step through the debugger to check where did I mess up the shapes again.<p>So I built Trickle, it takes the data that flows through your code, caches the types and display them inline (as if you have type annotations).<p>The idea is: &quot;Let types trickle from runtime into your IDE&quot;. You get types in Python without having the write them manually.<p>It works by ",
+    "url": "https://news.ycombinator.com/item?id=47428060",
+    "score": 6,
+    "comments": 1,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "devto_3366698",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "Tired of bloated boilerplates? I built a minimal Express + React starter",
+    "content": "Hey devs 👋  I’ve been working on a small starter project and I’d really love to get your feedback.  👉...",
+    "url": "https://dev.to/rocambille/tired-of-bloated-boilerplates-i-built-a-minimal-express-react-starter-5hkm",
+    "score": 0,
+    "comments": 0,
+    "date": "2026-03-19",
+    "language": "en"
+  },
+  {
+    "id": "devto_3369192",
+    "source": "devto",
+    "community": "Dev.to",
+    "title": "I got tired of tab chaos, so I built my own browser",
+    "content": "I'm a consultant. On any given day I have Gmail open for three different accounts, GitHub, Jira,...",
+    "url": "https://dev.to/superentwickler/i-got-tired-of-tab-chaos-so-i-built-my-own-browser-bel",
+    "score": 0,
+    "comments": 0,
+    "date": "2026-03-19",
+    "language": "en"
   }
 ]

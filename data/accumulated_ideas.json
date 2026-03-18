@@ -3232,5 +3232,437 @@
     },
     "is_new": true,
     "date": "2026-03-18"
+  },
+  {
+    "category": "AI 에이전트 프로덕션화",
+    "pain_point": "AI 에이전트를 실제 서비스에 배포할 때 결제, 데이터 무결성, 프라이버시 등 운영 레이어의 복잡성이 높음",
+    "post_count": 5,
+    "urgency_score": 9,
+    "target_users": "AI 에이전트 개발자, 스타트업 창업자",
+    "example_posts": [
+      1,
+      3,
+      5,
+      16
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 에이전트 운영의 핵심 복잡성(결제, 데이터 무결성, 프라이버시)을 플랫폼으로 해결하는 SaaS가 가장 효과적",
+      "product": {
+        "name": "AgentOps",
+        "tagline": "AI 에이전트 배포·운영의 모든 복잡성을 해결하는 통합 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 30,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 150만원",
+        "total_3months": "3개월 450만원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원~99,900원",
+        "month1": "50~150만원",
+        "month3": "200~600만원",
+        "month6": "800~2500만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "AI 에이전트 운영 전문화로 개발자 경험 극대화 및 엔터프라이즈급 컴플라이언스 자동화",
+        "seo_keywords": [
+          "AI 에이전트 배포",
+          "AI 에이전트 모니터링",
+          "결제 자동화",
+          "데이터 무결성",
+          "AI 프라이버시"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "에이전트 배포 대시보드",
+          "결제/빌링 통합 (Stripe)",
+          "데이터 암호화 및 백업",
+          "감사 로그 및 접근 제어",
+          "기본 모니터링"
+        ],
+        "tech_stack": "Next.js + PostgreSQL + Stripe API + Docker + AWS",
+        "difficulty": "상",
+        "quick_traffic": "Product Hunt, 개발자 커뮤니티(Reddit, Dev.to), AI 에이전트 포럼, 직접 아웃리치"
+      },
+      "risk": {
+        "main_risk": "규제(PCI-DSS, GDPR 등) 준수 비용이 높고 엔터프라이즈 신뢰 확보에 시간이 오래 걸림",
+        "risk_level": "높음"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 5,
+        "revenue_speed": 6,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# AgentOps - 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n### 사용자 상황\n- **누가**: AI 에이전트 개발자, 초기 스타트업 창업자 (1-10명 팀)\n- **언제**: 에이전트를 로컬 환경에서 프로토타입 완성 후, 실제 사용자에게 서비스하려는 순간\n- **어떤 고통**: \n  - Stripe 결제 연동에 3주 이상 소요\n  - 데이터 보안/암호화 구현이 높은 진입장벽 (GDPR, PCI-DSS 이해 필요)\n  - 에이전트 오류 발생 시 원인 파악이 불가능 (감사 로그 부재)\n  - 여러 SaaS를 조합 (AWS + Auth0 + Stripe + Datadog) → 비용증가, 관리복잡도 급증\n\n### 현재 대안의 부족함\n- **AWS/Azure 직접 구축**: 운영 복잡도 높음, DevOps 전문성 필요\n- **일반 SaaS 플랫폼 (Vercel, Railway)**: 결제·감사로그 미흡\n- **에이전트 프레임워크 (LangChain, Crew)**: 배포/운영 기능 전무\n- **범용 모니터링 (Datadog, New Relic)**: AI 에이전트 특화 메트릭 부재\n\n### 사용 후 느껴야 할 감정\n- **\"오늘 배포했는데, 결제·보안·감시가 자동으로 다 됐다\"** → 안심감\n- **\"이전처럼 DevOps 걱정하지 않아도 된다\"** → 자유로움\n- **\"에이전트 버그도 즉시 찾을 수 있다\"** → 신뢰감\n\n---\n\n## [2. 사용자 경험 흐름]\n\n### 1단계: 가입 및 온보딩 (3분)\n```\n방문 → 이메일 가입 → 이메일 인증 → 팀명/회사명 입력 → Stripe 연결 (선택)\n```\n- **핵심**: \"결제 없이 먼저 써봐도 좋아\"라는 신뢰 형성\n\n### 2단계: 첫 에이전트 배포 (10분)\n```\n\"배포 시작\" 클릭 → Git 연결 (GitHub/GitLab) 또는 Docker 이미지 업로드\n→ 환경변수 설정 (API_KEY, DB_URL 등)\n→ \"배포\" 버튼 → 배포 상태 실시간 모니터링 (로그 스트림)\n→ 배포 완료 → 퍼블릭 URL 획득\n```\n\n### 3단계: 기본 설정 완료 (5분)\n```\n대시보드 진입 → \"결제 설정\" 클릭 → Stripe 카드 등록 (또는 스킵)\n→ \"팀 초대\" → 동료 이메일 추가\n→ \"감사 로그\" 확인 (배포 이력 자동 기록)\n```\n\n### 4단계: 운영 (지속)\n```\n에이전트 실행 중 → 자동 모니터링 (응답시간, 에러율, 토큰 소비량)\n→ 월말 자동 청구서 생성 → 대시보드 메트릭 분석\n→ 팀원과 감시 공유\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. 가입 입력\n```\n[필수]\n- 이메일: user@company.com\n- 비밀번호: ••••••••\n- 팀명: \"TechStart AI Lab\"\n\n[선택]\n- 회사 규모: 1-5명 / 6-20명 / 21-100명 (요금제 추천용)\n- 사용 언어: Python / Node.js / Go / Java\n```\n\n### 3-2. 에이전트 배포 입력\n```\n[필수]\n- 에이전트명: \"customer-support-agent\"\n- 배포 방식 선택:\n  ① Git 레포지토리 (https://github.com/user/repo)\n  ② Docker 이미지 (gcr.io/project/image:v1.0)\n  \n[조건부 필수]\n- Git 선택 시:\n  - 브랜치: main (기본값)\n  - 빌드 명령어: \"npm run build\" (자동감지 시도)\n  - 시작 명령어: \"npm start\" (자동감지 시도)\n\n[선택]\n- 환경변수 (key=value 쌍):\n  OPENAI_API_KEY=sk-...\n  DATABASE_URL=postgresql://...\n  \n- 스케일 설정:\n  - 메모리: 512MB (기본) / 1GB / 2GB / 4GB\n  - 복제 인스턴스: 1개 (기본) ~ 5개\n  \n- 헬스체크 엔드포인트: /health (기본값)\n```\n\n### 3-3. 결제 설정 입력\n```\n[필수 (결제 활성화 시)]\n- Stripe API Key (publishable + secret)\n  또는 \"Stripe 계정 연결\" (OAuth)\n\n[필수 (사용자 결제)]\n- 카드 번호 / 만료일 / CVC\n  → Stripe Elements로 수집 (PCI-DSS 컴플라이언스)\n  \n[선택]\n- 청구 주소\n- 청구 이메일 (기본값: 가입 이메일)\n- 결제 방법 저장 여부\n```\n\n### 3-4. 감사 로그 필터 입력\n```\n[선택]\n- 날짜 범위: 2024-01-01 ~ 2024-12-31 (달력 픽커)\n- 이벤트 타입: 배포 / 결제 / 사용자 초대 / API 호출\n- 사용자: 모두 / 특정 팀원\n- 상태: 모두 / 성공 / 실패\n```\n\n---\n\n## [4. 출력 설계]\n\n### 4-1. 배포 완료 후 출력\n```\n┌─────────────────────────────────────────┐\n│ ✅ 배포 완료!                            │\n├─────────────────────────────────────────┤\n│ 에이전트명: customer-support-agent      │\n│ 상태: 🟢 실행 중                        │\n│ 퍼블릭 URL: https://agent.agentops.io/ │\n│           customer-support-agent       │\n│                                         │\n│ 배포 시간: 2m 34s                       │\n│ 로그: [보기]                            │\n│                                         │\n│ 다음 단계:                              │\n│ 1️⃣ cURL로 테스트 [복사]                 │\n│ 2️⃣ API 문서 보기                        │\n│ 3️⃣ 모니터링 대시보드 열기               │\n└─────────────────────────────────────────┘\n\n[복사할 cURL 예제]\ncurl -X POST https://agent.agentops.io/customer-support-agent \\\n  -H \"Authorization: Bearer $AGENT_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"주문 상태는?\", \"user_id\": \"user123\"}'\n```\n\n### 4-2. 모니터링 대시보드 출력\n```\n┌─────────────────────────────────────────────────┐\n│ 📊 customer-support-agent - 실시간 메트릭      │\n├──────────────────────┬──────────────────────────┤\n│ 응답시간 (p95):      │ 1,234ms ↓ 5%           │\n│ 에러율:              │ 0.3% ✅                 │\n│ 월 토큰 소비:        │ 1.2M / 10M (12%)       │\n│ 활성 요청:           │ 3개                     │\n│ 월 API 호출:         │ 45,892건                │\n└──────────────────────┴──────────────────────────┘\n\n[📈 차트]\n응답시간 추이 (최근 7일)\n시간대별 요청 분포\n상위 에",
+      "search_trends": {
+        "keywords": {
+          "AI 에이전트 배포": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0
+            ]
+          },
+          "AI 에이전트 모니터링": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "AgentOps": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 에이전트 배포",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'AI 에이전트 배포' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-19"
+  },
+  {
+    "category": "AI 에이전트 안정성 및 신뢰성",
+    "pain_point": "AI 에이전트의 쓰기 보장 실패, 외부 API 연동 실패 등 프로덕션 환경에서의 데이터 무결성 문제",
+    "post_count": 2,
+    "urgency_score": 9,
+    "target_users": "엔터프라이즈 개발팀, AI 에이전트 운영 담당자",
+    "example_posts": [
+      2,
+      16
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 에이전트의 데이터 무결성 문제를 모니터링·검증하는 전문 솔루션으로 높은 진입장벽과 지속적 구독 수익 창출 가능",
+      "product": {
+        "name": "AgentGuard",
+        "tagline": "AI 에이전트의 쓰기 실패와 API 연동 오류를 실시간 감지·복구하는 데이터 무결성 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 28,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 80만원",
+        "total_3months": "3개월 240만원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원~99,900원",
+        "month1": "50~120만원",
+        "month3": "200~450만원",
+        "month6": "500~1200만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "AI 에이전트 특화 모니터링으로 일반 APM과 차별화되며 엔터프라이즈 데이터 보호에 특화",
+        "seo_keywords": [
+          "AI 에이전트 모니터링",
+          "데이터 무결성 검증",
+          "API 연동 실패 감지",
+          "AI 시스템 안정성"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "실시간 쓰기 실패 감지 대시보드",
+          "API 연동 오류 추적 및 알림",
+          "자동 재시도 및 복구 로직",
+          "감사 로그 및 보고서"
+        ],
+        "tech_stack": "React + Node.js + PostgreSQL + Redis + Docker + AWS",
+        "difficulty": "상",
+        "quick_traffic": "DevOps/AI 개발자 커뮤니티(Reddit, HN), AI 에이전트 포럼, 기술 블로그 마케팅"
+      },
+      "risk": {
+        "main_risk": "엔터프라이즈 영업 사이클이 길고 기술 검증에 시간이 필요하며 초기 고객 확보가 어려울 수 있음",
+        "risk_level": "높음"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 5,
+        "revenue_speed": 5,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# AgentGuard 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페르소나와 순간:**\n- 페르소나: 스타트업 AI팀 리드(박정훈, 35), 엔터프라이즈 DevOps 엔지니어(김순미, 42)\n- 순간1: 밤 11시, Slack 알림 \"Production AI Agent가 6시간째 데이터를 쓰지 못함\"\n- 순간2: CEO 회의 1시간 전, 고객 대시보드 데이터가 24시간 이상 업데이트 안 됨\n- 순간3: 분기 결산일, \"어떤 트랜잭션이 실패했는지\" 정확히 알 수 없음\n\n**현재 대안의 부족함:**\n- New Relic/Datadog: 일반 APM으로 AI 에이전트 특화 감지 불가능 → 증상만 봄, 원인 모름\n- 직접 로깅: 개발자가 모든 에러 핸들링을 수작업으로 구현 → 표준화 없음\n- Sentry: 애플리케이션 에러에 특화, 데이터 쓰기 실패 추적 불가\n- AWS CloudWatch: 로그만 쌓임, 실시간 액션 없음\n\n**사용 후 느껴야 할 감정:**\n- \"우리도 메타나 구글처럼 프로덕션 안정성을 확보했다는 안도감\"\n- \"새벽 2시에 일어나지 않아도 된다는 편안함\"\n- \"데이터 손실의 책임을 추적할 수 있다는 확신\"\n- \"지난달 뭔가 깨졌는데 뭐였지?\" → \"여기 다 기록되어있다\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n### Phase 1: 30초 - 가입 및 첫 인상\n```\n1. 랜딩페이지 도착\n   └─ \"AI 에이전트 데이터 무결성을 2분 안에 확보하세요\"\n   └─ 큰 빨간 CTA: \"30초 무료 가입\"\n\n2. Google/GitHub OAuth 로그인\n   └─ 자동으로 조직명 입력 (이메일 도메인 기반)\n   └─ \"AgentGuard에 오신 것을 환영합니다, 박정훈님\"\n\n3. 온보딩 스킵 or 3단계 가이드\n   └─ 1단계: SDK 설치 코드 복사\n   └─ 2단계: 첫 API 키 생성\n   └─ 3단계: 샘플 에러 이벤트 생성 (테스트)\n```\n\n### Phase 2: 2분 - 첫 가치 경험\n```\n4. 대시보드 도착 (즉시 데이터 시각화)\n   └─ 실시간 에러율 게이지 (0-100%)\n   └─ \"지난 24시간: 12건 쓰기 실패 감지됨\" (카드)\n   └─ 마지막 5개 실패 이벤트 테이블\n   └─ 감정: \"아, 이렇게 명확하게 봐야 하는 거였구나\"\n\n5. 첫 번째 에러 상세 조회\n   └─ 클릭 → 모달 팝업\n   └─ 에러 원인: \"PostgreSQL Connection Timeout\"\n   └─ 시간: 2024-01-15 23:47:33 UTC\n   └─ 영향 범위: \"157개 레코드 쓰기 실패\"\n   └─ 자동 복구 상태: \"Retry #3 성공 (23:48:15)\"\n   └─ 감정: \"우리가 놓쳤던 부분이 다 여기 있다\"\n```\n\n### Phase 3: 10분 - 자신감 구축\n```\n6. 알림 설정 (3클릭)\n   └─ \"에러율 > 5% 발생 시 Slack #alerts로 알림\"\n   └─ \"일일 요약 보고서 매일 09:00 메일로 전송\"\n   └─ 감정: \"이제 자면서도 안심할 수 있다\"\n\n7. API 키 복사 & 개발자 문서 한눈에\n   └─ 코드 예시: Python/Node.js/Go 선택 가능\n   └─ Copy 버튼 1클릭 → Slack 공유 가능\n   └─ \"30초면 우리 AI 에이전트에 붙인다\"\n```\n\n### Phase 4: 30분 - 심화 활용 (유료 전환 포인트)\n```\n8. 감사 로그 필터링\n   └─ 날짜, API 상태, 에러 타입으로 필터\n   └─ CSV 다운로드 → CEO 보고용\n   └─ 감정: \"이 정도면 회사에서 계속 쓸 가치가 있다\"\n\n9. 자동 재시도 규칙 커스터마이징 (유료)\n   └─ \"5초 후 재시도, 최대 3회\"\n   └─ \"지수 백오프로 대기 시간 증가\"\n   └─ 감정: \"기술팀이 더 이상 수동 개입할 필요 없다\"\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 초기 온보딩 입력\n```json\n{\n  \"조직정보\": {\n    \"회사명\": \"string (자동 채움: 이메일 도메인)\",\n    \"팀명\": \"string (선택: 기본값 'Default Team')\",\n    \"AI_에이전트_타입\": \"dropdown\",\n    \"선택지\": [\n      \"LLM 기반 데이터 쓰기 (텍스트→DB)\",\n      \"멀티에이전트 오케스트레이션\",\n      \"RAG 시스템 (검색→DB 업데이트)\",\n      \"자동화 워크플로우 (RPA)\",\n      \"기타 (직접 입력)\"\n    ],\n    \"예시\": \"우리는 고객 피드백을 자동으로 분류해서 CRM에 저장함\"\n  },\n  \n  \"통합설정\": {\n    \"데이터베이스_타입\": \"dropdown\",\n    \"선택지\": [\"PostgreSQL\", \"MySQL\", \"MongoDB\", \"DynamoDB\", \"기타\"],\n    \"외부API\": \"multi_select\",\n    \"선택지\": [\n      \"Stripe/결제 API\",\n      \"Slack API\",\n      \"Google Sheets\",\n      \"Shopify\",\n      \"커스텀 API\"\n    ]\n  },\n  \n  \"기본값\": {\n    \"에러_감지_임계값\": \"에러율 > 5% (수정 가능)\",\n    \"재시도_정책\": \"지수 백오프, 최대 3회\",\n    \"로그_보관기간\": \"30일 (무료), 무제한 (유료)\"\n  }\n}\n```\n\n### 3.2 런타임 입력 (개발자가 SDK로 전송)\n```json\n{\n  \"이벤트\": {\n    \"event_type\": \"enum: 'write_failure' | 'api_error' | 'agent_timeout'\",\n    \"timestamp\": \"ISO 8601 (자동 수집)\",\n    \"agent_id\": \"string (필수: 어느 에이전트인가)\",\n    \"target_service\": \"string (PostgreSQL | Stripe | Custom)\",\n    \"error_details\": {\n      \"error_code\": \"string (500, TIMEOUT, NETWORK_ERROR)\",\n      \"error_message\": \"string (최대 500자)\",\n      \"failed_records_count\": \"integer\"\n    },\n    \"context\": {\n      \"user_id\": \"string (선택, 누가 트리거했나)\",\n      \"batch_id\": \"string (어떤 배치 작업인가)\",\n      \"retry_count\": \"integer (0 = 첫 시도)\"\n    },\n    \"metadata\": {\n      \"environment\": \"production | staging\",\n      \"request_id\": \"UUID (추적용)\"\n    }\n  },\n  \n  \"예시\": {\n    \"event_type\": \"write_failure\",\n    \"timestamp\": \"2024-01-15T23:47:33Z\",\n    \"agent_id\": \"customer-feedback-classifier-prod\",\n    \"target_service\": \"PostgreSQL\",\n    \"error_details\": {\n      \""
+    },
+    "is_new": true,
+    "date": "2026-03-19"
+  },
+  {
+    "category": "사이드 프로젝트 완성도 향상",
+    "pain_point": "인증, 결제, 배포 등 보일러플레이트 작업이 많아서 사이드 프로젝트가 중단되거나 완성되지 않음",
+    "post_count": 4,
+    "urgency_score": 8,
+    "target_users": "개발자, 사이드 프로젝트 빌더",
+    "example_posts": [
+      11,
+      12,
+      19,
+      20
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "개발자의 반복적인 보일러플레이트 작업을 자동화하여 사이드 프로젝트 완성 시간을 단축할 수 있는 명확한 니즈 존재",
+      "product": {
+        "name": "BoilerKit",
+        "tagline": "인증, 결제, 배포를 1분 안에 통합하는 개발자용 스캐폴딩 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 7,
+        "launch_ready_days": 14,
+        "first_revenue_days": 30
+      },
+      "cost": {
+        "monthly_fixed": "월 10,000원",
+        "total_3months": "3개월 30,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 9,900원",
+        "month1": "50~100만원",
+        "month3": "150~300만원",
+        "month6": "400~800만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "기술 스택별 커스터마이징된 템플릿과 자동 배포로 경쟁 솔루션 대비 설정 시간 90% 단축",
+        "seo_keywords": [
+          "보일러플레이트 생성기",
+          "개발자 스캐폴딩",
+          "인증 결제 배포 자동화",
+          "사이드 프로젝트 템플릿"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "주요 기술 스택별 코드 템플릿 라이브러리",
+          "인증/결제/배포 설정 자동 생성",
+          "생성된 코드 다운로드 및 깃허브 푸시 기능"
+        ],
+        "tech_stack": "Next.js + TypeScript + Vercel + PostgreSQL",
+        "difficulty": "중",
+        "quick_traffic": "개발자 커뮤니티(Reddit, Dev.to, 해커뉴스) 베타 론칭 및 제품 헌트 출시"
+      },
+      "risk": {
+        "main_risk": "유사한 오픈소스 템릿과 경쟁하며 유료화 전환이 어려울 수 있음",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 8,
+        "revenue_speed": 7,
+        "competition_advantage": 7
+      },
+      "claude_prompt": "# BoilerKit 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**상황: 개발자가 금요일 밤 새로운 아이디어를 떠올렸을 때**\n- 목표: 주말 48시간 안에 MVP를 출시하고 싶음\n- 현재 대안의 부족함:\n  - Firebase 콘솔: 인증, 호스팅, DB를 각각 설정 (15-30분)\n  - Stripe 대시보드: 결제 API 연동 코드 직접 작성 (30-45분)\n  - GitHub + Vercel: 배포 설정 (10-15분)\n  - 총 소요 시간: 55분 ~ 90분\n  - 그 사이 집중력 흩어지고 \"그냥 다음에...\"가 됨\n\n**사용 후 느껴야 할 감정:**\n- \"아, 이렇게 빠를 수가?\" (경이로움)\n- \"이 코드는 내가 수정할 수 있겠는데?\" (주도권 확보)\n- \"이제 기능 개발에만 집중할 수 있다\" (심리적 안정감)\n- \"다음 프로젝트도 빨리 시작해야겠다\" (반복 사용 의도)\n\n**타겟의 구체적 페인:**\n1. 사이드 프로젝트는 시간이 없는데, 환경 설정에 시간을 빼앗김\n2. 복잡한 설정이 자신감을 떨어뜨림 (\"이게 맞나?\")\n3. 나중에 리팩토링 할 때 보일러플레이트 코드 정리가 스트레스\n4. 여러 프로젝트를 할 때마다 같은 일을 반복\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\n1단계: 랜딩페이지 도착 (5초)\n   ↓ [CTA: \"프로젝트 시작하기\" 버튼]\n   \n2단계: 로그인/회원가입 (Google OAuth) (30초)\n   ↓ [이메일 검증 또는 즉시 입장]\n   \n3단계: 프로젝트 기본정보 입력 (1분)\n   ├─ 프로젝트명: \"my-awesome-app\"\n   ├─ 기술스택 선택: [Next.js] [React] [Node.js]\n   ├─ 기본기능 체크박스:\n   │  ☑ 사용자 인증 (이메일/비밀번호)\n   │  ☑ 결제 (Stripe)\n   │  ☑ 자동배포 (Vercel)\n   │  ☐ 이메일 발송\n   │  ☐ 파일 업로드\n   └─ 데이터베이스: [PostgreSQL] [MongoDB]\n   \n4단계: 커스터마이징 옵션 (30초)\n   ├─ 인증 방식: [JWT] [Session] [OAuth만]\n   ├─ 결제 통화: [USD] [KRW] [EUR]\n   ├─ 배포 환경: [Vercel] [자체 VPS]\n   └─ 색상 테마: [커스텀] [기본값]\n   \n5단계: 프리뷰 및 생성 대기 (2초)\n   ↓ [스핀 애니메이션 + 진행상황 텍스트]\n   └─ \"인증 템플릿 생성 중... (1/5)\"\n   \n6단계: 결과 제시 (즉시)\n   ├─ 생성된 코드 프리뷰 (트리 구조 + 구문강조)\n   ├─ [복사] [다운로드] [GitHub 푸시] 버튼\n   ├─ 다음 단계: \"10분 내 설정하기 가이드\"\n   └─ 설정 완료 후: GitHub Actions로 자동배포\n\n7단계: 자동배포 링크 제공 (5분 이내)\n   └─ \"✅ https://my-awesome-app.vercel.app 배포 완료\"\n```\n\n**핵심 체험 원칙:**\n- 매 단계마다 진행률 표시\n- 기본값으로 \"다음 버튼\" 누르기만 해도 작동\n- 고급 커스터마이징은 선택사항\n- 언제든 \"뒤로가기\" 가능\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. 입력 항목 분류\n\n**필수 입력 (Phase 1: 20초)**\n```\n[1] 프로젝트명\n    - 입력방식: 텍스트 필드 (자동 slug 생성)\n    - 유효성: 영문, 숫자, 하이픈만\n    - 실시간 피드백: \"my-awesome-app ✅\"\n    - 기본값: \"my-project-\" + 5자 랜덤\n    - 예시: \"notion-clone\", \"twitter-bot\", \"saas-dashboard\"\n    - 용도: GitHub 레포명, Vercel 프로젝트명\n\n[2] 주요 기술스택 (체크박스)\n    - 프론트엔드: [Next.js 13+] [React] [Vue.js]\n    - 백엔드: [Node.js + Express] [Serverless] [자체 구현]\n    - 데이터베이스: [PostgreSQL] [MongoDB] [Firebase]\n    - 용도: 코드 템플릿 세트 결정\n    - 기본값: [Next.js] + [Node.js] + [PostgreSQL]\n\n[3] 필요 기능 (체크박스 + 가중치)\n    - ☑ 사용자 인증 (필수도 높음)\n    - ☑ 결제 시스템 (Stripe 통합)\n    - ☑ 자동배포 (GitHub Actions + Vercel)\n    - ☐ 이메일 발송 (SendGrid/Resend)\n    - ☐ 파일 업로드 (S3/Cloudinary)\n    - ☐ 푸시알림 (OneSignal)\n    - 용도: 생성할 코드 모듈 선택\n```\n\n**선택 입력 (Phase 2: 30초)**\n```\n[4] 인증 상세옵션 (라디오버튼)\n    ○ 이메일/비밀번호만\n    ○ + Google OAuth\n    ○ + GitHub OAuth\n    ○ + 모두\n    - 기본값: 이메일/비밀번호\n    - 용도: auth.config.ts 생성\n\n[5] 결제 옵션 (라디오버튼)\n    ○ 구독형 (월정액)\n    ○ 일시불형 (1회 결제)\n    ○ 둘 다\n    - 필드: 기본 가격 입력 (USD)\n    - 기본값: $9.99/month\n    - 용도: Stripe 상품 메타데이터\n\n[6] 배포 환경 (라디오버튼)\n    ○ Vercel (자동)\n    ○ Docker + 자체 VPS\n    - 기본값: Vercel\n    - 용도: .github/workflows 및 vercel.json 생성\n\n[7] 데이터베이스 선택 (라디오버튼)\n    ○ PostgreSQL (권장)\n    ○ MongoDB\n    - 용도: schema.prisma 또는 mongoose model 생성\n\n[8] UI 프레임워크 (라디오버튼)\n    ○ Tailwind CSS (기본)\n    ○ Material-UI\n    ○ Shadcn/ui (권장)\n    - 용도: 컴포넌트 스타일 결정\n```\n\n**고급 입력 (Phase 3: 선택사항, 30초)**\n```\n[9] 환경변수 커스터마이징\n    - 입력방식: 키-값 에디터\n    - 기본값:\n      NEXT_PUBLIC_APP_NAME=My App\n      NEXT_PUBLIC_API_URL=http://localhost:3000\n      DATABASE_URL=postgresql://...\n      STRIPE_SECRET_KEY=sk_test_...\n      STRIPE_PUBLISHABLE_KEY=pk_test_...\n      GITHUB_TOKEN=ghp_...\n      VERCEL_TOKEN=vercel_...\n    - 저장방식: .env.example로 생성\n\n[10] 커스텀 색"
+    },
+    "is_new": true,
+    "date": "2026-03-19"
+  },
+  {
+    "category": "AI 시대 기술력 유지",
+    "pain_point": "LLM과 AI 에이전트 의존도 증가로 인한 개발자 기술력 저하 우려",
+    "post_count": 3,
+    "urgency_score": 7,
+    "target_users": "경력 개발자, 엔지니어",
+    "example_posts": [
+      13,
+      8,
+      9
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 의존도를 측정하고 기술력 유지를 위한 학습 경로를 제시하는 SaaS로 수익화 가능성이 높음",
+      "product": {
+        "name": "CodeForge - AI 의존도 탈출 플랫폼",
+        "tagline": "AI 없이 코딩하는 능력을 되찾는 개발자 수련장",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 30,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 80,000원",
+        "total_3months": "3개월 240,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 14,900원",
+        "month1": "50~120만원",
+        "month3": "200~450만원",
+        "month6": "600~1500만원"
+      },
+      "market": {
+        "competition": "낮음",
+        "differentiation": "AI 제약 환경에서 실전 코딩 능력을 측정하고 개인화된 학습 로드맵을 제공",
+        "seo_keywords": [
+          "AI 없이 코딩",
+          "개발자 기술력 유지",
+          "LLM 의존도 벗기",
+          "코딩 수련",
+          "개발자 스킬"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "AI 제약 코딩 챌린지(매주 업데이트)",
+          "개인 기술력 대시보드 및 진도 추적",
+          "동료 비교 및 리더보드",
+          "기술력 리포트 및 개선 제안"
+        ],
+        "tech_stack": "Next.js + PostgreSQL + Stripe + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "Reddit, Dev.to, HN에 '나도 AI 없이 코딩할 수 있나?' 주제 포스팅 및 프로그래밍 커뮤니티 공략"
+      },
+      "risk": {
+        "main_risk": "초기 사용자 확보 전까지 지속적인 챌린지 콘텐츠 제작 필요로 운영 부담이 크고 유저 이탈률 관리 어려움",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 6,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# CodeForge - AI 의존도 탈출 플랫폼 | 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n### 핵심 페인 포인트\n**누가**: 5년 이상 경력의 풀스택/백엔드 개발자, 스타트업 CTO, 기술 면접을 앞둔 엔지니어\n\n**언제**: \n- ChatGPT에 의존해 코딩하다가 갑자기 AI가 차단되는 상황\n- 손 코딩 면접에서 기본 알고리즘을 못 푸는 자신을 발견하는 순간\n- \"내가 정말 이 기술을 아는 걸까?\"라는 불안감이 드는 밤\n\n**현재 대안의 한계**:\n- LeetCode/HackerRank: AI 없이 풀어야 하지만, \"좋은 해답이 뭔지\" 모름. 피드백이 수치 기반만 존재\n- Udemy/코스플랫폼: 수동적 학습. 실제 기술력 측정 안 됨\n- 일반 코딩 부트캠프: 취업이 목표지, 기존 개발자의 \"재충전\"은 고려 안 함\n\n**사용 후 느껴야 할 감정**:\n> \"AI 없이도 나 혼자 문제를 풀 수 있겠다는 확신\"\n> \"내 약점이 명확해졌고, 이걸 어떻게 채울지 알겠다\"\n> \"동료들보다 내가 이 분야에서 더 강하다는 실감\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n### Phase 1: 온보딩 (3분)\n```\n[1] 랜딩페이지 방문\n    ↓\n[2] \"회원가입\" 클릭 (GitHub OAuth 또는 이메일)\n    ↓\n[3] 프로필 설정 (직급: Junior/Mid/Senior, 전문분야: Backend/Frontend/Fullstack)\n    ↓\n[4] \"이번 주 챌린지 시작하기\" 버튼\n```\n\n### Phase 2: 첫 챌린지 경험 (15분)\n```\n[5] 챌린지 화면 진입\n    - 문제 설명 (텍스트 + 그림 다이어그램)\n    - 미니 튜토리얼: \"AI 제약 환경이란?\" (30초 영상)\n    - IDE 에디터 (Google Monaco 기반)\n    - 제출 버튼\n    ↓\n[6] 코드 작성 및 제출\n    - 자동 테스트 케이스 실행 (1~3초)\n    - Pass/Fail 결과 표시\n    ↓\n[7] 결과 페이지\n    - 내 코드 vs 모범 해답 비교\n    - \"당신은 상위 35%입니다\" (리더보드 랭킹)\n    - 개선 제안 (AI가 생성한 코멘트)\n    - 대시보드 자동 업데이트\n```\n\n### Phase 3: 습관 형성 (매주)\n```\n[8] 대시보드 접속\n    - 월간 진도: 완료한 챌린지 수 / 총 챌린지 수 (프로그레스 바)\n    - 기술력 점수: 알고리즘(85점) / 설계(72점) / 성능(68점) (3개 영역)\n    - 약점: \"동적 계획법에서 정확도 낮음\" (상세 리포트로 연결)\n    ↓\n[9] 기술력 리포트 (월 1회)\n    - PDF 다운로드 가능\n    - \"이 달의 당신\" vs \"지난 달의 당신\"\n    - \"다음 달 추천 챌린지\" (자동 생성 로드맵)\n    ↓\n[10] 커뮤니티 (선택)\n    - 리더보드 확인: 팀 동료 추가, 순위 비교\n    - 디스커션: 각 챌린지별 \"어떻게 풀었어?\" 스레드\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. 회원가입 단계\n```\n입력 필드:\n├─ 이메일 (이메일 형식 검증)\n├─ 비밀번호 (8자 이상, 대소문자+숫자+특수문자)\n├─ 이름 (2~20자)\n├─ 직급 (라디오: Junior/Mid/Senior)\n│  └─ 기본값: Mid (가장 많은 사용자층)\n├─ 전문분야 (멀티셀렉트: Backend, Frontend, DevOps, Data, Mobile)\n│  └─ 기본값: Backend (타겟 우선순위)\n└─ 회사명 (선택, 텍스트)\n   └─ 기본값: \"\" (리더보드에서 회사별 순위 추적용)\n\n예시:\n```\njohn.dev@gmail.com\nSecure_Pass123!\nJohn Kim\nSenior\nBackend, DevOps 선택\nABC Tech\n\n```\n\n### 3-2. 챌린지 제출 단계\n```\n입력:\n├─ 프로그래밍 언어 선택 (드롭다운: Python/Java/JavaScript/C++/Go)\n│  └─ 기본값: 사용자 프로필에 저장한 선호 언어\n├─ 코드 에디터 (Monaco Editor)\n│  ├─ 문법 강조\n│  ├─ 자동완성 OFF (AI 제약)\n│  ├─ 라인 번호 표시\n│  └─ 기본값: 템플릿 코드 (함수 시그니처만 제공)\n├─ \"다시 시작\" 버튼 (코드 초기화)\n└─ \"제출\" 버튼\n\n예시 템플릿 (Python):\n```python\ndef solve(n: int, arr: List[int]) -> int:\n    # 여기에 코드를 작성하세요\n    pass\n```\n\n### 3-3. 개인화 설정\n```\n입력:\n├─ 학습 속도 (슬라이더: 천천히 ← → 빠르게)\n│  └─ 기본값: 중간\n├─ 주당 목표 챌린지 수 (스핀박스: 1~10)\n│  └─ 기본값: 3\n├─ 알림 설정 (체크박스)\n│  ├─ 주간 요약 이메일\n│  ├─ 새 챌린지 알림\n│  └─ 기본값: 모두 ON\n└─ 리더보드 공개/비공개 (토글)\n   └─ 기본값: 공개\n```\n\n---\n\n## [4. 출력 설계]\n\n### 4-1. 챌린지 제출 후 결과 화면\n```\n┌─────────────────────────────────────┐\n│  ✅ PASSED (3/3 테스트 케이스)      │\n├─────────────────────────────────────┤\n│                                     │\n│  성능 분석:                          │\n│  ├─ 실행 시간: 24ms (상위 45%)     │\n│  ├─ 메모리: 12MB (상위 62%)        │\n│  └─ 코드 길이: 156자 (평균)        │\n│                                     │\n│  난이도: ⭐⭐⭐⭐☆ (중상)          │\n│                                     │\n├─────────────────────────────────────┤\n│  💡 개선 제안:                       │\n│  \"당신의 해법은 정확하지만, O(n²)  │\n│  시간복잡도입니다. O(n log n)으로   │\n│  개선할 수 있습니다. 힌트: 정렬을  │\n│  활용해보세요.\"                    │\n│                                     │\n│  [모범 해답 보기] [더 배우기]       │\n├─────────────────────────────────────┤\n│  리더보드:                           │\n│  🥇 john_dev       24ms            │\n│  🥈 YOU (현재)     24ms            │\n│  🥉 alice_code     28ms            │\n│                "
+    },
+    "is_new": true,
+    "date": "2026-03-19"
+  },
+  {
+    "category": "개발 경험 개선 도구",
+    "pain_point": "반복적인 디버깅 작업(타입 체크, 탭 관리 등)과 보일러플레이트 코드 작성의 번거로움",
+    "post_count": 3,
+    "urgency_score": 6,
+    "target_users": "개발자, ML 엔지니어",
+    "example_posts": [
+      18,
+      19,
+      20
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "개발자의 반복적인 디버깅 작업 자동화에 특화된 독립적 SaaS 플랫폼으로 빠른 수익화 가능",
+      "product": {
+        "name": "DebugMate",
+        "tagline": "AI 기반 자동 타입 체크 및 보일러플레이트 코드 생성 도구",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 7,
+        "launch_ready_days": 14,
+        "first_revenue_days": 30
+      },
+      "cost": {
+        "monthly_fixed": "월 15,000원",
+        "total_3months": "3개월 45,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 9,900원",
+        "month1": "80000",
+        "month3": "500000",
+        "month6": "1500000"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "IDE 통합 + 실시간 타입 검증으로 개발 속도 30% 단축",
+        "seo_keywords": [
+          "AI 디버깅 도구",
+          "타입 체크 자동화",
+          "보일러플레이트 코드 생성",
+          "개발자 생산성 도구",
+          "파이썬 자동 완성"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "실시간 타입 오류 감지",
+          "보일러플레이트 코드 템플릿 라이브러리",
+          "VS Code 확장 플러그인"
+        ],
+        "tech_stack": "Python/FastAPI + React + PostgreSQL + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "개발자 커뮤니티(Reddit, HackerNews, 개발자 Slack) 공유 및 Product Hunt 출시"
+      },
+      "risk": {
+        "main_risk": "기존 IDE 내장 기능(TypeScript, Pylint)과의 경쟁 및 개발자의 낮은 전환 의도",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 6,
+        "build_ease": 8,
+        "revenue_speed": 7,
+        "competition_advantage": 7
+      },
+      "claude_prompt": "# DebugMate - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페르소나와 순간:**\n- 누구: Python/JavaScript 개발자, ML 엔지니어, 스타트업 개발팀\n- 언제: 새 프로젝트 시작 시, 기존 코드 수정 시, 타입 에러로 디버깅할 때\n- 상황: \"이 함수의 반환 타입이 뭐지?\", \"보일러플레이트 또 작성해야 하나?\", \"런타임 전에 타입 에러를 미리 잡고 싶은데...\"\n\n**현재 대안의 부족함:**\n- Pylint, MyPy: 설정이 복잡하고 실시간 피드백 없음, IDE 바깥에서 돌아야 함\n- Copilot/ChatGPT: 매번 질문을 작성해야 함, 컨텍스트를 직접 복사-붙여넣기\n- 기존 템플릿 라이브러리: 검색이 어렵고 프로젝트 구조에 맞지 않음\n- VS Code 기본 타입 체크: 느리고 설정 방법이 복잡함\n\n**사용 후 느껴야 할 감정:**\n> \"아, 이제 타입 에러를 작성하는 동시에 바로 잡을 수 있겠네. 템플릿도 한 클릭이고. 개발 속도가 정말 빨라졌다.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\n1단계: 가입 & 인증 (1분)\n  ├─ 이메일/GitHub OAuth 로그인\n  ├─ 무료 계정으로 자동 시작 (월 50회 분석 제한)\n  └─ 온보딩: 3가지 핵심 기능 투어\n\n2단계: IDE 연결 (2분)\n  ├─ VS Code 확장 설치 권유\n  ├─ API 키 발급 (자동)\n  ├─ 확장 내 API 키 입력\n  └─ \"연결됨\" 확인\n\n3단계: 첫 타입 검증 경험 (즉시)\n  ├─ Python 파일 작성: def add(a, b): return a + b\n  ├─ 마우스 hover → 타입 분석 팝업 (0.5초)\n  ├─ \"⚠️ add(a, b)의 반환타입이 불명확합니다\"\n  ├─ 한 클릭으로 -> \"-> Union[int, str, float]\" 추천\n  └─ 자동 수정 또는 수동 승인\n\n4단계: 보일러플레이트 조회 (30초)\n  ├─ 커맨드 팔레트: \"DebugMate: 템플릿 찾기\"\n  ├─ \"FastAPI User CRUD\" 검색\n  ├─ 5개 템플릿 리스트 → 선택\n  ├─ 미리보기 + 프로젝트 맞춤 설정\n  │  └─ Database: PostgreSQL / MongoDB 선택\n  │  └─ Auth: JWT / OAuth 선택\n  └─ 클릭 → 코드 자동 삽입 + 파일 생성\n\n5단계: 웹 대시보드 확인 (선택)\n  ├─ DebugMate.io 접속\n  ├─ 월간 분석: \"타입 에러 105개 감지 및 자동 수정\"\n  ├─ 상위 에러 패턴: \"[분석 결과] 함수 반환타입 누락이 68%\"\n  ├─ 팀 멤버 추가 (유료 기능)\n  └─ 사용량 그래프 + 구독 상태\n\n6단계: 구독 업그레이드 (필요시)\n  ├─ \"무료 할당량 초과했습니다\"\n  ├─ 모달: \"월 9,900원으로 무제한 업그레이드\"\n  ├─ 신용카드 결제 (또는 GitHub Sponsor)\n  └─ 즉시 활성화\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. VS Code 확장에서의 입력\n\n**타입 검증 입력:**\n- 자동 감지: 파일 저장 시 전체 코드 스캔\n- 수동 입력: 커맨드 팔레트 → \"현재 함수 분석\"\n- 선택 영역 분석: 블록 선택 후 우클릭 → \"DebugMate: 이 함수 타입 체크\"\n\n```json\n{\n  \"code\": \"def calculate(x, y, operation='add'):\\n    if operation == 'add':\\n        return x + y\\n    elif operation == 'multiply':\\n        return x * y\",\n  \"language\": \"python\",\n  \"file_path\": \"/project/utils.py\",\n  \"context\": {\n    \"project_type\": \"backend\",\n    \"python_version\": \"3.9\",\n    \"has_typing_imports\": false\n  }\n}\n```\n\n**보일러플레이트 검색 입력:**\n- 자유 검색: \"FastAPI user authentication\"\n- 필터: [프레임워크] [기능] [언어] [데이터베이스]\n- 커스터마이징: 프롬프트로 세부 옵션 지정\n\n```json\n{\n  \"query\": \"FastAPI user CRUD\",\n  \"filters\": {\n    \"framework\": \"FastAPI\",\n    \"language\": \"python\",\n    \"database\": \"PostgreSQL\",\n    \"auth\": \"JWT\",\n    \"include_tests\": true\n  },\n  \"user_project_structure\": {\n    \"uses_async\": true,\n    \"uses_pydantic_v2\": true\n  }\n}\n```\n\n### 3-2. 웹 대시보드에서의 입력\n\n- 팀 멤버 초대: 이메일 주소\n- 결제 정보: 신용카드 (Stripe 연동)\n- 피드백: textarea \"어떤 부분이 도움이 되었나요?\"\n\n---\n\n## [4. 출력 설계]\n\n### 4-1. VS Code 확장 - 타입 검증 결과\n\n**인라인 다이아그노스틱:**\n```\ndef add(a, b):  ← \"⚠️ Missing type hints\"\n    ^^^ 빨간 물결선 + Hover 정보\n\n━━━━━━━━━━━━━━━━━━━━━━━━\nDebugMate Analysis\n━━━━━━━━━━━━━━━━━━━━━━━━\n🔴 심각도: Warning\n📍 위치: Line 1, Column 0\n📝 문제: 함수 `add`의 매개변수와 반환값에 타입 힌트가 없습니다.\n\n💡 권장:\n  def add(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:\n\n✅ 빠른 수정 (클릭):\n  [자동 추가하기] [무시하기] [이 규칙 비활성화]\n```\n\n**사이드 패널 - 종합 리포트:**\n```\n📊 DebugMate - 현재 파일 분석\n\n파일: calculator.py\n상태: ⚠️ 4개 이슈 발견\n\n[타입 누락]\n  ├─ Line 5: def multiply(x, y) → Union[int, float] 추천\n  ├─ Line 12: result 변수 → int | None 추천\n  └─ Line 18: API response 타입 → dict[str, Any] 추천\n\n[타입 불일치]\n  └─ Line 8: 'str' ≠ 'int' 반환 (조건부 경로)\n\n[최적화]\n  └─ Line 15: Optional[int] 가능 → Union[int, None]으로 통일\n\n📈 개선율: 78% (이전: 22%)\n⏱️ 분석 소요: 120ms\n\n[전체 수정 적용] [다운로드 리포트]\n```\n\n### 4-2. VS Code 확장 - 보일러플레이트 삽입\n\n**검색 결과 UI:**\n```\n🔍 \"FastAPI CRUD\" 검색 결과 (8개)\n\n┌─ FastAPI User CRUD (JWT) ⭐⭐⭐⭐"
+    },
+    "is_new": true,
+    "date": "2026-03-19"
   }
 ]
