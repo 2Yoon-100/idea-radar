@@ -3664,5 +3664,572 @@
     },
     "is_new": true,
     "date": "2026-03-19"
+  },
+  {
+    "category": "AI/LLM 시대의 기술 역량 관리",
+    "pain_point": "LLM 등장으로 인한 개발자 스킬 저하 및 AI 도구 의존성 증가에 대한 우려",
+    "post_count": 3,
+    "urgency_score": 9,
+    "target_users": "테크 기업 개발자, 엔지니어",
+    "example_posts": [
+      1,
+      4,
+      11
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "개발자 커뮤니티의 강한 니즈와 구독 기반 수익화가 명확하며 B2B SaaS 모델로 높은 수익성 가능",
+      "product": {
+        "name": "SkillKeep",
+        "tagline": "AI 시대, 당신의 개발 기초 체력을 지키는 코딩 챌린지 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 14,
+        "launch_ready_days": 30,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 15만원",
+        "total_3months": "3개월 45만원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 9,900원",
+        "month1": "80~200만원",
+        "month3": "150~350만원",
+        "month6": "300~800만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "LLM 없이 풀어야 하는 펀더멘탈 기반 챌린지와 스킬 저하 방지 커리큘럼에 특화",
+        "seo_keywords": [
+          "AI 시대 개발자 역량",
+          "코딩 펀더멘탈",
+          "LLM 의존성 극복",
+          "개발자 스킬 관리"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "일일 코딩 챌린지 (AI 없이 풀기)",
+          "난이도별 문제 라이브러리",
+          "개발자 스킬 지수 대시보드",
+          "커뮤니티 풀이 공유 및 토론"
+        ],
+        "tech_stack": "React + Node.js + MongoDB + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "개발자 커뮤니티(Reddit, Dev.to, 테크 슬랙) 및 깃허브 스타 캠페인"
+      },
+      "risk": {
+        "main_risk": "사용자 참여율 저하 위험 및 프리미엄 전환율이 낮을 수 있음",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 8,
+        "revenue_speed": 7,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# SkillKeep 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페인 포인트:**\n- ChatGPT, Claude 등 LLM 등장으로 개발자들이 \"검색 → 복사 → 붙여넣기\" 패턴에 의존하게 됨\n- 기초 알고리즘, 자료구조, 언어 문법 이해도 저하\n- \"내가 정말 코딩할 수 있는가?\"라는 불안감과 커리어 위기감 증가\n- 기존 LeetCode, HackerRank는 단순 문제 풀기일 뿐, 스킬 저하 방지에 특화되지 않음\n- 커뮤니티 기반 피드백 부족으로 혼자만 푸는 느낌\n\n**사용 후 느껴야 할 감정:**\n- \"AI 없이 이 정도는 풀 수 있다\"는 자신감 회복\n- 매일 꾸준히 기초를 다지는 루틴의 쾌감\n- 다른 개발자들과 풀이를 비교하며 배우는 즐거움\n- 내 스킬 지수가 올라가는 것을 눈으로 보는 성취감\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Step 1: 진입 (0분)**\n- 랜딩 페이지: \"AI 없이 풀어야 하는 이유\" 명확히 설명\n- \"지금 바로 도전하기\" 또는 \"데모 보기\" CTA\n- 이메일 회원가입 (SSO: GitHub 지원)\n\n**Step 2: 온보딩 (2분)**\n- 선호 언어 선택 (Python, JavaScript, Java, C++ 등)\n- 현재 실력 레벨 자가 평가 (1~5)\n- \"당신의 목표는?\" 선택 (알고리즘 강화, 면접 준비, 기초 다지기)\n\n**Step 3: 대시보드 첫 진입 (즉시)**\n- 오늘의 챌린지: 1개 챌린지 자동 배정 (난이도 적응형)\n- 스킬 지수: 현재 레벨 시각화 (레이더 차트)\n- 이번 주 진행률: 캘린더 형식 스트릭\n- \"커뮤니티 풀이 보기\" 버튼\n\n**Step 4: 챌린지 풀기 (10~30분)**\n- 문제 제시 (텍스트, 예제 입력/출력)\n- 코드 에디터 (MonacoEditor 또는 CodeMirror)\n- 실시간 컴파일 & 테스트 케이스 통과 여부 표시\n- \"제출\" 시 자동 검증\n\n**Step 5: 풀이 제출 후 (즉시)**\n- \"✓ 통과!\" 또는 상세 피드백\n- 스킬 지수 +5~15점 획득 애니메이션\n- \"커뮤니티 풀이 비교하기\" 제안\n- \"내 풀이 공유하기\" 옵션\n\n**Step 6: 커뮤니티 페이지 (선택)**\n- 다른 사람들의 풀이 코드 읽기\n- \"이 풀이 좋아요\" 반응\n- \"더 나은 풀이가 있나요?\" 토론\n- 내 풀이 별도 의견 달기\n\n**Step 7: 주간 리뷰 (주 1회)**\n- 내 통과율, 스킬 지수 변화 그래프\n- \"가장 성장한 카테고리\" 하이라이트\n- \"다음 주 목표 설정\" 제안\n\n---\n\n## [3. 입력 설계]\n\n### 회원가입/로그인\n| 필드 | 타입 | 기본값 | 예시 |\n|------|------|--------|------|\n| 이메일 | email | - | dev@company.com |\n| 비밀번호 | password | - | ••••••• (6자 이상) |\n| 이름 | text | - | 김개발 |\n| GitHub (선택) | OAuth | - | github.com/user |\n\n### 온보딩\n| 필드 | 타입 | 기본값 | 예시 |\n|------|------|--------|------|\n| 선호 언어 | select | Python | [Python, JavaScript, Java, C++, Go] |\n| 실력 레벨 | radio | 2 | 1(입문) ~ 5(전문가) |\n| 목표 | multi-select | 모두 | [알고리즘, 면접, 기초, 시스템디자인] |\n| 주 목표 풀이 수 | number | 5 | 3~7 |\n\n### 챌린지 풀기\n| 필드 | 타입 | 입력 방식 | 예시 |\n|------|------|----------|------|\n| 코드 | textarea | MonacoEditor | `def solution(n):\\n    return n * 2` |\n| 테스트 케이스 | auto-check | 자동 실행 | Input: 5 → Output: 10 ✓ |\n| 실행 버튼 | button | 클릭 | \"Run Tests\" → 0.234초 처리 |\n| 제출 버튼 | button | 클릭 | \"Submit\" → 최종 검증 |\n\n### 커뮤니티 상호작용\n| 필드 | 타입 | 입력 방식 | 예시 |\n|------|------|----------|------|\n| 풀이 공유 | toggle | 클릭 | Public / Private |\n| 댓글 | textarea | 텍스트 + @멘션 | \"좋은 풀이! 시간복잡도는 O(n)인가요?\" |\n| 반응 | emoji-picker | 클릭 | 👍 ❤️ 🔥 등 |\n\n**입력 방식의 철학:**\n- 최소 입력으로 최대 경험: 회원가입은 3개 필드만\n- 온보딩은 4개 선택지로 3분 내 완료\n- 코드 입력은 구문 강조, 자동완성, 포맷팅 지원\n- 모바일에서도 태블릿 크기의 에디터 제공\n\n---\n\n## [4. 출력 설계]\n\n### 4-1. 챌린지 제출 결과\n\n**성공 케이스:**\n```\n┌─────────────────────────────────┐\n│ ✅ 모든 테스트 통과!              │\n│                                   │\n│ 실행 시간: 0.124초               │\n│ 메모리: 12.3MB                   │\n│ 통과율: 100% (10/10 케이스)      │\n│                                   │\n│ 🎉 +12 스킬 포인트 획득!         │\n│    (레벨: Lv.3 → Lv.4)          │\n│                                   │\n│ [커뮤니티 풀이 보기] [풀이 공유] │\n└─────────────────────────────────┘\n```\n\n**실패 케이스:**\n```\n┌─────────────────────────────────┐\n│ ❌ 일부 테스트 실패               │\n│                                   │\n│ 테스트 1: ✓ 통과                 │\n│ 테스트 2: ✗ 실패 (기댓값: 10)   │\n│ 테스트 3: ✓ 통과                 │\n│                                   │\n│ 💡 힌트: 음수 처리를 고려했나요?│\n│                                   │\n│ [다시 풀기] [풀이 보기]         │\n└─────────────────────────────────┘\n```\n\n### 4-2. 스킬 지수 대시보드\n\n**레이더 차트 시각화:**\n```\n      데이터구조\n         ↑\n       /   \\\n    배열  [●] 트리\n    /         \\\n   ●─────────●\n   시간복잡도  정렬\n\n범례: ● 현재 레벨 | ○ 목표 레벨\n```\n\n**수치 표시:**\n- 전체 점수: 1,250점 (이전주: 1,180점)",
+      "search_trends": {
+        "keywords": {
+          "AI 시대 개발자 역량": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "코딩 펀더멘탈": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "SkillKeep": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 시대 개발자 역량",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'AI 시대 개발자 역량' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-20"
+  },
+  {
+    "category": "AI 인프라/도구 신뢰성",
+    "pain_point": "Claude 등 AI 서비스의 빈번한 다운타임으로 인한 운영 불안정성",
+    "post_count": 2,
+    "urgency_score": 8,
+    "target_users": "AI 기반 서비스 의존 기업/개발자",
+    "example_posts": [
+      3,
+      17
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 서비스 다운타임 시 즉시 대체 가능한 독립형 솔루션으로 높은 수요와 빠른 수익화 가능",
+      "product": {
+        "name": "AIFallback",
+        "tagline": "AI 서비스 다운타임 대응 자동 페일오버 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 10,
+        "launch_ready_days": 21,
+        "first_revenue_days": 35
+      },
+      "cost": {
+        "monthly_fixed": "월 8000원",
+        "total_3months": "3개월 24000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29900원",
+        "month1": "80~150만원",
+        "month3": "200~400만원",
+        "month6": "500~1200만원"
+      },
+      "market": {
+        "competition": "낮음",
+        "differentiation": "Claude, GPT 등 다중 AI API를 자동으로 모니터링하고 장애 시 즉시 대체 API로 전환",
+        "seo_keywords": [
+          "AI API 페일오버",
+          "Claude 다운타임 대응",
+          "AI 서비스 안정성",
+          "백업 AI API",
+          "자동 페일오버"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "주요 AI API 상태 모니터링",
+          "자동 페일오버 라우팅",
+          "API 응답 시간 추적",
+          "장애 로그 대시보드",
+          "Webhook 통합"
+        ],
+        "tech_stack": "Node.js + React + PostgreSQL + AWS Lambda + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "Product Hunt, 개발자 커뮤니티(Dev.to, Hacker News), AI 관련 Slack 커뮤니티, 기술 블로그 아웃리치"
+      },
+      "risk": {
+        "main_risk": "API 가격 책정이 높고 초기 고객 확보 시간이 필요하며 기술 신뢰도 구축에 시간이 소요될 수 있음",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 7,
+        "revenue_speed": 7,
+        "competition_advantage": 9
+      },
+      "claude_prompt": "# AIFallback 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**현재의 문제 상황**\nClaude API가 다운되면 즉시 전체 서비스가 중단된다. 사용자는 \"API 요청 실패\" 메시지만 본다. 개발자는 수동으로 다른 AI API(GPT-4, Gemini)로 전환하는 코드를 작성해야 하고, 이를 모니터링할 방법이 없다. 장애 원인과 지속 시간도 파악하기 어렵다.\n\n**현재 대안의 부족함**\n- 각 AI 서비스의 공식 상태 페이지: 업데이트가 늦고 실제 API 응답 성공률을 반영하지 않음\n- 수동 페일오버: 개발자가 if-else로 직접 코딩하고 관리해야 함\n- 기존 API Gateway(Kong, AWS API Gateway): 단순 트래픽 분산만 지원하고 AI API 특화 기능 없음\n\n**사용 후 느껴야 할 감정**\n\"Claude가 다운되어도 아무도 모른다. 자동으로 GPT가 응답한다. 내 서비스는 계속 돌아간다. 편하다.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n### 0단계: 가입 (1분)\n```\nhttps://aifallback.com → [Start Free] → \n이메일 입력 → 비밀번호 설정 → 대시보드 진입\n```\n\n### 1단계: API 키 연결 (3분)\n```\n대시보드 → [+ Add AI Provider] →\n선택: Claude / GPT-4 / Gemini / Cohere / ...\n각각의 API 키 입력 → [Test Connection] → ✓ 연결됨\n```\n\n### 2단계: 페일오버 규칙 설정 (2분)\n```\n[Create Fallback Chain] →\nPrimary: Claude\nSecondary: GPT-4  \nTertiary: Gemini\n우선순위 드래그로 정렬 →\n[Save Configuration]\n```\n\n### 3단계: 엔드포인트 획득 (1분)\n```\n[API Endpoint] 섹션 →\n복사 버튼으로 엔드포인트 복사:\nhttps://aifallback.com/api/v1/chat?key=sk_test_xxxxx\n```\n\n### 4단계: 통합 (5분)\n```\n개발자가 기존 코드:\n  await openai.chat.completions.create(...)\n\n변경 후:\n  await fetch('https://aifallback.com/api/v1/chat', {\n    method: 'POST',\n    headers: { 'Authorization': 'Bearer sk_test_xxxxx' },\n    body: JSON.stringify({ message: '안녕' })\n  })\n```\n\n### 5단계: 모니터링 (지속)\n```\n대시보드 자동 갱신:\n- 각 AI API 실시간 상태 (녹색/황색/빨강)\n- 지난 24시간 응답 시간 그래프\n- 페일오버 발생 횟수\n- 어떤 프로바이더가 대신 응답했는지 로그\n```\n\n### 6단계: 알림 (실시간)\n```\nClaude 다운 감지 → Webhook 발생 →\n슈랙 채널에 메시지: \"⚠️ Claude 다운 (응답 20ms→5000ms 상승)\"\n→ GPT-4로 자동 전환됨\n→ 개발자는 그냥 모니터링만 함\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3-1. 최초 회원가입\n```json\n{\n  \"email\": \"dev@company.com\",\n  \"password\": \"min 8 chars\",\n  \"company_name\": \"TechCorp\",\n  \"use_case\": \"chat_application\" // select: chat_application, content_generation, code_generation, etc\n}\n```\n**이유**: 회사 규모별 요금제 추천, 맞춤형 온보딩 제공\n\n### 3-2. AI 프로바이더 연결\n```json\n{\n  \"provider\": \"claude\", // enum: claude, gpt4, gemini, cohere, llama\n  \"api_key\": \"sk-ant-xxxxx\",\n  \"model_name\": \"claude-3-sonnet-20240229\", // 자동 완성\n  \"rate_limit_per_minute\": 60 // 선택사항\n}\n```\n**이유**: 각 프로바이더별 API 키 형식 자동 검증, 더미 요청으로 연결 테스트\n\n### 3-3. 페일오버 체인 설정\n```json\n{\n  \"chain_name\": \"Production Chat\",\n  \"priority_order\": [\n    { \"rank\": 1, \"provider\": \"claude\", \"model\": \"claude-3-sonnet\" },\n    { \"rank\": 2, \"provider\": \"gpt4\", \"model\": \"gpt-4-turbo\" },\n    { \"rank\": 3, \"provider\": \"gemini\", \"model\": \"gemini-pro\" }\n  ],\n  \"timeout_ms\": 5000, // 5초 안에 응답 없으면 다음으로\n  \"retry_count\": 2,\n  \"enable_webhook\": true,\n  \"webhook_url\": \"https://yourapp.com/hooks/aifallback\"\n}\n```\n**이유**: 타임아웃으로 빠른 페일오버, Webhook으로 사용자 앱과 동기화\n\n### 3-4. API 요청\n```json\n{\n  \"chain_id\": \"chain_prod_001\",\n  \"message\": \"사용자 메시지\",\n  \"temperature\": 0.7, // 선택사항, 첫 프로바이더 설정 상속\n  \"max_tokens\": 1000,\n  \"metadata\": {\n    \"user_id\": \"user_123\",\n    \"session_id\": \"sess_abc\"\n  }\n}\n```\n**이유**: 메타데이터로 개별 요청 추적, 통계 수집\n\n### 기본값 & 예시\n```javascript\n// 기본값\nconst DEFAULT_CONFIG = {\n  timeout_ms: 5000,\n  retry_count: 1,\n  temperature: 0.7,\n  enable_webhook: false\n}\n\n// 예시\n예시 1 (채팅봇): timeout 3초, retry 2회, Claude→GPT\n예시 2 (배치 처리): timeout 30초, retry 0회, 비용 절감 우선\n```\n\n---\n\n## [4. 출력 설계]\n\n### 4-1. API 응답 (성공)\n```json\n{\n  \"success\": true,\n  \"response\": \"안녕하세요! 뭘 도와드릴까요?\",\n  \"provider_used\": \"claude\",\n  \"model_used\": \"claude-3-sonnet-20240229\",\n  \"response_time_ms\": 345,\n  \"tokens_used\": {\n    \"input\": 12,\n    \"output\": 15\n  },\n  \"request_id\": \"req_abc123def\",\n  \"fallback_chain\": [\"claude\", \"gpt4\", \"gemini\"],\n  \"timestamp\": \"2024-01-15T14:32:00Z\"\n}\n```\n**\"이게 다르다\" 포인트**: 어느 프로바이더가 응답했는지 명확히 표시 + 응답 시간 추적\n\n### 4-2. API 응답 (페일오버 발생)\n```json\n{\n  \"success\": true,\n  \"response\": \"안녕하세요!\",\n  \"provider_used\": \"gpt4\",\n  \"model_used\": \"gpt-4-turbo\",\n  \"fallback_reason\": \"claude_timeout\",\n  \"fallback_chain_attempted\": [\"claude (timeout 5000ms)\", \"gpt4 (success 1200ms)\"],\n  \"response_time_ms\": 1200,\n  \"original_primary_failed\": {\n    \"provider\": \"claude\",\n    \"reason\": \"timeout\",\n    \"error\": \"No response within 5000ms\"\n  },\n  \"request_id\": \"req_xyz789\",\n  \"timestamp\": \"2024-01-15T14:32:00Z\"\n}\n```\n**\"이게 다르다\" 포인트**: 페일오버 경로 완전히 투명화, 왜 전환됐는지 설명\n\n### 4-3. 대시보드 카드 (실시간 상태)\n```\n┌─────────────────────────────────┐\n│  Claude                         │\n│  ● HEALTHY  (99.2% uptime)     │\n│  응답시간: 342ms ↓ (평균)       │\n│  마지막 요청: "
+    },
+    "is_new": true,
+    "date": "2026-03-20"
+  },
+  {
+    "category": "AI 에이전트 운영/샌드박싱",
+    "pain_point": "내부 AI 에이전트 배포 및 샌드박싱 솔루션의 표준화 부재",
+    "post_count": 2,
+    "urgency_score": 8,
+    "target_users": "AI 스타트업, 엔터프라이즈 기술팀",
+    "example_posts": [
+      4,
+      10
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "AI 에이전트 샌드박싱은 높은 기술 장벽과 엔터프라이즈 수요가 명확해 SaaS 모델이 최적",
+      "product": {
+        "name": "AgentSandbox",
+        "tagline": "AI 에이전트 배포 및 격리 실행을 위한 표준화된 클라우드 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 21,
+        "launch_ready_days": 45,
+        "first_revenue_days": 60
+      },
+      "cost": {
+        "monthly_fixed": "월 800,000원",
+        "total_3months": "3개월 2,400,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 29,900원~299,900원",
+        "month1": "500000~1500000",
+        "month3": "3000000~8000000",
+        "month6": "8000000~25000000"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "엔터프라이즈급 보안과 멀티테넌트 지원으로 표준화된 AI 에이전트 운영 환경 제공",
+        "seo_keywords": [
+          "AI 에이전트 샌드박싱",
+          "안전한 AI 배포",
+          "AI 격리 실행",
+          "엔터프라이즈 AI 솔루션"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "Docker 기반 에이전트 격리 실행",
+          "API 접근 제어 및 권한 관리",
+          "실시간 모니터링 및 로깅",
+          "표준화된 배포 파이프라인"
+        ],
+        "tech_stack": "Python/FastAPI + Docker + PostgreSQL + React + AWS/GCP",
+        "difficulty": "상",
+        "quick_traffic": "AI 커뮤니티(Product Hunt, Hacker News)와 LinkedIn에서 초기 사용자 모집"
+      },
+      "risk": {
+        "main_risk": "높은 개발 복잡도와 장시간 개발 기간으로 인한 초기 자금 소모",
+        "risk_level": "높음"
+      },
+      "score": {
+        "overall": 7,
+        "market_potential": 8,
+        "build_ease": 4,
+        "revenue_speed": 5,
+        "competition_advantage": 7
+      },
+      "claude_prompt": "# AgentSandbox 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페르소나와 순간:**\n- AI 스타트업 CTO가 5개의 다른 LLM 에이전트를 프로덕션에 배포해야 하는데, 각각 다른 방식으로 관리되고 있음\n- 엔터프라이즈 기술팀 리드가 보안 감사 중 \"에이전트가 어떤 권한으로 실행되는가\"라는 질문을 받음\n- 데이터 사이언티스트가 개발 환경에서 만든 에이전트가 프로덕션에서 예상치 못한 방식으로 동작\n\n**현재 대안의 부족함:**\n- AWS Lambda/GCP Cloud Functions: 에이전트 격리 실행은 되지만 표준화된 에이전트 관리 UI/API 없음\n- Docker Compose 수동 관리: 확장성 없고 권한 제어 불가능\n- 기존 BaaS(예: Hugging Face Spaces): AI 에이전트용이 아닌 일반 ML 모델 호스팅에 최적화\n- 수동 구축: 보안, 모니터링, 배포 파이프라인을 모두 직접 구현해야 함\n\n**사용 후 느껴야 할 감정:**\n\"아, 이제 우리 에이전트를 몇 클릭으로 안전하게 배포하고, 누가 뭘 했는지 모두 보이고, 권한도 세밀하게 제어할 수 있네. 마치 Vercel처럼 편해졌다.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\n1단계: 회원가입 및 첫 조직 생성 (2분)\n   → 이메일 가입 → 조직명 입력 → 대시보드 진입\n\n2단계: 첫 에이전트 배포 (5분)\n   → \"새 에이전트\" 버튼 클릭\n   → 기본 정보 입력 (이름, 설명, 에이전트 타입 선택)\n   → Docker 이미지 URI 또는 깃허브 레포 선택\n   → 환경 변수 설정 (API 키, 컨텍스트 등)\n   → 배포 전 미리보기\n   → \"배포\" 클릭\n   → 실시간 배포 진행률 화면\n   → \"배포 완료! API 엔드포인트 복사\" 알림\n\n3단계: API 키 및 권한 설정 (3분)\n   → 좌측 네비 \"API 접근 제어\" 클릭\n   → API 키 생성 (자동 생성 또는 커스텀)\n   → 이 키에 어떤 에이전트 접근을 허용할지 체크박스로 선택\n   → 속도 제한 설정 (초당 요청 수, 월 요청 한도)\n   → \"저장\" 클릭\n\n4단계: 실행 및 모니터링 (실시간)\n   → 메인 대시보드에서 \"최근 실행\" 타일 표시\n   → 각 실행 항목에 마우스 오버 시 실행 시간, 입력 프롬프트 프리뷰, 결과 프리뷰 표시\n   → \"상세 보기\" 클릭 시 전체 로그, 출력, 에러 메시지 표시\n   → 실시간 모니터링: 실행 중인 에이전트 옆에 초록색 점 표시\n\n5단계: 팀 멤버 초대 및 권한 위임 (2분)\n   → \"조직 설정\" → \"멤버 관리\"\n   → 이메일 입력 후 역할 선택 (관리자, 개발자, 뷰어)\n   → 초대 링크 전송\n   → 팀원이 링크 클릭 후 가입하면 자동으로 조직에 추가\n\n6단계: 모니터링 대시보드 확인 (지속)\n   → 홈 화면에서 실시간 메트릭 확인\n      - 총 에이전트 실행 수 (일, 주, 월)\n      - 평균 실행 시간\n      - 에러율\n      - 권한별 접근 현황\n   → 알림 설정: 에러율 5% 초과 시 Slack 알림\n```\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 에이전트 등록 입력\n\n**필수 정보:**\n\n| 필드명 | 입력 방식 | 기본값 | 예시 | 이유 |\n|--------|---------|--------|------|------|\n| 에이전트 이름 | 텍스트 입력 | - | \"Customer Support Bot v2\" | 식별 및 관리용 |\n| 설명 | 텍스트 에어리어 | - | \"고객 지원 문의 자동 분류 및 라우팅\" | 팀원과의 컨텍스트 공유 |\n| 에이전트 타입 | 드롭다운 선택 | \"LLM 기반\" | LLM 기반 / 도구 호출 기반 / 다중 에이전트 | 배포 최적화 및 모니터링 설정 |\n| Docker 이미지 소스 | 라디오 버튼 | 없음 | 1) 직접 이미지 URI 입력 2) GitHub 레포 연동 3) 템플릿 선택 | 유연한 배포 방식 |\n| 이미지 URI | 텍스트 입력 (조건부) | - | \"gcr.io/myproject/agent:latest\" | 컨테이너 실행 |\n| GitHub 레포 | URL 입력 (조건부) | - | \"https://github.com/myteam/agent-repo\" | 자동 CI/CD 연결 |\n| 환경 변수 | Key-Value 테이블 | 비어있음 | KEY: \"OPENAI_API_KEY\", VALUE: \"sk-...\" (마스킹) | 에이전트 설정 |\n| 시크릿 변수 | Key-Value 테이블 | 비어있음 | 환경 변수와 동일 | 민감 정보 암호화 저장 |\n| 시작 명령어 | 텍스트 입력 | \"python main.py\" | \"python /app/agent.py --mode production\" | 컨테이너 실행 방식 |\n| 리소스 제한 | 슬라이더 | CPU: 1 core, RAM: 512MB | CPU: 2 cores, RAM: 2GB | 비용 최적화 및 보안 |\n| 최대 동시 실행 수 | 숫자 입력 | 10 | 100 | 리소스 할당 |\n| 타임아웃 (초) | 숫자 입력 | 300 | 600 | 무한 루프 방지 |\n\n### 3.2 API 접근 제어 입력\n\n| 필드명 | 입력 방식 | 기본값 | 예시 | 이유 |\n|--------|---------|--------|------|------|\n| API 키 이름 | 텍스트 입력 | \"Key-{timestamp}\" | \"Production API Key - Jan 2025\" | 관리 편의성 |\n| 권한 범위 | 체크박스 (다중선택) | 모두 미선택 | [v] \"Customer Support Bot\", [ ] \"Analytics Agent\" | 최소 권한 원칙 |\n| 요청/초 제한 | 숫자 입력 | 10 | 100 | DDoS 방지 |\n| 월 요청 한도 | 숫자 입력 | 무제한 | 10000 | 비용 제어 |\n| 유효 기간 | 캘린더 선택 | 365일 후 | \"2025-12-31\" | 자동 갱신 또는 만료 |\n| IP 화이트리스트 | 텍스트 입력 (쉼표 구분) | 빈 값 (모든 IP 허용) | \"192.168.1.1, 203.0.113.42\" | 추가 보안 |",
+      "search_trends": {
+        "keywords": {
+          "AI 에이전트 샌드박싱": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "안전한 AI 배포": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "AgentSandbox": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 에이전트 샌드박싱",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'AI 에이전트 샌드박싱' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-20"
+  },
+  {
+    "category": "개발 생산성 도구 부족",
+    "pain_point": "반복적인 개발 작업 (타입 체킹, 보일러플레이트, 탭 관리)의 번거로움",
+    "post_count": 3,
+    "urgency_score": 7,
+    "target_users": "풀스택 개발자, ML 엔지니어, 프론트엔드 개발자",
+    "example_posts": [
+      6,
+      7,
+      8
+    ],
+    "business_analysis": {
+      "build_decision": "APP_PROGRAM",
+      "build_reason": "IDE 통합 플러그인으로 개발 워크플로우에 직접 embedded되어 사용성 극대화 가능",
+      "product": {
+        "name": "DevAutomate",
+        "tagline": "AI 기반 반복 개발 작업 자동화 플러그인",
+        "product_type": "크롬확장"
+      },
+      "time": {
+        "mvp_days": 10,
+        "launch_ready_days": 21,
+        "first_revenue_days": 45
+      },
+      "cost": {
+        "monthly_fixed": "월 8000원",
+        "total_3months": "3개월 24000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 14900원",
+        "month1": "80000",
+        "month3": "450000",
+        "month6": "1500000"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "타입 체킹과 보일러플레이트 자동 생성을 한 곳에서 처리하는 통합 솔루션",
+        "seo_keywords": [
+          "AI 코드 자동화",
+          "보일러플레이트 생성기",
+          "타입스크립트 자동화",
+          "개발 생산성 도구",
+          "코드 제너레이터"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "AI 기반 타입 추론 및 자동 생성",
+          "공통 보일러플레이트 템플릿 라이브러리",
+          "탭/컴포넌트 상태 관리 자동화"
+        ],
+        "tech_stack": "React + TypeScript + Chrome Extension API + OpenAI API + Supabase",
+        "difficulty": "중",
+        "quick_traffic": "GitHub, Reddit(r/webdev, r/learnprogramming), Dev.to 커뮤니티 공유 + 개발자 Twitter/Hacker News 제출"
+      },
+      "risk": {
+        "main_risk": "AI API 비용 상승과 사용자 만족도 간극으로 인한 이탈률 증가 가능성",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 8,
+        "revenue_speed": 7,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# DevAutomate - 완전한 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 페인 포인트:**\n- 풀스택 개발자가 새 프로젝트를 시작할 때, TypeScript 타입 정의에 30분 이상을 소비한다.\n- 라우트 설정, API 핸들러, DB 스키마의 동일한 보일러플레이트를 프로젝트마다 복사-붙여넣기한다.\n- 탭이 10개 이상 열리면 어느 것이 수정 중인지, 상태가 뭔지 추적할 수 없다.\n- ChatGPT, Copilot 등은 코드만 생성하고, 타입 체킹과 프로젝트 구조 관리는 개발자가 직접 정리해야 한다.\n\n**현재 대안의 한계:**\n- Copilot: 문맥 없이 타입 불일치 코드 생성\n- ESLint: 타입 오류 지적만, 수정 제안 없음\n- 보일러플레이트 제너레이터(Next.js, Create React App): 초기 설정만 가능, 프로젝트 진행 중 재사용 불가\n- Notion 템플릿/GitHub 스니펫: 수동 복사, 프로젝트별 커스터마이징 필요\n\n**DevAutomate 후의 감정:**\n\"아, 이제 타입은 자동으로 맞춰지고, 보일러플레이트도 한 클릭에 생기네. 열린 탭도 자동으로 정리되니까 집중력이 올라간다.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n**Step 1: 설치 및 가입 (1분)**\n- Chrome 확장프로그램 설치\n- 확장 프로그램 팝업에서 이메일 가입 → Supabase 인증\n- OpenAI API 키 입력 (또는 DevAutomate 서버 API 키 사용)\n- 온보딩: \"2분 안내 영상\" + \"5가지 주요 기능 소개\"\n\n**Step 2: 첫 자동화 (2분)**\n- VSCode/IDE 열기\n- 현재 코드 블록 선택 (예: 함수 시그니처)\n- 우클릭 → \"DevAutomate\" → \"타입 추론 및 완성\"\n- 결과 미리보기 팝업에서 수정 후 \"삽입\" 또는 \"새 탭에서 보기\"\n\n**Step 3: 보일러플레이트 템플릿 사용 (3분)**\n- VSCode 명령팔레트(Cmd/Ctrl + Shift + P) → \"DevAutomate: 템플릿 삽입\"\n- 카테고리 선택: \"React Component\", \"API Route\", \"Database Schema\" 등\n- 프레임워크/언어 선택 (Next.js, Express, Django...)\n- 커스터마이징 입력 (컴포넌트명, props 타입, DB 필드명)\n- 완성된 코드 삽입 + 파일 구조 자동 생성\n\n**Step 4: 탭 관리 (자동)**\n- IDE에서 파일 탭이 10개 이상 열릴 때 자동으로 \"DevAutomate Tab Manager\" 팝업\n- 열린 파일 목록 + 각 파일의 \"수정 상태\" 시각화\n- 관련 파일 그룹화 (예: \"User/Profile\" 관련 파일끼리 묶음)\n- 더블클릭으로 즐겨찾기, \"Archive\" 버튼으로 임시 탭 닫기\n\n**Step 5: 대시보드에서 프로젝트 통계 확인 (주 1회)**\n- DevAutomate 확장 버튼 클릭 → 대시보드\n- \"이번 주 자동화된 작업: 47건\" / \"절약한 시간: 3시간 42분\"\n- 가장 자주 사용한 템플릿, 타입 오류율 감소량\n- 팀 멤버와 템플릿 공유\n\n---\n\n## [3. 입력 설계]\n\n### 3.1 타입 추론 입력\n**받는 정보:**\n```\n- 소스 코드 (선택된 함수/변수 선언)\n- 현재 프로젝트 언어 (TypeScript/JavaScript/Python/Go)\n- 프로젝트 tsconfig.json / 패키지 주변 코드 컨텍스트\n- 사용자 지정 타입 라이브러리 (선택사항)\n```\n\n**입력 방식:**\n- VSCode에서 코드 블록 선택 후 우클릭\n- 확장 팝업에서 \"분석할 코드\" 표시\n- 설정 탭에서 \"프로젝트 구조 스캔\" 권한 허용\n\n**기본값 & 예시:**\n```\n기본값:\n- 언어: VSCode 파일 확장자에서 자동 감지\n- 엄격도: \"balanced\" (너무 복잡하지도, 단순하지도 않게)\n- 라이브러리 버전: tsconfig.json에서 자동 읽음\n\n예시:\n[입력 코드]\nfunction fetchUser(id) {\n  return fetch(`/api/users/${id}`).then(r => r.json());\n}\n\n[자동 추론]\nasync function fetchUser(id: string): Promise<{ id: string; name: string; email: string }> {\n  const response = await fetch(`/api/users/${id}`);\n  return response.json();\n}\n```\n\n### 3.2 보일러플레이트 템플릿 입력\n**받는 정보:**\n```\n- 템플릿 카테고리 (React Component / API Route / DB Schema / State Management)\n- 프레임워크/라이브러리 선택 (Next.js 13+ App Router / Express / Supabase / Prisma)\n- 컴포넌트명 / 함수명 / 테이블명\n- Props 타입, DB 필드, API 응답 구조\n- 스타일링 방식 (Tailwind / CSS Modules / Styled Components)\n```\n\n**입력 방식:**\n- 명령팔레트 또는 확장 사이드바에서 \"템플릿 삽입\" 선택\n- 드롭다운 → 입력 폼 (자동완성 지원)\n- 프로젝트 구조 분석해 최적 경로 제안\n\n**기본값 & 예시:**\n```\n기본값:\n- 프레임워크: 프로젝트 package.json에서 자동 감지\n- 스타일링: Tailwind 설치 시 자동 선택\n- 타입: 가장 최근에 생성한 타입과 동일\n\n예시:\n[사용자 입력]\n카테고리: React Component\n프레임워크: Next.js 13\n컴포넌트명: UserProfile\nProps: { userId: string; onUpdate?: () => void }\n스타일: Tailwind\n\n[생성 결과]\n'use client';\n\nimport { useEffect, useState } from 'react';\n\ninterface UserProfileProps {\n  userId: string;\n  onUpdate?: () => void;\n}\n\nexport default function UserProfile({ userId, onUpdate }: UserProfileProps) {\n  const [user, setUser] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    fetch(`/api/users/${userId}`)\n      .then(r => r.json())\n      .then(data => { setUser(data); setLoading(false); });\n  }, [userId]);\n\n  return (\n    <div className=\"p-6 bg-white rounded-lg shadow\">\n      {loading ? <p>로딩중...</p> : <div>{user?.name}</div>}\n    </div>\n  );\n}\n```\n\n### 3.3 탭 관리 입력\n**받는 정보:**\n```\n- IDE에서 현재 열린 파일 목록\n- 각 파일의 수정 상태 (변경되지 않음 / 변경됨 / 저장됨)\n- 사용자 작업 이력 (어느 파일을 얼마나 오래 봤는지)\n```\n\n**입력 방식:**\n- 자동 감지 (IDE 훅 통해 실시간 모니터링)\n- 사용자는 추가 입력 불필요, UI에서 드래그로",
+      "search_trends": {
+        "keywords": {
+          "AI 코드 자동화": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 100,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              100,
+              0,
+              0
+            ]
+          },
+          "보일러플레이트 생성기": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "DevAutomate": {
+            "current_score": 0,
+            "trend_pct": 0,
+            "trend": "보합",
+            "peak": 0,
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "best_keyword": "AI 코드 자동화",
+        "interest_score": 0,
+        "trend": "보합",
+        "trend_pct": 0,
+        "summary": "'AI 코드 자동화' 관심도 0/100 (보합 +0%)"
+      }
+    },
+    "is_new": true,
+    "date": "2026-03-20"
+  },
+  {
+    "category": "실무 기술 선택 문제",
+    "pain_point": "BaaS, IP 데이터 처리, 모바일 앱 개발 등 기술 스택 선택 기준 불명확",
+    "post_count": 3,
+    "urgency_score": 7,
+    "target_users": "신입/주니어 개발자, 스타트업 초기 단계",
+    "example_posts": [
+      2,
+      7,
+      13
+    ],
+    "business_analysis": {
+      "build_decision": "STANDALONE_SAAS",
+      "build_reason": "기술 선택 기준을 체계화하는 SaaS 플랫폼으로 신입/주니어 개발자의 즉각적인 니즈를 해결",
+      "product": {
+        "name": "TechStackAdvisor",
+        "tagline": "프로젝트 요구사항에 맞는 기술 스택을 AI가 추천하는 의사결정 플랫폼",
+        "product_type": "웹앱"
+      },
+      "time": {
+        "mvp_days": 7,
+        "launch_ready_days": 14,
+        "first_revenue_days": 30
+      },
+      "cost": {
+        "monthly_fixed": "월 10,000원",
+        "total_3months": "3개월 30,000원"
+      },
+      "revenue": {
+        "model": "월정액",
+        "price_point": "월 4,900원(기본) / 월 14,900원(프로)",
+        "month1": "80~150만원",
+        "month3": "200~400만원",
+        "month6": "500~1200만원"
+      },
+      "market": {
+        "competition": "중간",
+        "differentiation": "신입/주니어 맞춤형 선택 기준과 실무 사례 데이터베이스로 학습곡선 단축",
+        "seo_keywords": [
+          "기술스택선택",
+          "BaaS추천",
+          "모바일앱개발기술",
+          "백엔드서비스선택",
+          "신입개발자"
+        ]
+      },
+      "build": {
+        "mvp_features": [
+          "기술스택 추천 AI 챗봇",
+          "프로젝트유형별 기술비교 매트릭스",
+          "커뮤니티 선택기록 공유"
+        ],
+        "tech_stack": "Next.js + Supabase + OpenAI API + Vercel",
+        "difficulty": "중",
+        "quick_traffic": "Reddit/DevTo/개발자커뮤니티 포스팅과 GitHub샘플코드 배포"
+      },
+      "risk": {
+        "main_risk": "AI 추천 정확도 초기 낮음 및 기술스택 변화 속도에 콘텐츠 업데이트 필요",
+        "risk_level": "중간"
+      },
+      "score": {
+        "overall": 8,
+        "market_potential": 8,
+        "build_ease": 8,
+        "revenue_speed": 7,
+        "competition_advantage": 8
+      },
+      "claude_prompt": "# TechStackAdvisor 완전 개발 지시서\n\n## [1. 이 제품이 존재해야 하는 이유]\n\n**사용자 상황**\n신입 개발자는 첫 프로젝트 시작 시 \"Node.js + React + MongoDB를 써야 하나, 아니면 Django + Vue를 써야 하나?\" 같은 기술 스택 선택에서 방황한다. 스택을 잘못 선택하면 3개월 후 마이그레이션 비용이 발생하거나 팀원 온보딩이 어려워진다.\n\n**현재 대안의 부족함**\n- Stack Overflow: 답변이 상충되고 최신성이 보장되지 않음\n- Reddit/커뮤니티: 사례 기반 조언만 있고 체계적 비교 불가\n- 기업 블로그: 자사 기술 홍보 위주로 객관성 부족\n- ChatGPT: 실무 콘텍스트(팀 규모, 예산, 개발 속도)를 모름\n\n**제품 사용 후 느껴야 할 감정**\n\"아, 내 상황에 딱 맞는 이유를 이제 알겠다. 내가 선택한 기술이 정답은 아니지만 최선의 선택이라는 확신이 생겼다. 비슷한 처지의 다른 개발자들은 뭘 선택했는지도 궁금하네.\"\n\n---\n\n## [2. 사용자 경험 흐름]\n\n```\n1단계: 진입점 (10초)\n   └─ \"당신의 프로젝트는 어떤가요?\" 큰 입력창 + 예시 3개\n\n2단계: 상세 정보 수집 (30초)\n   └─ 프로젝트 유형, 팀 규모, 개발 속도, 예산 선택지 카드형\n\n3단계: AI 추천 로딩 (3초)\n   └─ 부드러운 애니메이션 + \"실무 사례 분석 중...\"\n\n4단계: 추천 결과 (1분)\n   ├─ 추천 스택 카드 (1순위 강조)\n   ├─ \"왜 이걸 추천했나?\" 설명문\n   ├─ 기술 비교 매트릭스 (학습곡선, 커뮤니티 규모, 성능)\n   ├─ \"같은 선택을 한 사람들\" 섹션\n   └─ 각 기술별 입문 리소스 링크\n\n5단계: 비교 (선택사항, 30초)\n   └─ 다른 스택도 보고 싶으면 토글로 비교\n\n6단계: 공유/저장 (10초)\n   ├─ 결과 이미지로 저장\n   ├─ 링크 공유 (커뮤니티 피드에 등록)\n   └─ 내 저장된 추천들 모아보기 (계정 필요)\n\n7단계: 커뮤니티 브라우징 (선택사항)\n   └─ 다른 개발자들의 선택 통계와 댓글\n```\n\n---\n\n## [3. 입력 설계]\n\n### 수집해야 할 정보 및 이유\n\n| 정보 | 선택 형식 | 기본값 | 왜 필요한가 |\n|------|---------|-------|-----------|\n| **프로젝트 설명** | 자유 텍스트 (100-500자) | \"예: 소셜 미디어 앱\" | AI가 도메인 특성 파악 |\n| **프로젝트 유형** | 멀티셀렉트 버튼 | - | BaaS vs 직접 구축 결정 |\n| | • 웹앱 • 모바일앱 • 데스크톱 • API | | |\n| **팀 규모** | 라디오 버튼 | \"1-3명\" | 복잡도 vs 학습곡선 트레이드오프 |\n| | • 1-3명(혼자) • 4-10명 • 10명+ | | |\n| **개발 속도** | 슬라이더 | 5/10 | 프로토타이핑(Django) vs 프로덕션(Go) |\n| | 느림(안정성중시) ←→ 빠름(빠른출시) | | |\n| **예산** | 라디오 버튼 | \"낮음\" | 클라우드 비용, 라이브러리 선택 |\n| | • 낮음($0-500/월) • 중간 • 높음 | | |\n| **데이터 규모** | 선택 | \"중간\" | DB 선택 (SQL vs NoSQL) |\n| | • 소형(~10GB) • 중형 • 대형(100GB+) | | |\n| **필수 기능** | 멀티셀렉트 | 인증만 선택됨 | 특정 기술 필수 (결제=Stripe) |\n| | • 실시간통신 • 결제 • 파일처리 | | |\n| | • 머신러닝 • 복잡검색 | | |\n\n### 입력 UX 상세\n\n**프로젝트 설명 (첫 번째 입력)**\n```\n┌─────────────────────────────────────────┐\n│ 당신의 프로젝트를 간단히 설명해주세요  │\n├─────────────────────────────────────────┤\n│ □ 예: SNS 앱을 만들고 싶어요           │\n│ □ 예: B2B SaaS 대시보드                │\n│ □ 예: 실시간 협업 문서 도구            │\n│ ┌─────────────────────────────────────┐ │\n│ │[입력창: 당신의 프로젝트...]          │ │\n│ │최대 500자, 글자수 표시 (0/500)       │ │\n│ └─────────────────────────────────────┘ │\n└─────────────────────────────────────────┘\n```\n\n**나머지 정보 (카드형 스크롤)**\n```\n┌─────────────────────────────────┐\n│ 프로젝트 유형은? (복수선택)    │\n├─────────────────────────────────┤\n│ ☐ 웹앱    ☐ 모바일앱          │\n│ ☐ 데스크톱 ☐ 백엔드API        │\n└─────────────────────────────────┘\n\n┌─────────────────────────────────┐\n│ 팀 규모는?                      │\n├─────────────────────────────────┤\n│ ◉ 혼자/1-3명 ○ 4-10명 ○ 10명+  │\n└─────────────────────────────────┘\n\n┌─────────────────────────────────┐\n│ 출시까지 얼마나 빨리?          │\n├─────────────────────────────────┤\n│ 느림(안정성)←─────────→빠름(빠른출시)│\n│            [슬라이더 UI]         │\n└─────────────────────────────────┘\n```\n\n---\n\n## [4. 출력 설계]\n\n### \"이게 다르다\"고 느끼는 부분\n\n기존 비교표: 기술 나열 + 각 항목 체크박스 (수동적)\nTechStackAdvisor: **당신의 상황에 가중치를 둔 시각적 스토리텔링**\n\n### 출력 구조\n\n**섹션 1: 추천 카드 (메인)**\n```\n╔════════════════════════════════════════╗\n║ 🎯 당신을 위한 추천 스택              ║\n╠════════════════════════════════════════╣\n║                                        ║\n║  1순위: Next.js + Supabase + Vercel   ║\n║  추천도: ████████░ 85%               ║\n║                                        ║\n║  \"팀이 작고 빠른 출시가 목표라면      ║\n║   이것만큼 좋은 선택이 없습니다.\"     ║\n║                                        ║\n║  [복사하기] [자세히보기▼]             ║\n╚════════════════════════════════════════╝\n```\n\n**섹션 2: 왜 이 스택인가"
+    },
+    "is_new": true,
+    "date": "2026-03-20"
   }
 ]
