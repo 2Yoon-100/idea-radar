@@ -49,10 +49,11 @@
   },
   {
     "date": "2026-03-21",
-    "total_posts": 66,
-    "today_posts": 3,
-    "accumulated_ideas": 45,
-    "top_category": "AI/LLM 비용 최적화",
-    "top_score": 9
+    "total_posts": 231,
+    "today_posts": 167,
+    "ideas_count": 7,
+    "top_category": "SaaS 창업 및 검증",
+    "top_score": 9,
+    "recommendation": "SaaS 창업 및 검증"
   }
 ]
