@@ -34,11 +34,8 @@ jobs:
       - name: 라이브러리 설치
         run: pip install -r requirements.txt
       
-      # 4. 데이터 수집 실행
+      # 4. 데이터 수집 실행 (Reddit은 RSS 피드 사용 — OAuth 불필요)
       - name: 데이터 수집 (커뮤니티 스크래핑)
-        env:
-          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
-          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
         run: |
           echo "📥 데이터 수집 시작..."
           python scripts/collector.py
@@ -56,15 +53,9 @@ jobs:
       # 6. 결과 파일을 저장소에 자동 저장
       - name: 결과 저장 (자동 커밋)
         run: |
-          mkdir -p dashboard/data
-          cp data/analysis.json dashboard/data/analysis.json
-          cp data/history.json dashboard/data/history.json
-          if [ -f data/accumulated_ideas.json ]; then
-            cp data/accumulated_ideas.json dashboard/data/accumulated_ideas.json
-          fi
           git config --local user.email "action@github.com"
           git config --local user.name "Idea Radar Bot"
-          git add data/ dashboard/data/
+          git add data/
           git diff --staged --quiet || git commit -m "🤖 자동 업데이트: $(date '+%Y-%m-%d %H:%M KST')"
           git push
         env:

@@ -1,20 +1,10 @@
 """
-IDEA RADAR - AI 분석 스크립트 v6
-누적 비교 점수 + KST + score 안정화 + 검색량 데이터
+IDEA RADAR - AI 분석 스크립트 v3
+종합 사업 판단 + Claude Opus/Sonnet 즉시 사용 프롬프트 자동 생성
 """
 
 import json, os, requests, re, time
-from datetime import datetime, timedelta, timezone
-
-try:
-    from pytrends.request import TrendReq
-    PYTRENDS_AVAILABLE = True
-except ImportError:
-    PYTRENDS_AVAILABLE = False
-
-KST = timezone(timedelta(hours=9))
-def now_kst():
-    return datetime.now(KST)
+from datetime import datetime, timedelta
 
 CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY", "")
 CLAUDE_API_URL = "https://api.anthropic.com/v1/messages"
@@ -28,7 +18,7 @@ def call_claude(prompt, max_tokens=2000):
         "content-type": "application/json"
     }
     body = {
-        "model": "claude-haiku-4-5-20251001",
+        "model": "claude-haiku-4-5-20251001",  # 분석은 Haiku로 (저비용)
         "max_tokens": max_tokens,
         "messages": [{"role": "user", "content": prompt}]
     }
@@ -36,8 +26,6 @@ def call_claude(prompt, max_tokens=2000):
         resp = requests.post(CLAUDE_API_URL, headers=headers, json=body, timeout=60)
         if resp.status_code == 200:
             return resp.json()["content"][0]["text"]
-        else:
-            print(f"❌ API 오류 {resp.status_code}: {resp.text[:200]}")
     except Exception as e:
         print(f"❌ {e}")
     return None
@@ -45,147 +33,17 @@ def call_claude(prompt, max_tokens=2000):
 def parse_json(text):
     if not text:
         return None
-    text = re.sub(r'```json\s*', '', text)
-    text = re.sub(r'```\s*', '', text)
-    text = text.strip()
     try:
-        return json.loads(text)
-    except:
-        pass
-    try:
-        start = text.index('{')
-        depth = 0
-        end = start
-        for i, c in enumerate(text[start:], start):
-            if c == '{': depth += 1
-            elif c == '}':
-                depth -= 1
-                if depth == 0:
-                    end = i
-                    break
-        return json.loads(text[start:end+1])
+        m = re.search(r'\{.*\}', text, re.DOTALL)
+        if m:
+            return json.loads(m.group())
     except:
         pass
     return None
 
-def safe_int(val, default=5):
-    if isinstance(val, int): return max(1, min(10, val))
-    if isinstance(val, float): return max(1, min(10, int(val)))
-    if isinstance(val, str):
-        m = re.search(r'\d+', val)
-        if m: return max(1, min(10, int(m.group())))
-    return default
-
-# ═══════════════════════════════════
-# 검색량 데이터 수집
-# ═══════════════════════════════════
-def get_search_trends(keywords):
-    """
-    Google Trends로 검색량 추이 조회
-    keywords: 검색할 키워드 리스트 (최대 5개)
-    반환: 각 키워드별 트렌드 데이터
-    """
-    if not PYTRENDS_AVAILABLE or not keywords:
-        return {}
-
-    result = {}
-    try:
-        pytrends = TrendReq(hl='ko-KR', tz=540, timeout=(10,25))
-        # 최대 5개만
-        kw_list = keywords[:5]
-
-        # 최근 3개월 데이터
-        pytrends.build_payload(kw_list, cat=0, timeframe='today 3-m', geo='KR')
-        interest_over_time = pytrends.interest_over_time()
-
-        if not interest_over_time.empty:
-            for kw in kw_list:
-                if kw in interest_over_time.columns:
-                    values = interest_over_time[kw].tolist()
-                    if values:
-                        current = values[-1] if values else 0
-                        month_ago = values[-4] if len(values) >= 4 else values[0]
-                        trend_pct = round(((current - month_ago) / max(month_ago, 1)) * 100)
-
-                        result[kw] = {
-                            "current_score": int(current),  # 0~100 상대 점수
-                            "trend_pct": trend_pct,         # 한달 전 대비 변화율
-                            "trend": "급상승" if trend_pct > 50 else
-                                     "상승" if trend_pct > 10 else
-                                     "보합" if trend_pct > -10 else "하락",
-                            "peak": int(max(values)),
-                            "data": [int(v) for v in values[-12:]]  # 최근 12주
-                        }
-        time.sleep(1)
-
-    except Exception as e:
-        print(f"  ⚠️  Google Trends 오류: {e}")
-
-    return result
-
-def get_naver_trends(keywords):
-    """
-    네이버 DataLab 검색량 조회 (API 키 없이 기본 검색어 트렌드)
-    """
-    result = {}
-    try:
-        headers = {
-            "User-Agent": "Mozilla/5.0",
-            "Accept-Language": "ko-KR"
-        }
-        for kw in keywords[:3]:
-            # 네이버 검색어 트렌드 (비공식)
-            url = f"https://trends.google.co.kr/trends/explore?q={requests.utils.quote(kw)}&geo=KR"
-            result[kw] = {"available": False}  # 네이버는 별도 API 키 필요
-        time.sleep(0.5)
-    except Exception as e:
-        print(f"  ⚠️  네이버 트렌드 오류: {e}")
-    return result
-
-def enrich_with_search_data(idea):
-    """아이디어에 검색량 데이터 추가"""
-    ba = idea.get("business_analysis", {})
-    mkt = ba.get("market", {})
-    seo_keywords = mkt.get("seo_keywords", [])
-    prod = ba.get("product", {})
-    product_name = prod.get("name", "")
-
-    # 검색할 키워드 조합
-    search_kws = []
-    if seo_keywords:
-        search_kws.extend(seo_keywords[:2])
-    if product_name:
-        # 영어 제품명에서 핵심 키워드 추출
-        core = re.sub(r'[^a-zA-Z가-힣\s]', '', product_name).strip()
-        if core and core not in search_kws:
-            search_kws.append(core)
-
-    if not search_kws:
-        return idea
-
-    print(f"      🔍 검색량 조회: {search_kws[:3]}")
-    trends = get_search_trends(search_kws[:3])
-
-    if trends:
-        # 가장 높은 관심도 키워드 기준
-        best_kw = max(trends.keys(), key=lambda k: trends[k].get("current_score", 0))
-        best_data = trends[best_kw]
-
-        idea["business_analysis"]["search_trends"] = {
-            "keywords": trends,
-            "best_keyword": best_kw,
-            "interest_score": best_data.get("current_score", 0),
-            "trend": best_data.get("trend", "데이터없음"),
-            "trend_pct": best_data.get("trend_pct", 0),
-            "summary": f"'{best_kw}' 관심도 {best_data.get('current_score',0)}/100 ({best_data.get('trend','보합')} {'+' if best_data.get('trend_pct',0)>=0 else ''}{best_data.get('trend_pct',0)}%)"
-        }
-
-    return idea
-
-
-# ═══════════════════════════════════
-# 1단계: 클러스터링
-# ═══════════════════════════════════
+# ═══════════════════════════════════════════════
+# 1단계: 게시물 클러스터링
+# ═══════════════════════════════════════════════
 def analyze_posts(posts):
     post_texts = [
         f"{i+1}. [{p['community']}] {p['title']}" +
@@ -203,10 +61,10 @@ JSON으로만 응답:
     {{
       "category": "카테고리명",
       "pain_point": "핵심 불편함 한 문장",
-      "post_count": 3,
-      "urgency_score": 8,
+      "post_count": 언급횟수,
+      "urgency_score": 1~10,
       "target_users": "타겟 사용자",
-      "example_posts": [1, 2]
+      "example_posts": [번호들]
     }}
   ],
   "trending_topics": ["키워드1","키워드2","키워드3","키워드4","키워드5"],
@@ -215,358 +73,270 @@ JSON으로만 응답:
 """
     return parse_json(call_claude(prompt, 1500)) or {}
 
-# ═══════════════════════════════════
-# 2단계: 개별 사업 분석
-# ═══════════════════════════════════
-def full_business_analysis(cluster):
-    prompt = f"""
-다음 불편함을 분석해서 JSON으로만 응답. 다른 텍스트 없이.
-숫자 항목은 반드시 정수만 입력.
-
-카테고리: {cluster.get('category')}
-불편함: {cluster.get('pain_point')}
-타겟: {cluster.get('target_users')}
-
-{{
-  "build_decision": "TRAFFIC_TOOL 또는 STANDALONE_SAAS 또는 APP_PROGRAM",
-  "build_reason": "한 문장",
-  "product": {{
-    "name": "제품명",
-    "tagline": "한 줄 설명",
-    "product_type": "웹앱 또는 크롬확장 또는 모바일앱"
-  }},
-  "time": {{
-    "mvp_days": "7",
-    "launch_ready_days": "14",
-    "first_revenue_days": "30"
-  }},
-  "cost": {{
-    "monthly_fixed": "월 5,000원",
-    "total_3months": "3개월 15,000원"
-  }},
-  "revenue": {{
-    "model": "광고(트래픽) 또는 월정액",
-    "price_point": "무료+광고 또는 월 9,900원",
-    "month1": "5~15만원",
-    "month3": "30~80만원",
-    "month6": "80~250만원"
-  }},
-  "market": {{
-    "competition": "낮음 또는 중간 또는 높음",
-    "differentiation": "차별점 한 문장",
-    "seo_keywords": ["키워드1","키워드2"]
-  }},
-  "build": {{
-    "mvp_features": ["기능1","기능2","기능3"],
-    "tech_stack": "HTML/CSS/JS + Vercel",
-    "difficulty": "하 또는 중 또는 상",
-    "quick_traffic": "첫 100명 유입 방법"
-  }},
-  "risk": {{
-    "main_risk": "리스크 한 문장",
-    "risk_level": "낮음 또는 중간 또는 높음"
-  }},
-  "score": {{
-    "overall": 8,
-    "market_potential": 7,
-    "build_ease": 9,
-    "revenue_speed": 6,
-    "competition_advantage": 8
-  }}
-}}
-"""
-    result = parse_json(call_claude(prompt, 1200)) or {}
-    if "score" in result:
-        sc = result["score"]
-        result["score"] = {
-            "overall": safe_int(sc.get("overall"), 5),
-            "market_potential": safe_int(sc.get("market_potential"), 5),
-            "build_ease": safe_int(sc.get("build_ease"), 5),
-            "revenue_speed": safe_int(sc.get("revenue_speed"), 5),
-            "competition_advantage": safe_int(sc.get("competition_advantage"), 5)
-        }
-    else:
-        result["score"] = {"overall":5,"market_potential":5,"build_ease":5,"revenue_speed":5,"competition_advantage":5}
-    return result
-
-# ═══════════════════════════════════
-# 3단계: 누적 비교 점수 산정 (핵심!)
-# ═══════════════════════════════════
-def compare_all_ideas(all_ideas):
-    """
-    누적된 모든 아이디어를 동시에 비교해서
-    상대적 점수를 재산정. 진짜 1등이 명확하게 나옴.
-    """
-    if len(all_ideas) < 2:
-        return all_ideas
-
-    # 비교용 요약 생성
-    summaries = []
-    for i, idea in enumerate(all_ideas[:20]):  # 최대 20개 비교
-        ba = idea.get("business_analysis", {})
-        rev = ba.get("revenue", {})
-        cost = ba.get("cost", {})
-        tim = ba.get("time", {})
-        mkt = ba.get("market", {})
-        bld = ba.get("build", {})
-        risk = ba.get("risk", {})
-        summaries.append(
-            f"{i+1}. [{idea.get('category')}] {ba.get('product',{}).get('name','')}\n"
-            f"   수익모델: {rev.get('model','')} / 6개월수익: {rev.get('month6','')}\n"
-            f"   월고정비: {cost.get('monthly_fixed','')} / MVP: {tim.get('mvp_days','')}일\n"
-            f"   경쟁: {mkt.get('competition','')} / 난이도: {bld.get('difficulty','')} / 리스크: {risk.get('risk_level','')}\n"
-            f"   차별점: {mkt.get('differentiation','')}"
-        )
-
-    prompt = f"""
-아래 {len(summaries)}개 아이디어를 서로 비교해서 상대적 점수를 매겨주세요.
-
-평가 기준:
-- 수익성: 6개월 후 예상 수익이 높을수록 높은 점수
-- 제작용이성: 개발 기간이 짧고 난이도가 낮을수록 높은 점수
-- 수익속도: 첫 수익까지 기간이 짧을수록 높은 점수
-- 경쟁우위: 경쟁이 낮고 차별점이 명확할수록 높은 점수
-- 종합: 위 4가지를 종합한 점수
-
-중요: 같은 점수를 주지 말고 반드시 차별화해서 점수를 매길 것.
-최고점은 9~10, 최저점은 1~4가 나와야 함.
-
-아이디어 목록:
-{chr(10).join(summaries)}
-
-JSON으로만 응답:
-{{
-  "scores": [
-    {{
-      "index": 1,
-      "overall": 9,
-      "market_potential": 8,
-      "build_ease": 9,
-      "revenue_speed": 7,
-      "competition_advantage": 8,
-      "rank": 1,
-      "rank_reason": "왜 이 순위인지 한 문장"
-    }}
-  ]
-}}
-"""
-    result = parse_json(call_claude(prompt, 1500))
-    if not result or "scores" not in result:
-        return all_ideas
-
-    # 점수 업데이트
-    scores_map = {s["index"]: s for s in result["scores"]}
-    for i, idea in enumerate(all_ideas[:20]):
-        sc_data = scores_map.get(i+1)
-        if sc_data and "business_analysis" in idea:
-            idea["business_analysis"]["score"] = {
-                "overall": safe_int(sc_data.get("overall"), 5),
-                "market_potential": safe_int(sc_data.get("market_potential"), 5),
-                "build_ease": safe_int(sc_data.get("build_ease"), 5),
-                "revenue_speed": safe_int(sc_data.get("revenue_speed"), 5),
-                "competition_advantage": safe_int(sc_data.get("competition_advantage"), 5)
-            }
-            idea["business_analysis"]["rank"] = safe_int(sc_data.get("rank"), i+1)
-            idea["business_analysis"]["rank_reason"] = sc_data.get("rank_reason", "")
-            idea["is_new"] = idea.get("is_new", False)
-
-    return all_ideas
-
-# ═══════════════════════════════════
-# 4단계: Claude 개발 프롬프트
-# ═══════════════════════════════════
+# ═══════════════════════════════════════════════
+# 2-A: 프로덕션급 Claude 개발 프롬프트 생성
+# ═══════════════════════════════════════════════
 def generate_claude_prompt(cluster, ba):
+    """
+    Claude Opus/Sonnet에 바로 붙여넣을 수 있는 프로덕션급 프롬프트.
+    기능 나열이 아닌, 사용자 심리/경험/차별화까지 담은 실전 프롬프트.
+    """
     prod = ba.get("product", {})
     bld  = ba.get("build", {})
     rev  = ba.get("revenue", {})
     mkt  = ba.get("market", {})
 
     prompt = f"""
-다음 제품을 Claude Code에서 바로 개발 시작할 수 있는 완전한 개발 지시서를 작성해주세요.
+다음 제품을 Claude Code 또는 Claude.ai에서 바로 개발 시작할 수 있는
+완전하고 구체적인 개발 지시서를 작성해주세요.
 
+── 제품 정보 ──
 제품명: {prod.get('name','')}
-설명: {prod.get('tagline','')}
-불편함: {cluster.get('pain_point','')}
-타겟: {cluster.get('target_users','')}
+한 줄 설명: {prod.get('tagline','')}
+해결하는 불편함: {cluster.get('pain_point','')}
+타겟 사용자: {cluster.get('target_users','')}
+제품 유형: {prod.get('product_type','')}
 기술 스택: {bld.get('tech_stack','')}
 수익 모델: {rev.get('model','')} / {rev.get('price_point','')}
 MVP 기능: {', '.join(bld.get('mvp_features',[]))}
-차별점: {mkt.get('differentiation','')}
+경쟁 차별점: {mkt.get('differentiation','')}
 
-아래 9개 섹션 전부 포함. 프롬프트 본문만 출력:
+── 요구사항 ──
+아래 9개 섹션 전부 포함. "예시로" "대충" 같은 표현 없이 실제 구현 가능한 수준으로.
+프롬프트 본문만 출력. 추가 설명이나 부연 없이.
 
 [1. 이 제품이 존재해야 하는 이유]
-어떤 사람이 어떤 순간에 필요로 하는가. 현재 대안이 왜 부족한가. 사용 후 느껴야 할 감정.
+어떤 사람이 어떤 구체적 순간에 이 제품을 필요로 하는가.
+지금 대안(수작업, 구글 검색 등)이 왜 불충분한가.
+이 제품을 쓰고 나서 사용자가 느껴야 할 감정.
 
 [2. 사용자 경험 흐름]
-첫 접속부터 가치를 얻기까지 단계별로.
+첫 접속부터 첫 번째 가치를 얻기까지 단계별로.
+각 단계에서 사용자가 보고 느끼는 것.
+재방문하게 만드는 핵심 요소.
 
 [3. 입력 설계]
-받아야 할 정보와 이유. 입력 방식. 기본값과 예시.
+받아야 할 정보 목록과 각각의 이유.
+입력 방식 (텍스트/드롭다운/슬라이더 등).
+스마트 기본값과 예시 문구.
 
 [4. 출력 설계]
-"이게 다르다"고 느끼는 출력 형태. 각 결과물 설명. 복사/저장 UX.
+단순 텍스트가 아닌 "이게 다르다"고 느끼는 출력 형태.
+각 결과물에 붙는 설명 (왜 이 결과인지).
+복사/저장/공유 UX.
 
 [5. UI/UX 상세]
-레이아웃, 색상, 인터랙션, 모바일 반응형.
+전체 레이아웃 구조.
+색상 테마와 주요 컬러.
+핵심 인터랙션 (로딩 상태, 결과 애니메이션, hover 효과).
+모바일 반응형 처리.
+설명 없이도 바로 쓸 수 있는 UI 원칙.
 
 [6. 내부 AI 프롬프트 설계]
-시스템 프롬프트 전문. 입력 가공. 출력 JSON 구조.
+Claude API 사용 시 시스템 프롬프트 전문.
+사용자 입력 가공 방법.
+출력 JSON 구조와 파싱 방법.
 
-[7. 기술 구현]
-파일 구조. 라이브러리 CDN. API 키 관리. 에러 처리.
+[7. 기술 구현 상세]
+파일 구조.
+외부 라이브러리 (CDN 링크 포함).
+API 키 관리 방법.
+에러 처리.
 
-[8. 수익화]
-무료/유료 구분. 제한 구현.
+[8. 수익화 구현]
+무료/유료 기능 구분.
+제한 또는 결제 구현 방법.
 
 [9. 배포 및 첫 유입]
-Vercel 배포. SEO. 첫 방문자 100명 전략.
+Vercel 배포 단계.
+SEO 메타태그.
+첫 방문자 100명 유입 방법.
 """
-    return call_claude(prompt, max_tokens=2500) or ""
+    result = call_claude(prompt, max_tokens=2500)
+    return result or ""
 
-# ═══════════════════════════════════
-# 5단계: 오늘의 추천
-# ═══════════════════════════════════
-def generate_daily_recommendation(top_ideas):
-    summary = [
-        f"- {c.get('category')}: {c.get('business_analysis',{}).get('product',{}).get('name','')} "
-        f"(종합 {c.get('business_analysis',{}).get('score',{}).get('overall','?')}/10, "
-        f"누적순위 {c.get('business_analysis',{}).get('rank','?')}위)"
-        for c in top_ideas[:5]
-    ]
+
+# ═══════════════════════════════════════════════
+# 2-B: 종합 사업 판단
+# ═══════════════════════════════════════════════
+def full_business_analysis(cluster):
     prompt = f"""
-오늘 아이디어 (누적 비교 점수 적용):
+다음 사용자 불편함을 기반으로 완전한 사업 분석을 해주세요.
+
+카테고리: {cluster.get('category')}
+불편함: {cluster.get('pain_point')}
+타겟: {cluster.get('target_users')}
+긴급도: {cluster.get('urgency_score')}/10
+
+아래 JSON으로만 응답. 모든 항목 반드시 채울 것:
+
+{{
+  "build_decision": "TRAFFIC_TOOL 또는 STANDALONE_SAAS 또는 APP_PROGRAM",
+  "build_reason": "이 유형이 맞는 이유 한 문장",
+
+  "product": {{
+    "name": "제품명 (간결하게)",
+    "tagline": "한 줄 설명 (트위터 소개 수준)",
+    "core_value": "핵심 가치 제안",
+    "product_type": "웹앱 또는 크롬확장 또는 모바일앱 또는 데스크톱 또는 랜딩페이지+툴"
+  }},
+
+  "time": {{
+    "mvp_days": "MVP 완성까지 일수 (Claude Code 활용 시, 숫자만)",
+    "launch_ready_days": "실제 런칭 가능일 (숫자만)",
+    "first_revenue_days": "첫 수익 예상일 (숫자만)"
+  }},
+
+  "cost": {{
+    "dev_cost": "개발 비용 (Claude API 제외, 거의 0원인 경우 0원)",
+    "monthly_fixed": "월 고정비 (서버+도메인)",
+    "monthly_variable": "월 변동비 (트래픽 증가 시)",
+    "total_3months": "3개월 총 예상 비용"
+  }},
+
+  "revenue": {{
+    "model": "광고(트래픽) 또는 월정액 또는 건당결제 또는 프리미엄",
+    "price_point": "가격 (예: 무료+광고, 월 9,900원, 건당 990원)",
+    "month1": "1개월 후 예상 월 수익",
+    "month3": "3개월 후 예상 월 수익",
+    "month6": "6개월 후 예상 월 수익",
+    "breakeven": "손익분기점 도달 예상 시점"
+  }},
+
+  "market": {{
+    "size": "시장 규모 (국내 기준)",
+    "competition": "낮음 또는 중간 또는 높음",
+    "competitors_kr": ["국내경쟁1","국내경쟁2"],
+    "competitors_global": ["해외경쟁1","해외경쟁2"],
+    "differentiation": "차별점 한 문장",
+    "search_volume": "예상 월 검색량 (구글 기준)",
+    "seo_keywords": ["메인키워드","서브키워드1","서브키워드2"]
+  }},
+
+  "build": {{
+    "mvp_features": ["핵심기능1","핵심기능2","핵심기능3"],
+    "tech_stack": "기술 스택 (예: HTML/CSS/JS + Vercel, Next.js + Supabase)",
+    "difficulty": "하 또는 중 또는 상",
+    "quick_traffic": "첫 방문자 100명 모으는 가장 빠른 방법",
+    "growth_hack": "1,000명→10,000명 성장 전략"
+  }},
+
+  "risk": {{
+    "main_risk": "가장 큰 리스크",
+    "risk_level": "낮음 또는 중간 또는 높음",
+    "mitigation": "리스크 대응 방법"
+  }},
+
+  "score": {{
+    "overall": 전체점수1~10,
+    "market_potential": 시장성1~10,
+    "build_ease": 제작용이성1~10,
+    "revenue_speed": 수익속도1~10,
+    "competition_advantage": 경쟁우위1~10
+  }},
+
+  "claude_prompt": "아래 형식을 반드시 따를 것. 실제 개발자가 Claude Code에 붙여넣기해서 당일 바로 작업을 시작할 수 있을 만큼 구체적으로 작성. 한국어로 작성. 형식: [제품 배경 및 존재 이유] 어떤 사람이 어떤 순간에 이 제품이 필요한가, 지금 대안이 왜 불충분한가 (2~3문장) / [핵심 사용자 경험 설계] 사용자가 처음 들어와서 가치를 느끼기까지의 구체적인 흐름 단계별로 / [입력값 설계] 사용자에게 받아야 할 정보가 무엇인지, 왜 그 정보가 필요한지 / [출력값 설계] 단순 결과물이 아닌 사용자가 '아 이게 다르다'고 느끼는 출력 형태 / [UI/UX 상세 요구사항] 컬러, 레이아웃, 인터랙션, 반응형, 복사버튼 등 / [기술 스택 및 파일 구조] 단일 HTML 파일인지 여러 파일인지, 외부 API 사용 여부 / [Claude API 프롬프트 설계] 내부적으로 Claude API를 쓴다면 어떤 시스템 프롬프트로 어떤 결과를 뽑아야 하는지 / [수익화 설계] 무료/유료 구분, 어떤 기능이 유료인지 / [배포 방법] Vercel 등 구체적 방법"
+}}
+"""
+    return parse_json(call_claude(prompt, 2000)) or {}
+
+# ═══════════════════════════════════════════════
+# 3단계: 오늘의 최종 추천
+# ═══════════════════════════════════════════════
+def generate_daily_recommendation(top_ideas):
+    summary = []
+    for c in top_ideas[:5]:
+        bd = c.get("business_analysis", {})
+        sc = bd.get("score", {})
+        summary.append(
+            f"- {c.get('category')}: {bd.get('product',{}).get('name','')} "
+            f"(긴급도 {c.get('urgency_score')}/10, 종합점수 {sc.get('overall','?')}/10, "
+            f"{bd.get('build_decision','')})"
+        )
+
+    prompt = f"""
+오늘 분석된 아이디어:
 {chr(10).join(summary)}
 
-가장 먼저 시작할 1개 추천. JSON으로만:
+가장 먼저 시작해야 할 1개를 추천해주세요. JSON으로만:
 {{
   "recommended_category": "추천 카테고리명",
-  "why_first": "왜 이것을 먼저 해야 하는지",
-  "tomorrow_action": "내일 당장 할 첫 번째 행동",
+  "why_first": "왜 이것을 먼저 해야 하는지 (타이밍, 경쟁, 수익성 기준으로)",
+  "tomorrow_action": "내일 당장 할 수 있는 첫 번째 구체적 행동",
   "day7_goal": "7일 후 목표",
   "day30_goal": "30일 후 목표",
-  "success_signal": "성공 신호"
+  "success_signal": "성공하고 있다는 신호 (예: 일 방문자 50명 돌파)"
 }}
 """
     return parse_json(call_claude(prompt, 600)) or {}
 
-# ═══════════════════════════════════
+# ═══════════════════════════════════════════════
 # 메인
-# ═══════════════════════════════════
+# ═══════════════════════════════════════════════
 def run_analysis():
-    print(f"\n🧠 분석 시작 ({now_kst().strftime('%Y-%m-%d %H:%M KST')})")
+    print(f"\n🧠 Idea Radar 분석 시작 ({datetime.now().strftime('%Y-%m-%d %H:%M')})")
     print("─" * 50)
 
     if not os.path.exists("data/raw_posts.json"):
-        print("❌ raw_posts.json 없음")
+        print("❌ raw_posts.json 없음. collector.py 먼저 실행하세요.")
         return
 
     with open("data/raw_posts.json", "r", encoding="utf-8") as f:
         all_posts = json.load(f)
 
-    today = now_kst().strftime("%Y-%m-%d")
-    yesterday = (now_kst() - timedelta(days=1)).strftime("%Y-%m-%d")
+    today = datetime.now().strftime("%Y-%m-%d")
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
     recent = [p for p in all_posts if p.get("date","") >= yesterday] or all_posts[-50:]
 
-    print(f"   분석 대상: {len(recent)}개")
+    print(f"   분석 대상: {len(recent)}개 게시물")
 
-    # 1단계: 클러스터링
-    print("   🔍 [1/4] 클러스터링...")
+    # 1단계
+    print("   🔍 [1/3] 클러스터링...")
     base = analyze_posts(recent)
     clusters = base.get("clusters", [])
-    print(f"   → {len(clusters)}개 카테고리")
+    print(f"   → {len(clusters)}개 카테고리 발견")
     time.sleep(1)
 
-    # 2단계: 개별 사업 분석
+    # 2단계: 상위 5개 전체 사업 분석
     top5 = sorted(clusters, key=lambda x: x.get("urgency_score",0), reverse=True)[:5]
-    print(f"   🏗  [2/4] 상위 {len(top5)}개 개별 분석...")
+    print(f"   🏗  [2/3] 상위 {len(top5)}개 종합 사업 분석 중...")
     for i, c in enumerate(top5):
-        print(f"      [{i+1}/{len(top5)}] {c.get('category')} 분석...")
+        print(f"      [{i+1}/{len(top5)}] {c.get('category')} 사업 분석...")
         ba = full_business_analysis(c)
-        print(f"      [{i+1}/{len(top5)}] {c.get('category')} 프롬프트 생성...")
-        ba["claude_prompt"] = generate_claude_prompt(c, ba)
+
+        print(f"      [{i+1}/{len(top5)}] {c.get('category')} 개발 프롬프트 생성...")
+        claude_prompt = generate_claude_prompt(c, ba)
+        ba["claude_prompt"] = claude_prompt
+
         c["business_analysis"] = ba
-        c["is_new"] = True  # 오늘 신규 표시
-        c["date"] = today
-
-        # 검색량 데이터 추가
-        if PYTRENDS_AVAILABLE:
-            print(f"      [{i+1}/{len(top5)}] {c.get('category')} 검색량 조회...")
-            c = enrich_with_search_data(c)
-
         time.sleep(1.5)
 
-    # 누적 아이디어 불러오기
-    accumulated_file = "data/accumulated_ideas.json"
-    accumulated = []
-    if os.path.exists(accumulated_file):
-        with open(accumulated_file, "r", encoding="utf-8") as f:
-            try:
-                accumulated = json.load(f)
-            except:
-                accumulated = []
-
-    # 오늘 신규 아이디어 추가 (중복 카테고리 제거)
-    existing_cats = {a.get("category") for a in accumulated}
-    for c in top5:
-        if c.get("category") not in existing_cats:
-            accumulated.append(c)
-        else:
-            # 기존 것 업데이트 (더 최신 분석으로)
-            for j, a in enumerate(accumulated):
-                if a.get("category") == c.get("category"):
-                    accumulated[j] = c
-                    break
-
-    # 30일 이상 된 것 제거
-    thirty_days_ago = (now_kst() - timedelta(days=30)).strftime("%Y-%m-%d")
-    accumulated = [a for a in accumulated if a.get("date","") >= thirty_days_ago]
-
-    # 3단계: 누적 비교 점수 산정
-    print(f"   📊 [3/4] 누적 {len(accumulated)}개 아이디어 비교 점수 산정...")
-    accumulated = compare_all_ideas(accumulated)
-    time.sleep(1)
-
-    # 누적 저장
-    with open(accumulated_file, "w", encoding="utf-8") as f:
-        json.dump(accumulated, f, ensure_ascii=False, indent=2)
-
-    # 종합 점수 기준 정렬
-    accumulated_sorted = sorted(
-        accumulated,
-        key=lambda x: x.get("business_analysis",{}).get("score",{}).get("overall",0),
-        reverse=True
-    )
-
-    # 오늘 신규만 따로
-    today_new = [a for a in accumulated_sorted if a.get("is_new") and a.get("date")==today]
-
-    # 4단계: 추천
-    print("   ⭐ [4/4] 추천 생성...")
-    rec = generate_daily_recommendation(accumulated_sorted[:5])
+    # 3단계
+    print("   ⭐ [3/3] 오늘의 최종 추천 생성...")
+    rec = generate_daily_recommendation(top5)
     time.sleep(1)
 
     # 통계
     stats = {
         "total_posts": len(all_posts),
         "today_posts": len([p for p in all_posts if p.get("date")==today]),
-        "accumulated_ideas": len(accumulated),
-        "sources": {}, "languages": {"ko":0,"en":0}
+        "sources": {}, "languages": {"ko":0,"en":0}, "subreddits": {}
     }
     for p in recent:
         src = p.get("source","unknown")
         stats["sources"][src] = stats["sources"].get(src,0)+1
         lang = p.get("language","en")
         stats["languages"][lang] = stats["languages"].get(lang,0)+1
+        if src == "reddit" and p.get("subreddit"):
+            sub = p["subreddit"]
+            stats["subreddits"][sub] = stats["subreddits"].get(sub,0)+1
 
     result = {
-        "generated_at": now_kst().strftime("%Y-%m-%d %H:%M KST"),
+        "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "date": today,
         "stats": stats,
         "clusters": clusters,
-        "top_ideas": accumulated_sorted[:5],      # 누적 TOP 5
-        "today_new": today_new,                    # 오늘 신규
-        "all_accumulated": accumulated_sorted,     # 전체 누적
+        "top_ideas": top5,
         "daily_recommendation": rec,
         "top_insight": base.get("top_insight",""),
         "trending_topics": base.get("trending_topics",[])
@@ -588,18 +358,18 @@ def run_analysis():
         "date": today,
         "total_posts": stats["total_posts"],
         "today_posts": stats["today_posts"],
-        "accumulated_ideas": len(accumulated),
-        "top_category": accumulated_sorted[0].get("category","") if accumulated_sorted else "",
-        "top_score": accumulated_sorted[0].get("business_analysis",{}).get("score",{}).get("overall",0) if accumulated_sorted else 0
+        "ideas_count": len(clusters),
+        "top_category": top5[0].get("category","") if top5 else "",
+        "top_score": top5[0].get("urgency_score",0) if top5 else 0,
+        "recommendation": rec.get("recommended_category","")
     })
     history = history[-60:]
     with open("data/history.json","w",encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✅ 완료! ({now_kst().strftime('%H:%M KST')})")
-    if accumulated_sorted:
-        top = accumulated_sorted[0]
-        print(f"   누적 1위: {top.get('category')} — {top.get('business_analysis',{}).get('product',{}).get('name','')}")
+    print(f"\n✅ 분석 완료!")
+    print(f"   오늘 추천: {rec.get('recommended_category','N/A')}")
+    print(f"   이유: {rec.get('why_first','')}")
 
 if __name__ == "__main__":
     run_analysis()
