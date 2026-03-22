@@ -227,6 +227,21 @@ const SCORE_COLORS = ["#8b5cf6","#06b6d4","#f59e0b","#10b981"];
 
 function el(id){return document.getElementById(id);}
 
+// 금액을 한국식 만원 단위로 변환
+function fmtKRW(str){
+  if(!str||str==="—"||str==="-") return str||"—";
+  // 문자열에서 숫자 추출 (콤마, 공백 제거)
+  const nums = str.replace(/[,\s]/g,"").match(/(\d+)/);
+  if(!nums) return str;
+  const n = parseInt(nums[1]);
+  if(n>=10000){
+    const man = n/10000;
+    const rest = str.replace(/[\d,]+/, "");
+    return (man%1===0?man:man.toFixed(1))+"만"+rest;
+  }
+  return str;
+}
+
 async function load(){
   const [ar,hr]=await Promise.all([
     fetch(`${BASE}/analysis.json?t=${Date.now()}`),
@@ -310,7 +325,7 @@ function cardHTML(c, rank){
       </div>
       <div class="metric">
         <div class="mk">💸 월 고정비</div>
-        <div class="mv amber">${cost.monthly_fixed||"—"}</div>
+        <div class="mv amber">${fmtKRW(cost.monthly_fixed)||"—"}</div>
       </div>
       <div class="metric">
         <div class="mk">💰 첫 수익</div>
@@ -320,15 +335,15 @@ function cardHTML(c, rank){
 
     <!-- 수익 타임라인 -->
     <div class="rev-timeline">
-      <div class="rev-item"><div class="rev-period">1개월</div><div class="rev-val">${rev.month1||"—"}</div></div>
-      <div class="rev-item"><div class="rev-period">3개월</div><div class="rev-val">${rev.month3||"—"}</div></div>
-      <div class="rev-item"><div class="rev-period">6개월</div><div class="rev-val">${rev.month6||"—"}</div></div>
+      <div class="rev-item"><div class="rev-period">1개월</div><div class="rev-val">${fmtKRW(rev.month1)||"—"}</div></div>
+      <div class="rev-item"><div class="rev-period">3개월</div><div class="rev-val">${fmtKRW(rev.month3)||"—"}</div></div>
+      <div class="rev-item"><div class="rev-period">6개월</div><div class="rev-val">${fmtKRW(rev.month6)||"—"}</div></div>
     </div>
 
     <!-- 메타 필 -->
     <div class="pills">
       ${rev.model?`<span class="pill p-amber">💰 ${rev.model}</span>`:""}
-      ${rev.price_point?`<span class="pill p-green">${rev.price_point}</span>`:""}
+      ${rev.price_point?`<span class="pill p-green">${fmtKRW(rev.price_point)}</span>`:""}
       ${mkt.competition?`<span class="pill ${COMP_P[mkt.competition]||'p-purple'}">경쟁 ${mkt.competition}</span>`:""}
       ${bld.difficulty?`<span class="pill ${DIFF_P[bld.difficulty]||'p-purple'}">난이도 ${bld.difficulty}</span>`:""}
       ${bld.tech_stack?`<span class="pill p-blue">🛠 ${bld.tech_stack}</span>`:""}
