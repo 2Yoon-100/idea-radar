@@ -239,6 +239,56 @@ def full_business_analysis(cluster):
     return parse_json(call_claude(prompt, 1500)) or {}
 
 # ═══════════════════════════════════════════════
+# 2-C: 간소화 사업 분석 (나머지 클러스터용, 저비용)
+# ═══════════════════════════════════════════════
+def light_business_analysis(cluster):
+    prompt = f"""
+다음 사용자 불편함을 기반으로 간단한 사업 분석을 해주세요.
+
+카테고리: {cluster.get('category')}
+불편함: {cluster.get('pain_point')}
+타겟: {cluster.get('target_users')}
+긴급도: {cluster.get('urgency_score')}/10
+
+아래 JSON으로만 응답. 모든 항목 반드시 채울 것:
+
+{{
+  "build_decision": "TRAFFIC_TOOL 또는 STANDALONE_SAAS 또는 APP_PROGRAM",
+  "product": {{
+    "name": "제품명",
+    "tagline": "한 줄 설명"
+  }},
+  "time": {{
+    "mvp_days": MVP완성일수(숫자만),
+    "launch_ready_days": 런칭가능일수(숫자만),
+    "first_revenue_days": 첫수익예상일수(숫자만)
+  }},
+  "cost": {{
+    "monthly_fixed": "월 고정비"
+  }},
+  "revenue": {{
+    "model": "수익 모델",
+    "price_point": "가격",
+    "month1": "1개월 후 예상 월 수익",
+    "month3": "3개월 후 예상 월 수익",
+    "month6": "6개월 후 예상 월 수익"
+  }},
+  "build": {{
+    "mvp_features": ["핵심기능1","핵심기능2","핵심기능3"],
+    "difficulty": "하 또는 중 또는 상"
+  }},
+  "score": {{
+    "overall": 전체점수(숫자만, 1~10),
+    "market_potential": 시장성(숫자만, 1~10),
+    "build_ease": 제작용이성(숫자만, 1~10),
+    "revenue_speed": 수익속도(숫자만, 1~10),
+    "competition_advantage": 경쟁우위(숫자만, 1~10)
+  }}
+}}
+"""
+    return parse_json(call_claude(prompt, 800)) or {}
+
+# ═══════════════════════════════════════════════
 # 3단계: 오늘의 최종 추천
 # ═══════════════════════════════════════════════
 def generate_daily_recommendation(top_ideas):
@@ -295,23 +345,33 @@ def run_analysis():
     print(f"   → {len(clusters)}개 카테고리 발견")
     time.sleep(1)
 
-    # 2단계: 상위 5개 전체 사업 분석
-    top5 = sorted(clusters, key=lambda x: x.get("urgency_score",0), reverse=True)[:5]
-    print(f"   🏗  [2/3] 상위 {len(top5)}개 종합 사업 분석 중...")
+    # 2단계: 전체 클러스터 사업 분석 (상위 5개 상세, 나머지 간소화)
+    all_sorted = sorted(clusters, key=lambda x: x.get("urgency_score",0), reverse=True)
+    top5 = all_sorted[:5]
+    rest = all_sorted[5:]
+
+    print(f"   🏗  [2/3] 상위 {len(top5)}개 상세 분석 + {len(rest)}개 간소화 분석...")
     for i, c in enumerate(top5):
-        print(f"      [{i+1}/{len(top5)}] {c.get('category')} 사업 분석...")
+        print(f"      [{i+1}/{len(all_sorted)}] {c.get('category')} 상세 분석...")
         ba = full_business_analysis(c)
 
-        print(f"      [{i+1}/{len(top5)}] {c.get('category')} 개발 프롬프트 생성...")
+        print(f"      [{i+1}/{len(all_sorted)}] {c.get('category')} 개발 프롬프트 생성...")
         claude_prompt = generate_claude_prompt(c, ba)
         ba["claude_prompt"] = claude_prompt
 
         c["business_analysis"] = ba
         time.sleep(1.5)
 
+    for i, c in enumerate(rest):
+        idx = len(top5) + i + 1
+        print(f"      [{idx}/{len(all_sorted)}] {c.get('category')} 간소화 분석...")
+        ba = light_business_analysis(c)
+        c["business_analysis"] = ba
+        time.sleep(1.5)
+
     # 3단계
     print("   ⭐ [3/3] 오늘의 최종 추천 생성...")
-    rec = generate_daily_recommendation(top5)
+    rec = generate_daily_recommendation(all_sorted)
     time.sleep(1)
 
     # 통계
@@ -334,7 +394,7 @@ def run_analysis():
         "date": today,
         "stats": stats,
         "clusters": clusters,
-        "top_ideas": top5,
+        "top_ideas": all_sorted,
         "daily_recommendation": rec,
         "top_insight": base.get("top_insight",""),
         "trending_topics": base.get("trending_topics",[])
