@@ -228,13 +228,15 @@ def full_business_analysis(cluster):
   }},
 
   "score": {{
-    "overall": 전체점수(숫자만, 1~10),
-    "market_potential": 시장성(숫자만, 1~10),
-    "build_ease": 제작용이성(숫자만, 1~10),
-    "revenue_speed": 수익속도(숫자만, 1~10),
-    "competition_advantage": 경쟁우위(숫자만, 1~10)
+    "overall": 종합점수(숫자만 예: 8),
+    "market_size": 시장성(숫자만 1~10),
+    "difficulty": 제작난이도(숫자만 1~10 낮을수록쉬움),
+    "revenue_speed": 수익속도(숫자만 1~10 높을수록빠름),
+    "competitive_advantage": 경쟁우위(숫자만 1~10)
   }}
 }}
+
+중요: score 안의 5개 값은 반드시 따옴표 없는 정수로 응답하세요.
 """
     return parse_json(call_claude(prompt, 1500)) or {}
 
@@ -278,13 +280,15 @@ def light_business_analysis(cluster):
     "difficulty": "하 또는 중 또는 상"
   }},
   "score": {{
-    "overall": 전체점수(숫자만, 1~10),
-    "market_potential": 시장성(숫자만, 1~10),
-    "build_ease": 제작용이성(숫자만, 1~10),
-    "revenue_speed": 수익속도(숫자만, 1~10),
-    "competition_advantage": 경쟁우위(숫자만, 1~10)
+    "overall": 종합점수(숫자만 예: 7),
+    "market_size": 시장성(숫자만 1~10),
+    "difficulty": 제작난이도(숫자만 1~10 낮을수록쉬움),
+    "revenue_speed": 수익속도(숫자만 1~10 높을수록빠름),
+    "competitive_advantage": 경쟁우위(숫자만 1~10)
   }}
 }}
+
+중요: score 안의 5개 값은 반드시 따옴표 없는 정수로 응답하세요.
 """
     return parse_json(call_claude(prompt, 800)) or {}
 

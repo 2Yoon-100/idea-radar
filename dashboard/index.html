@@ -275,10 +275,10 @@ function cardHTML(c, rank){
 
   const urg = c.urgency_score||0;
   const scoreItems = [
-    {l:"시장성",  v:sc.market_potential       || urg, c:SCORE_COLORS[0]},
-    {l:"제작",    v:sc.build_ease             || urg, c:SCORE_COLORS[1]},
+    {l:"시장성",  v:sc.market_size            || sc.market_potential || urg, c:SCORE_COLORS[0]},
+    {l:"제작",    v:sc.difficulty             || sc.build_ease      || urg, c:SCORE_COLORS[1]},
     {l:"수익속도",v:sc.revenue_speed          || urg, c:SCORE_COLORS[2]},
-    {l:"경쟁우위",v:sc.competition_advantage  || urg, c:SCORE_COLORS[3]}
+    {l:"경쟁우위",v:sc.competitive_advantage  || sc.competition_advantage || urg, c:SCORE_COLORS[3]}
   ];
 
   const prompt = ba.claude_prompt||"";
