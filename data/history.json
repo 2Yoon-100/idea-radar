@@ -82,5 +82,14 @@
     "top_category": "고객 확보 (Customer Acquisition)",
     "top_score": 9,
     "recommendation": "ChannelIQ (마케팅 채널 최적화)"
+  },
+  {
+    "date": "2026-03-25",
+    "total_posts": 963,
+    "today_posts": 177,
+    "ideas_count": 8,
+    "top_category": "마케팅 및 사용자 확보",
+    "top_score": 9,
+    "recommendation": "제품 개발 및 검증: ValidateFlow"
   }
 ]
