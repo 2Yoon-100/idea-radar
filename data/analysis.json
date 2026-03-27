@@ -1,33 +1,43 @@
 {
-  "generated_at": "2026-03-26 23:23",
-  "date": "2026-03-26",
+  "generated_at": "2026-03-27 23:24",
+  "date": "2026-03-27",
   "stats": {
-    "total_posts": 1147,
-    "today_posts": 183,
+    "total_posts": 1333,
+    "today_posts": 185,
     "sources": {
-      "reddit": 343,
-      "hackernews": 18
+      "reddit": 349,
+      "hackernews": 20
     },
     "languages": {
       "ko": 0,
-      "en": 361
+      "en": 369
     },
     "subreddits": {
       "SaaS": 46,
-      "indiehackers": 5,
+      "indiehackers": 6,
       "Entrepreneur": 35,
-      "startups": 33,
+      "startups": 38,
       "smallbusiness": 46,
-      "SideProject": 45,
+      "SideProject": 46,
       "webdev": 37,
-      "selfhosted": 35,
-      "algotrading": 20,
-      "cryptocurrency": 41
+      "selfhosted": 37,
+      "algotrading": 11,
+      "cryptocurrency": 47
     }
   },
   "clusters": [],
   "top_ideas": [],
-  "daily_recommendation": {},
+  "daily_recommendation": {
+    "message": "죄송하지만, 분석된 아이디어 목록이 보이지 않습니다.",
+    "instruction": "다음 정보를 제공해 주시면 추천해 드리겠습니다:",
+    "needed_info": [
+      "오늘 분석된 구체적인 아이디어들의 목록",
+      "각 아이디어의 카테고리/분야",
+      "진입장벽/필요자본",
+      "예상 수익성"
+    ],
+    "example_format": "예) AI 서비스, 소셜커머스, 온라인 코칭 등의 리스트"
+  },
   "top_insight": "",
   "trending_topics": []
 }
