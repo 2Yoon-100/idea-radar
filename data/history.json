@@ -109,5 +109,14 @@
     "top_category": "",
     "top_score": 0,
     "recommendation": ""
+  },
+  {
+    "date": "2026-03-28",
+    "total_posts": 1500,
+    "today_posts": 164,
+    "ideas_count": 9,
+    "top_category": "Co-founder & 지분 관리",
+    "top_score": 9,
+    "recommendation": "GrowthLaunch"
   }
 ]
