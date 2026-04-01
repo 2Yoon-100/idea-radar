@@ -145,5 +145,14 @@
     "top_category": "마케팅 & 고객 확보",
     "top_score": 9,
     "recommendation": "MarketMix"
+  },
+  {
+    "date": "2026-04-01",
+    "total_posts": 2231,
+    "today_posts": 196,
+    "ideas_count": 8,
+    "top_category": "Distribution & Customer Acquisition",
+    "top_score": 9,
+    "recommendation": "IdeaValidator"
   }
 ]
