@@ -154,5 +154,14 @@
     "top_category": "Distribution & Customer Acquisition",
     "top_score": 9,
     "recommendation": "IdeaValidator"
+  },
+  {
+    "date": "2026-04-02",
+    "total_posts": 2408,
+    "today_posts": 177,
+    "ideas_count": 8,
+    "top_category": "사용자 획득 및 검증",
+    "top_score": 9,
+    "recommendation": "SupplyGuard"
   }
 ]
