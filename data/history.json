@@ -163,5 +163,14 @@
     "top_category": "사용자 획득 및 검증",
     "top_score": 9,
     "recommendation": "SupplyGuard"
+  },
+  {
+    "date": "2026-04-03",
+    "total_posts": 2598,
+    "today_posts": 189,
+    "ideas_count": 7,
+    "top_category": "제품 피드백 및 검증",
+    "top_score": 9,
+    "recommendation": "FeedLoop"
   }
 ]
