@@ -208,5 +208,14 @@
     "top_category": "",
     "top_score": 0,
     "recommendation": "추천 카테고리명"
+  },
+  {
+    "date": "2026-04-08",
+    "total_posts": 3476,
+    "today_posts": 186,
+    "ideas_count": 8,
+    "top_category": "마케팅 및 유저 확보 전략",
+    "top_score": 10,
+    "recommendation": "GrowthMap"
   }
 ]
