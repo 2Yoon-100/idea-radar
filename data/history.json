@@ -235,5 +235,14 @@
     "top_category": "",
     "top_score": 0,
     "recommendation": ""
+  },
+  {
+    "date": "2026-04-11",
+    "total_posts": 3805,
+    "today_posts": 152,
+    "ideas_count": 10,
+    "top_category": "Product Validation & Development",
+    "top_score": 9,
+    "recommendation": "ValidateFirst"
   }
 ]
