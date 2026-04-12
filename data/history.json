@@ -244,5 +244,14 @@
     "top_category": "Product Validation & Development",
     "top_score": 9,
     "recommendation": "ValidateFirst"
+  },
+  {
+    "date": "2026-04-12",
+    "total_posts": 3948,
+    "today_posts": 142,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": "추천 카테고리명"
   }
 ]
