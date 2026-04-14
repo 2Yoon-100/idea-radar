@@ -262,5 +262,14 @@
     "top_category": "법무/재무 문서 및 계약 관리",
     "top_score": 9,
     "recommendation": "초기 매출 및 수익성 문제: ProfitFlow"
+  },
+  {
+    "date": "2026-04-14",
+    "total_posts": 3966,
+    "today_posts": 8,
+    "ideas_count": 6,
+    "top_category": "AI/LLM 서비스 안정성",
+    "top_score": 9,
+    "recommendation": "PromptGuard"
   }
 ]

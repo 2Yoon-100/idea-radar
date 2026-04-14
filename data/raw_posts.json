@@ -54804,5 +54804,101 @@
     "comments": 0,
     "date": "2026-04-13",
     "language": "en"
+  },
+  {
+    "id": "47770115",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Are Web Agencies Cooked?",
+    "content": "I&#x27;m curious about what&#x27;s going on in the agency world right now.<p>I worked at web agencies for a lot of my career, and I&#x27;m thinking about the kinds of projects we would get: build a website, build a simple app, build internal tools, maintain a WordPress site, build a website theme, etc...<p>It feels like a lot of that is being taken over by LLMs and tools like Claude Code? Are agencies feeling cooked right now?<p>If you&#x27;re at an agency, what&#x27;s happening in your world?",
+    "url": "https://news.ycombinator.com/item?id=47770115",
+    "score": 7,
+    "comments": 5,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47768712",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: How should AI agents discover and order real-world services?",
+    "content": "llms.txt lets agents read websites. MCP lets them call tools. But there&#x27;s no standard for an agent to discover what services a company offers, compare it against alternatives on SLAs and pricing in a structured way, and place an order.<p>With AI agents increasingly acting as procurement&#x2F;comparison tools, I&#x27;ve been working on this problem and built a prototype: a structured file format (similar to llms.txt but for service capabilities) plus YAML manifests with evaluation data. A de",
+    "url": "https://news.ycombinator.com/item?id=47768712",
+    "score": 1,
+    "comments": 0,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47764501",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Thought experiment: AGI giving us answers we don't like?",
+    "content": "Most discussion of AGI emerging focus either on it destroying all of humanity, or it magically solving all of humanity&#x27;woes.<p>Never discussed (I am interested in counterexamples) is AGI emerging and giving us solutions that clash with our convictions. (I am assuming, for the intent of this though experiment, the idea a self-improving AGI reaches cosmic levels of knowledge and always gives the correct answers).<p>Example 1: ask AGI to solve a pandemic, get a vaccine formula in response.<p>E",
+    "url": "https://news.ycombinator.com/item?id=47764501",
+    "score": 2,
+    "comments": 0,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47764215",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: I quit my job over weaponized robots to start my own venture",
+    "content": "Two weeks ago, I quit my job at a robotics company. I was working with high-end hardware (Boston Dynamics, Unitree), but I found out they were planning to mount teleoperated weapons on the robotic platforms for a demo. I’m not willing to go there, so I resigned without another offer.<p>I’ve decided this is the right time to go back to entrepreneurship. We&#x27;re at an incredible moment for embodied intelligence, but I feel the tools and workflows we use to interact, monitor, and control these p",
+    "url": "https://news.ycombinator.com/item?id=47764215",
+    "score": 108,
+    "comments": 72,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47761785",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: LeetCode, anyone still doing it?",
+    "content": "Few years ago leetcode was all the range with an entire cottage industry around it for acing tech interviews. I feel like now with the advent of AI it has completely gone away. I haven&#x27;t done a technical interview in a long while but not even sure if it&#x27;s still the dominant screening tool.",
+    "url": "https://news.ycombinator.com/item?id=47761785",
+    "score": 8,
+    "comments": 8,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47759631",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: AI Hardware Startup in USA",
+    "content": "Hi,<p>I am working on a AI HW idea and building a prototype for it. I am planning to build a startup for the product in USA. I am thinking of starting it in Austin, TX and I would like to gather opinions from this forum before making this decision. I considered BayArea, CA and Seattle, WA and these locations are good choices with great access to talent and Venture capital investors, but these locations are expensive to hire engineers.<p>I am thinking of building this company in a low cost locati",
+    "url": "https://news.ycombinator.com/item?id=47759631",
+    "score": 3,
+    "comments": 0,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47771230",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: GUI or TUI for Coding Harness?",
+    "content": "There&#x27;s alot of debate right now between GUI vs TUI (ex: Claude Desktop vs. Claude Code).<p>I know some (Zed), have tried to bridge the gap with ACP, but for me that&#x27;s always fallen a bit short.<p>What&#x27;s your view?",
+    "url": "https://news.ycombinator.com/item?id=47771230",
+    "score": 3,
+    "comments": 2,
+    "date": "2026-04-14",
+    "language": "en"
+  },
+  {
+    "id": "47765746",
+    "source": "hackernews",
+    "community": "Hacker News",
+    "title": "Ask HN: Who needs contributors? (April 2026)",
+    "content": "Looking for contributors to your project? Feel free to post any project that may interest HN readers, with a strong preference towards open source. Please follow this general format:<p>Project name<p>Project description<p>What do you hope to build this month?<p>What kind of skills do you need?<p>How to contact you?<p>Link to your GitHub or somewhere else you&#x27;d like to onboard new contributors, like your project management software or chat room.",
+    "url": "https://news.ycombinator.com/item?id=47765746",
+    "score": 17,
+    "comments": 7,
+    "date": "2026-04-14",
+    "language": "en"
   }
 ]
