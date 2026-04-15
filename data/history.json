@@ -271,5 +271,14 @@
     "top_category": "AI/LLM 서비스 안정성",
     "top_score": 9,
     "recommendation": "PromptGuard"
+  },
+  {
+    "date": "2026-04-15",
+    "total_posts": 3965,
+    "today_posts": 20,
+    "ideas_count": 8,
+    "top_category": "AI/LLM 품질 및 성능 평가",
+    "top_score": 8,
+    "recommendation": "WebAI Studio"
   }
 ]
