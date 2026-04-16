@@ -280,5 +280,14 @@
     "top_category": "AI/LLM 품질 및 성능 평가",
     "top_score": 8,
     "recommendation": "WebAI Studio"
+  },
+  {
+    "date": "2026-04-16",
+    "total_posts": 3972,
+    "today_posts": 12,
+    "ideas_count": 8,
+    "top_category": "AI/LLM 모델 성능 및 품질",
+    "top_score": 9,
+    "recommendation": "CareerPath AI"
   }
 ]
