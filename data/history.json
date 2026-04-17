@@ -289,5 +289,14 @@
     "top_category": "AI/LLM 모델 성능 및 품질",
     "top_score": 9,
     "recommendation": "CareerPath AI"
+  },
+  {
+    "date": "2026-04-17",
+    "total_posts": 3976,
+    "today_posts": 11,
+    "ideas_count": 7,
+    "top_category": "AI/LLM 프로덕션 활용",
+    "top_score": 9,
+    "recommendation": "PromptOps"
   }
 ]
