@@ -298,5 +298,14 @@
     "top_category": "AI/LLM 프로덕션 활용",
     "top_score": 9,
     "recommendation": "PromptOps"
+  },
+  {
+    "date": "2026-04-18",
+    "total_posts": 3974,
+    "today_posts": 10,
+    "ideas_count": 6,
+    "top_category": "AI/LLM 기술 불안감",
+    "top_score": 9,
+    "recommendation": "AgentFlow"
   }
 ]
