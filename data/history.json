@@ -307,5 +307,14 @@
     "top_category": "AI/LLM 기술 불안감",
     "top_score": 9,
     "recommendation": "AgentFlow"
+  },
+  {
+    "date": "2026-04-19",
+    "total_posts": 3976,
+    "today_posts": 10,
+    "ideas_count": 6,
+    "top_category": "AI/LLM 활용 및 우려",
+    "top_score": 9,
+    "recommendation": "AILens (AI/LLM 활용 및 우려)"
   }
 ]
