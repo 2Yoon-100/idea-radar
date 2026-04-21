@@ -325,5 +325,14 @@
     "top_category": "AI/개발자 도구 활용",
     "top_score": 8,
     "recommendation": "CloudWise"
+  },
+  {
+    "date": "2026-04-21",
+    "total_posts": 3801,
+    "today_posts": 8,
+    "ideas_count": 7,
+    "top_category": "AI/LLM 성능 및 제약",
+    "top_score": 9,
+    "recommendation": "CloudCost Guard"
   }
 ]
