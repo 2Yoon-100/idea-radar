@@ -334,5 +334,14 @@
     "top_category": "AI/LLM 성능 및 제약",
     "top_score": 9,
     "recommendation": "CloudCost Guard"
+  },
+  {
+    "date": "2026-04-22",
+    "total_posts": 3627,
+    "today_posts": 5,
+    "ideas_count": 7,
+    "top_category": "보안 및 신뢰성 문제",
+    "top_score": 9,
+    "recommendation": "ModelSwap"
   }
 ]
