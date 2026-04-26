@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-04-25 23:29",
-  "date": "2026-04-25",
+  "generated_at": "2026-04-26 23:30",
+  "date": "2026-04-26",
   "stats": {
-    "total_posts": 3126,
+    "total_posts": 2950,
     "today_posts": 8,
     "sources": {
-      "hackernews": 26
+      "hackernews": 16
     },
     "languages": {
       "ko": 0,
-      "en": 26
+      "en": 16
     },
     "subreddits": {}
   },
