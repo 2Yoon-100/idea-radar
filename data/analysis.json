@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-05-03 23:35",
-  "date": "2026-05-03",
+  "generated_at": "2026-05-04 23:43",
+  "date": "2026-05-04",
   "stats": {
-    "total_posts": 2585,
-    "today_posts": 5,
+    "total_posts": 2570,
+    "today_posts": 175,
     "sources": {
-      "reddit": 157,
-      "hackernews": 13
+      "hackernews": 15,
+      "reddit": 165
     },
     "languages": {
       "ko": 0,
-      "en": 170
+      "en": 180
     },
     "subreddits": {
       "SaaS": 23,
-      "indiehackers": 5,
-      "Entrepreneur": 10,
-      "startups": 9,
+      "indiehackers": 3,
+      "Entrepreneur": 6,
+      "startups": 21,
       "smallbusiness": 23,
-      "SideProject": 22,
-      "webdev": 20,
-      "selfhosted": 18,
+      "SideProject": 21,
+      "webdev": 19,
+      "selfhosted": 22,
       "algotrading": 9,
       "cryptocurrency": 18
     }
