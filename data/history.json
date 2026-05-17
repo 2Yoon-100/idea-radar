@@ -1,13 +1,5 @@
 [
   {
-    "date": "2026-03-18",
-    "total_posts": 45,
-    "today_posts": 12,
-    "accumulated_ideas": 30,
-    "top_category": "AI/LLM 비용 최적화",
-    "top_score": 9
-  },
-  {
     "date": "2026-03-19",
     "total_posts": 53,
     "today_posts": 8,
@@ -531,6 +523,15 @@
     "date": "2026-05-16",
     "total_posts": 3033,
     "today_posts": 162,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-05-17",
+    "total_posts": 3182,
+    "today_posts": 161,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
