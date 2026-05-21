@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-03-21",
-    "total_posts": 231,
-    "today_posts": 167,
-    "ideas_count": 7,
-    "top_category": "SaaS 창업 및 검증",
-    "top_score": 9,
-    "recommendation": "SaaS 창업 및 검증"
-  },
-  {
     "date": "2026-03-22",
     "total_posts": 422,
     "today_posts": 179,
@@ -534,6 +525,15 @@
     "date": "2026-05-19",
     "total_posts": 3507,
     "today_posts": 180,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-05-21",
+    "total_posts": 3658,
+    "today_posts": 11,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
