@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-03-23",
-    "total_posts": 599,
-    "today_posts": 177,
-    "ideas_count": 7,
-    "top_category": "고객 획득 및 마케팅",
-    "top_score": 9,
-    "recommendation": "SmartCost"
-  },
-  {
     "date": "2026-03-24",
     "total_posts": 786,
     "today_posts": 186,
@@ -534,6 +525,15 @@
     "date": "2026-05-22",
     "total_posts": 3986,
     "today_posts": 165,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-05-23",
+    "total_posts": 4138,
+    "today_posts": 157,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
