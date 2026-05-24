@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-03-24",
-    "total_posts": 786,
-    "today_posts": 186,
-    "ideas_count": 8,
-    "top_category": "고객 확보 (Customer Acquisition)",
-    "top_score": 9,
-    "recommendation": "ChannelIQ (마케팅 채널 최적화)"
-  },
-  {
     "date": "2026-03-25",
     "total_posts": 963,
     "today_posts": 177,
@@ -534,6 +525,15 @@
     "date": "2026-05-23",
     "total_posts": 4138,
     "today_posts": 157,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-05-24",
+    "total_posts": 4286,
+    "today_posts": 163,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
