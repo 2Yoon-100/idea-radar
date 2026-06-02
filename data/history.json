@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-03-31",
-    "total_posts": 2033,
-    "today_posts": 189,
-    "ideas_count": 8,
-    "top_category": "마케팅 & 고객 확보",
-    "top_score": 9,
-    "recommendation": "MarketMix"
-  },
-  {
     "date": "2026-04-01",
     "total_posts": 2231,
     "today_posts": 196,
@@ -534,6 +525,15 @@
     "date": "2026-05-31",
     "total_posts": 4888,
     "today_posts": 151,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-02",
+    "total_posts": 4727,
+    "today_posts": 14,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
