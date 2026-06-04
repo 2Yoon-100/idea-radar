@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-02",
-    "total_posts": 2408,
-    "today_posts": 177,
-    "ideas_count": 8,
-    "top_category": "사용자 획득 및 검증",
-    "top_score": 9,
-    "recommendation": "SupplyGuard"
-  },
-  {
     "date": "2026-04-03",
     "total_posts": 2598,
     "today_posts": 189,
@@ -534,6 +525,15 @@
     "date": "2026-06-03",
     "total_posts": 4897,
     "today_posts": 14,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-04",
+    "total_posts": 4896,
+    "today_posts": 10,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
