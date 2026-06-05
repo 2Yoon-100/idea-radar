@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-03",
-    "total_posts": 2598,
-    "today_posts": 189,
-    "ideas_count": 7,
-    "top_category": "제품 피드백 및 검증",
-    "top_score": 9,
-    "recommendation": "FeedLoop"
-  },
-  {
     "date": "2026-04-04",
     "total_posts": 2775,
     "today_posts": 176,
@@ -534,6 +525,15 @@
     "date": "2026-06-04",
     "total_posts": 5070,
     "today_posts": 184,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-05",
+    "total_posts": 5060,
+    "today_posts": 171,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
