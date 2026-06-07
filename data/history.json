@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-05",
-    "total_posts": 2941,
-    "today_posts": 166,
-    "ideas_count": 8,
-    "top_category": "User Acquisition & Growth",
-    "top_score": 9,
-    "recommendation": "User Acquisition & Growth: LaunchPath"
-  },
-  {
     "date": "2026-04-06",
     "total_posts": 3108,
     "today_posts": 166,
@@ -534,6 +525,15 @@
     "date": "2026-06-06",
     "total_posts": 5055,
     "today_posts": 172,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-07",
+    "total_posts": 5069,
+    "today_posts": 144,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
