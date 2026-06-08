@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-06",
-    "total_posts": 3108,
-    "today_posts": 166,
-    "ideas_count": 8,
-    "top_category": "고객 확보 및 마케팅",
-    "top_score": 9,
-    "recommendation": "GrowthMap"
-  },
-  {
     "date": "2026-04-07",
     "total_posts": 3289,
     "today_posts": 180,
@@ -534,6 +525,15 @@
     "date": "2026-06-07",
     "total_posts": 5069,
     "today_posts": 144,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-08",
+    "total_posts": 5062,
+    "today_posts": 165,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
