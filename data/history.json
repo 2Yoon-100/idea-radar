@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-07",
-    "total_posts": 3289,
-    "today_posts": 180,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": "추천 카테고리명"
-  },
-  {
     "date": "2026-04-08",
     "total_posts": 3476,
     "today_posts": 186,
@@ -534,6 +525,15 @@
     "date": "2026-06-08",
     "total_posts": 5062,
     "today_posts": 165,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-10",
+    "total_posts": 4904,
+    "today_posts": 14,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
