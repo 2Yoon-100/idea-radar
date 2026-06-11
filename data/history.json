@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-08",
-    "total_posts": 3476,
-    "today_posts": 186,
-    "ideas_count": 8,
-    "top_category": "마케팅 및 유저 확보 전략",
-    "top_score": 10,
-    "recommendation": "GrowthMap"
-  },
-  {
     "date": "2026-04-09",
     "total_posts": 3640,
     "today_posts": 162,
@@ -534,6 +525,15 @@
     "date": "2026-06-10",
     "total_posts": 4904,
     "today_posts": 14,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-11",
+    "total_posts": 4883,
+    "today_posts": 6,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
