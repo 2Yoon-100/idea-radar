@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-13",
-    "total_posts": 3958,
-    "today_posts": 10,
-    "ideas_count": 8,
-    "top_category": "법무/재무 문서 및 계약 관리",
-    "top_score": 9,
-    "recommendation": "초기 매출 및 수익성 문제: ProfitFlow"
-  },
-  {
     "date": "2026-04-14",
     "total_posts": 3966,
     "today_posts": 8,
@@ -534,6 +525,15 @@
     "date": "2026-06-16",
     "total_posts": 4390,
     "today_posts": 18,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-17",
+    "total_posts": 4278,
+    "today_posts": 12,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
