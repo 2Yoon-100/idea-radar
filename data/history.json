@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-14",
-    "total_posts": 3966,
-    "today_posts": 8,
-    "ideas_count": 6,
-    "top_category": "AI/LLM 서비스 안정성",
-    "top_score": 9,
-    "recommendation": "PromptGuard"
-  },
-  {
     "date": "2026-04-15",
     "total_posts": 3965,
     "today_posts": 20,
@@ -534,6 +525,15 @@
     "date": "2026-06-17",
     "total_posts": 4278,
     "today_posts": 12,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-18",
+    "total_posts": 4146,
+    "today_posts": 11,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
