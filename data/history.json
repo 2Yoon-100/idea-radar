@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-17",
-    "total_posts": 3976,
-    "today_posts": 11,
-    "ideas_count": 7,
-    "top_category": "AI/LLM 프로덕션 활용",
-    "top_score": 9,
-    "recommendation": "PromptOps"
-  },
-  {
     "date": "2026-04-18",
     "total_posts": 3974,
     "today_posts": 10,
@@ -534,6 +525,15 @@
     "date": "2026-06-20",
     "total_posts": 3914,
     "today_posts": 40,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-22",
+    "total_posts": 3601,
+    "today_posts": 9,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
