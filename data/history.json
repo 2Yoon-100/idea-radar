@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-18",
-    "total_posts": 3974,
-    "today_posts": 10,
-    "ideas_count": 6,
-    "top_category": "AI/LLM 기술 불안감",
-    "top_score": 9,
-    "recommendation": "AgentFlow"
-  },
-  {
     "date": "2026-04-19",
     "total_posts": 3976,
     "today_posts": 10,
@@ -534,6 +525,15 @@
     "date": "2026-06-22",
     "total_posts": 3601,
     "today_posts": 9,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-23",
+    "total_posts": 3474,
+    "today_posts": 7,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
