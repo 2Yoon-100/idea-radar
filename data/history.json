@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-20",
-    "total_posts": 3972,
-    "today_posts": 7,
-    "ideas_count": 8,
-    "top_category": "AI/개발자 도구 활용",
-    "top_score": 8,
-    "recommendation": "CloudWise"
-  },
-  {
     "date": "2026-04-21",
     "total_posts": 3801,
     "today_posts": 8,
@@ -534,6 +525,15 @@
     "date": "2026-06-24",
     "total_posts": 3392,
     "today_posts": 27,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-26",
+    "total_posts": 3074,
+    "today_posts": 9,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
