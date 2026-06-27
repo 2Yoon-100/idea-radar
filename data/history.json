@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-21",
-    "total_posts": 3801,
-    "today_posts": 8,
-    "ideas_count": 7,
-    "top_category": "AI/LLM 성능 및 제약",
-    "top_score": 9,
-    "recommendation": "CloudCost Guard"
-  },
-  {
     "date": "2026-04-22",
     "total_posts": 3627,
     "today_posts": 5,
@@ -534,6 +525,15 @@
     "date": "2026-06-26",
     "total_posts": 3107,
     "today_posts": 42,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-06-27",
+    "total_posts": 2971,
+    "today_posts": 28,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
