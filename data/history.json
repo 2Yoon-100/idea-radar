@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-04-27",
-    "total_posts": 2777,
-    "today_posts": 15,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-04-28",
     "total_posts": 2793,
     "today_posts": 180,
@@ -537,6 +528,15 @@
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-07-05",
+    "total_posts": 1833,
+    "today_posts": 28,
+    "ideas_count": 6,
+    "top_category": "사용자 확보 및 마케팅",
+    "top_score": 9,
     "recommendation": ""
   }
 ]
