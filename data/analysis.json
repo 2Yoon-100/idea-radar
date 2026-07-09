@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-07-08 23:59",
-  "date": "2026-07-08",
+  "generated_at": "2026-07-09 23:57",
+  "date": "2026-07-09",
   "stats": {
-    "total_posts": 1430,
-    "today_posts": 30,
+    "total_posts": 1298,
+    "today_posts": 33,
     "sources": {
       "reddit": 46,
-      "hackernews": 11
+      "hackernews": 17
     },
     "languages": {
       "ko": 0,
-      "en": 57
+      "en": 63
     },
     "subreddits": {
       "SaaS": 46
