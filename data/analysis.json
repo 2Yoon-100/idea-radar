@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-07-13 23:43",
-  "date": "2026-07-13",
+  "generated_at": "2026-07-14 23:42",
+  "date": "2026-07-14",
   "stats": {
-    "total_posts": 1023,
-    "today_posts": 29,
+    "total_posts": 1019,
+    "today_posts": 38,
     "sources": {
-      "reddit": 46,
-      "hackernews": 12
+      "reddit": 53,
+      "hackernews": 14
     },
     "languages": {
       "ko": 0,
-      "en": 58
+      "en": 67
     },
     "subreddits": {
-      "SaaS": 46
+      "SaaS": 46,
+      "algotrading": 7
     }
   },
   "clusters": [],
