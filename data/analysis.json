@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-27 23:55",
-  "date": "2026-07-27",
+  "generated_at": "2026-07-28 23:51",
+  "date": "2026-07-28",
   "stats": {
-    "total_posts": 973,
-    "today_posts": 40,
+    "total_posts": 977,
+    "today_posts": 32,
     "sources": {
-      "reddit": 57,
-      "hackernews": 18
+      "reddit": 58,
+      "hackernews": 14
     },
     "languages": {
       "ko": 0,
-      "en": 75
+      "en": 72
     },
     "subreddits": {
-      "SaaS": 46,
+      "SaaS": 47,
       "Entrepreneur": 11
     }
   },
