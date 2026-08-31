@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-06-29",
-    "total_posts": 2686,
-    "today_posts": 40,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-06-30",
     "total_posts": 2554,
     "today_posts": 35,
@@ -534,6 +525,15 @@
     "date": "2026-08-30",
     "total_posts": 952,
     "today_posts": 9,
+    "ideas_count": 0,
+    "top_category": "",
+    "top_score": 0,
+    "recommendation": ""
+  },
+  {
+    "date": "2026-08-31",
+    "total_posts": 951,
+    "today_posts": 10,
     "ideas_count": 0,
     "top_category": "",
     "top_score": 0,
