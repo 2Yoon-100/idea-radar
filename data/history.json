@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-18",
-    "total_posts": 1008,
-    "today_posts": 14,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-19",
     "total_posts": 1026,
     "today_posts": 10,
@@ -538,5 +529,14 @@
     "top_category": "",
     "top_score": 0,
     "recommendation": ""
+  },
+  {
+    "date": "2026-11-17",
+    "total_posts": 1048,
+    "today_posts": 31,
+    "ideas_count": 6,
+    "top_category": "결제 및 인프라 불안정성",
+    "top_score": 10,
+    "recommendation": "PayShield - SaaS 결제 독립화 플랫폼"
   }
 ]
