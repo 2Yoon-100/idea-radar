@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-19",
-    "total_posts": 1026,
-    "today_posts": 10,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-20",
     "total_posts": 1023,
     "today_posts": 5,
@@ -538,5 +529,14 @@
     "top_category": "결제 및 인프라 불안정성",
     "top_score": 10,
     "recommendation": "PayShield - SaaS 결제 독립화 플랫폼"
+  },
+  {
+    "date": "2026-11-18",
+    "total_posts": 1028,
+    "today_posts": 9,
+    "ideas_count": 8,
+    "top_category": "AI 도구의 신뢰성 & 품질 관리",
+    "top_score": 9,
+    "recommendation": "VerifyAI"
   }
 ]
