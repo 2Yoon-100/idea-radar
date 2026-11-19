@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-20",
-    "total_posts": 1023,
-    "today_posts": 5,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-21",
     "total_posts": 1038,
     "today_posts": 9,
@@ -538,5 +529,14 @@
     "top_category": "AI 도구의 신뢰성 & 품질 관리",
     "top_score": 9,
     "recommendation": "VerifyAI"
+  },
+  {
+    "date": "2026-11-19",
+    "total_posts": 1009,
+    "today_posts": 7,
+    "ideas_count": 7,
+    "top_category": "보안 및 시스템 안정성",
+    "top_score": 9,
+    "recommendation": "VulnWatch"
   }
 ]
