@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-21",
-    "total_posts": 1038,
-    "today_posts": 9,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-22",
     "total_posts": 1037,
     "today_posts": 9,
@@ -538,5 +529,14 @@
     "top_category": "보안 및 시스템 안정성",
     "top_score": 9,
     "recommendation": "VulnWatch"
+  },
+  {
+    "date": "2026-11-20",
+    "total_posts": 982,
+    "today_posts": 6,
+    "ideas_count": 7,
+    "top_category": "보안 및 시스템 안정성 위기감",
+    "top_score": 9,
+    "recommendation": "VulnAlert Pro"
   }
 ]
