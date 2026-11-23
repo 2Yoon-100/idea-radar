@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-24",
-    "total_posts": 1038,
-    "today_posts": 13,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-25",
     "total_posts": 1037,
     "today_posts": 7,
@@ -538,5 +529,14 @@
     "top_category": "AI/LLM 개발 및 활용",
     "top_score": 9,
     "recommendation": ""
+  },
+  {
+    "date": "2026-11-23",
+    "total_posts": 891,
+    "today_posts": 7,
+    "ideas_count": 5,
+    "top_category": "보안 및 유지보수 부담",
+    "top_score": 9,
+    "recommendation": "SecureShield - CVE & 의존성 자동 감시"
   }
 ]
