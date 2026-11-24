@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-25",
-    "total_posts": 1037,
-    "today_posts": 7,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-26",
     "total_posts": 1051,
     "today_posts": 6,
@@ -538,5 +529,14 @@
     "top_category": "보안 및 유지보수 부담",
     "top_score": 9,
     "recommendation": "SecureShield - CVE & 의존성 자동 감시"
+  },
+  {
+    "date": "2026-11-24",
+    "total_posts": 860,
+    "today_posts": 8,
+    "ideas_count": 6,
+    "top_category": "AI & 보안 위협",
+    "top_score": 9,
+    "recommendation": "AI & 보안 위협: CodeShield AI"
   }
 ]
