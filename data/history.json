@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-26",
-    "total_posts": 1051,
-    "today_posts": 6,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-27",
     "total_posts": 1056,
     "today_posts": 7,
@@ -538,5 +529,14 @@
     "top_category": "AI & 보안 위협",
     "top_score": 9,
     "recommendation": "AI & 보안 위협: CodeShield AI"
+  },
+  {
+    "date": "2026-11-25",
+    "total_posts": 843,
+    "today_posts": 10,
+    "ideas_count": 6,
+    "top_category": "보안 & 프라이버시",
+    "top_score": 9,
+    "recommendation": "보안 & 프라이버시: SecureShield"
   }
 ]
