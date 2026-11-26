@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-27",
-    "total_posts": 1056,
-    "today_posts": 7,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-28",
     "total_posts": 1064,
     "today_posts": 13,
@@ -538,5 +529,14 @@
     "top_category": "보안 & 프라이버시",
     "top_score": 9,
     "recommendation": "보안 & 프라이버시: SecureShield"
+  },
+  {
+    "date": "2026-11-26",
+    "total_posts": 833,
+    "today_posts": 13,
+    "ideas_count": 8,
+    "top_category": "AI 모델 안전성 및 법적 이슈",
+    "top_score": 9,
+    "recommendation": ""
   }
 ]
