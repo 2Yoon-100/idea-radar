@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-28",
-    "total_posts": 1064,
-    "today_posts": 13,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-29",
     "total_posts": 1078,
     "today_posts": 16,
@@ -538,5 +529,14 @@
     "top_category": "AI 모델 안전성 및 법적 이슈",
     "top_score": 9,
     "recommendation": ""
+  },
+  {
+    "date": "2026-11-27",
+    "total_posts": 814,
+    "today_posts": 11,
+    "ideas_count": 6,
+    "top_category": "AI 기술의 미래와 영향",
+    "top_score": 9,
+    "recommendation": "CareerShield AI"
   }
 ]
