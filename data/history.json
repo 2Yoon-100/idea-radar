@@ -1,14 +1,5 @@
 [
   {
-    "date": "2026-09-29",
-    "total_posts": 1078,
-    "today_posts": 16,
-    "ideas_count": 0,
-    "top_category": "",
-    "top_score": 0,
-    "recommendation": ""
-  },
-  {
     "date": "2026-09-30",
     "total_posts": 1085,
     "today_posts": 17,
@@ -538,5 +529,14 @@
     "top_category": "AI 기술의 미래와 영향",
     "top_score": 9,
     "recommendation": "CareerShield AI"
+  },
+  {
+    "date": "2026-11-28",
+    "total_posts": 781,
+    "today_posts": 8,
+    "ideas_count": 6,
+    "top_category": "AI 및 미래 기술에 대한 불안감",
+    "top_score": 9,
+    "recommendation": ""
   }
 ]
